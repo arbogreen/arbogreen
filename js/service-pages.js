@@ -158,6 +158,47 @@
     });
   });
 
+  document.querySelectorAll(".service-visual--tree-climbing").forEach((visual) => {
+    const scroller = visual.querySelector(".visual-climb");
+    const panels = [...visual.querySelectorAll(".visual-climb__panel")];
+    const controls = [...visual.querySelectorAll("[data-visual-climb-direction]")];
+    if (!scroller || panels.length < 2 || controls.length !== 2) return;
+
+    const getActiveIndex = () => panels.reduce((closestIndex, panel, index) => {
+      const currentDistance = Math.abs(scroller.scrollLeft - panels[closestIndex].offsetLeft);
+      const nextDistance = Math.abs(scroller.scrollLeft - panel.offsetLeft);
+      return nextDistance < currentDistance ? index : closestIndex;
+    }, 0);
+
+    const updateControls = () => {
+      const activeIndex = getActiveIndex();
+      controls.forEach((control) => {
+        const direction = Number(control.dataset.visualClimbDirection);
+        control.disabled = direction < 0 ? activeIndex === 0 : activeIndex === panels.length - 1;
+      });
+    };
+
+    let updateFrame;
+    scroller.addEventListener("scroll", () => {
+      window.cancelAnimationFrame(updateFrame);
+      updateFrame = window.requestAnimationFrame(updateControls);
+    }, { passive: true });
+
+    controls.forEach((control) => {
+      control.addEventListener("click", () => {
+        const direction = Number(control.dataset.visualClimbDirection);
+        const nextIndex = Math.min(Math.max(getActiveIndex() + direction, 0), panels.length - 1);
+        scroller.scrollTo({
+          left: panels[nextIndex].offsetLeft,
+          behavior: reducedMotion.matches ? "auto" : "smooth"
+        });
+      });
+    });
+
+    window.addEventListener("resize", updateControls, { passive: true });
+    updateControls();
+  });
+
   document.querySelectorAll("[data-cinematic]").forEach((cinematic) => {
     const frames = [...cinematic.querySelectorAll("[data-cinematic-frame]")];
     const controls = [...cinematic.querySelectorAll("[data-cinematic-control]")];

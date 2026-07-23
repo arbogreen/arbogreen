@@ -265,12 +265,12 @@
 }
 
 .qualification-strip--potatura {
-  --qualification-image: url("../assets/qualification-potatura.jpg");
+  --qualification-image: url("../assets/photo-potatura-qualifiche-upscaled.jpg");
   --qualification-position: center 50%;
 }
 
 .qualification-strip--tree-climbing {
-  --qualification-image: url("../assets/qualification-tree-climbing.jpg");
+  --qualification-image: url("../assets/photo-tree-climbing-qualifiche-upscaled.jpg");
   --qualification-position: center 45%;
 }
 
@@ -773,7 +773,9 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: var(--rank3-fit, cover);
+  object-position: var(--rank3-position, center);
+  filter: saturate(1.08) contrast(1.04);
   opacity: 0;
   transform: scale(1.045);
   transition: opacity 600ms ease, transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -907,6 +909,7 @@
   height: 100%;
   flex: 0 0 auto;
   object-fit: cover;
+  object-position: var(--visual-position, center);
 }
 
 .visual-marquee--giardini {
@@ -933,6 +936,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: var(--visual-position, center);
   opacity: 0;
   transform: scale(1.04);
   transition: opacity 900ms ease, transform 1400ms ease;
@@ -973,6 +977,10 @@
   gap: 2px;
 }
 
+.visual-climb__controls {
+  display: none;
+}
+
 .visual-climb__panel {
   position: relative;
   flex: 1 1 0;
@@ -986,6 +994,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: var(--visual-position, center);
 }
 
 .visual-climb__panel:hover,
@@ -1134,6 +1143,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: var(--visual-position, center);
 }
 
 .visual-water img:last-of-type {
@@ -1164,6 +1174,19 @@
   padding-bottom: 0;
   background: var(--paper);
   isolation: isolate;
+}
+
+.qualification-strip--fitosanitario ~ .service-section--intro + .service-method {
+  background:
+    linear-gradient(
+      180deg,
+      #153b2b 0%,
+      #466552 24%,
+      #82978a 48%,
+      #c0cbc2 72%,
+      var(--paper) 100%
+    ) top / 100% var(--service-transition-size) no-repeat,
+    var(--paper);
 }
 
 .service-method__layout {
@@ -2096,6 +2119,9 @@
     width: 100%;
     height: min(72vw, 330px);
     object-fit: cover;
+    object-position: var(--rank3-position, center);
+    background: #0a1b13;
+    filter: saturate(1.08) contrast(1.04);
   }
 
   .service-rank3__item.is-active .service-rank3__mobile-media {
@@ -2209,6 +2235,54 @@
 
   .service-visual--tree-climbing .visual-climb__panel {
     margin: 0;
+  }
+
+  .service-visual--tree-climbing .visual-climb__controls {
+    position: absolute;
+    z-index: 6;
+    top: 16px;
+    right: 14px;
+    display: flex;
+    gap: 8px;
+    pointer-events: none;
+  }
+
+  .service-visual--tree-climbing .visual-climb__controls button {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    place-items: center;
+    color: var(--white);
+    background: rgba(10, 44, 31, 0.56);
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(4, 16, 11, 0.18);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    pointer-events: auto;
+    transition: opacity 180ms ease, background 180ms ease;
+  }
+
+  .service-visual--tree-climbing .visual-climb__controls button:disabled {
+    cursor: default;
+    opacity: 0.24;
+  }
+
+  .service-visual--tree-climbing .visual-climb__controls button:focus-visible {
+    outline: 2px solid var(--accent-bright);
+    outline-offset: 2px;
+  }
+
+  .service-visual--tree-climbing .visual-climb__controls svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   .visual-climb::-webkit-scrollbar {
@@ -2419,7 +2493,7 @@
 }
 
 @media (min-width: 641px) {
-  .qualification-strip--potatura .service-proof__item:first-child {
+  .service-proof__item:first-child {
     padding-left: clamp(28px, 2vw, 36px);
   }
 
@@ -2469,7 +2543,7 @@
 }
 
 @media (min-width: 921px) {
-  .qualification-strip--potatura .service-proof__item:first-child {
+  .service-proof__item:first-child {
     padding-left: clamp(160px, 15vw, 280px);
   }
 }
