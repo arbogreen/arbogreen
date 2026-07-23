@@ -61,7 +61,7 @@
       initials: "LC",
       rating: 5,
       date: "2 mesi fa",
-      text: "Grande professionista Saverio conosciuto presso la mia proprietà sito in Marina di Grosseto ! Persona altamente qualificata !Grazie per il lavoro svolto"
+      text: "Grande professionista Saverio conosciuto presso la mia proprietà sito in Marina di Grosseto! Persona altamente qualificata! Grazie per il lavoro svolto"
     },
     {
       author: "Maria Cristiana",
@@ -75,14 +75,14 @@
       initials: "CB",
       rating: 5,
       date: "2 mesi fa",
-      text: "Saverio e il suo team di Arbogreen rappresentano una straordinaria combinazione di professionalità, gentilezza e puntualità. Dal primo contatto fino al completamento del lavoro, la loro attenzione ai dettagli è stata impeccabile.\n\nIl team ha eseguito con grande competenza potature precise, rimozione delle processionarie dalle piante e abbattimento di alberi pericolosi, operando sempre nel pieno rispetto delle norme di sicurezza. Ogni intervento è stato svolto con cura, precisione e pulizia, lasciando l’area ordinata e perfettamente gestita.\n\nIl sopralluogo iniziale ha permesso di valutare correttamente i lavori da eseguire, e il preventivo concordato è stato rispettato senza sorprese. La comunicazione è stata eccellente: ogni fase dell’intervento è stata confermata e programmata tenendo conto delle condizioni meteo e delle nostre esigenze.\n\nIn sintesi, un servizio completo, affidabile e altamente professionale. Saverio e il suo team sono cortesi, disponibili e preparati, e li consigliamo senza riserve a chiunque abbia bisogno di lavori di arboricoltura e manutenzione del verde.\n\nSuper consigliati !"
+      text: "Saverio e il suo team di Arbogreen rappresentano una straordinaria combinazione di professionalità, gentilezza e puntualità. Dal primo contatto fino al completamento del lavoro, la loro attenzione ai dettagli è stata impeccabile.\n\nIl team ha eseguito con grande competenza potature precise, rimozione delle processionarie dalle piante e abbattimento di alberi pericolosi, operando sempre nel pieno rispetto delle norme di sicurezza. Ogni intervento è stato svolto con cura, precisione e pulizia, lasciando l’area ordinata e perfettamente gestita.\n\nIl sopralluogo iniziale ha permesso di valutare correttamente i lavori da eseguire, e il preventivo concordato è stato rispettato senza sorprese. La comunicazione è stata eccellente: ogni fase dell’intervento è stata confermata e programmata tenendo conto delle condizioni meteo e delle nostre esigenze.\n\nIn sintesi, un servizio completo, affidabile e altamente professionale. Saverio e il suo team sono cortesi, disponibili e preparati, e li consigliamo senza riserve a chiunque abbia bisogno di lavori di arboricoltura e manutenzione del verde.\n\nSuper consigliati!"
     },
     {
       author: "Tommaso Santoro",
       initials: "TS",
       rating: 5,
       date: "11 mesi fa",
-      text: "Ditta seria, che lavora molto bene e con passione. Saverio si è dimostrato competente e affidabile fin dal nostro primo incontro, mostrandosi disponibile ad intervenire sia per prendersi cura e \"sanare\" un giardino non progettato nè eseguito da lui, sia per effettuare interventi di sana pianta. Il risultato è stato ottimo, sia per la scelta delle piante che per la qualità dell'intervento e i suoi consigli sono stati preziosi anche per contenere la spesa, dimostrandosi serio e onesto. Consigliatissimo."
+      text: "Ditta seria, che lavora molto bene e con passione. Saverio si è dimostrato competente e affidabile fin dal nostro primo incontro, mostrandosi disponibile ad intervenire sia per prendersi cura e \"sanare\" un giardino non progettato né eseguito da lui, sia per effettuare interventi di sana pianta. Il risultato è stato ottimo, sia per la scelta delle piante che per la qualità dell'intervento e i suoi consigli sono stati preziosi anche per contenere la spesa, dimostrandosi serio e onesto. Consigliatissimo."
     },
     {
       author: "Ivano Mariotti",
@@ -103,7 +103,7 @@
       initials: "JS",
       rating: 5,
       date: "un anno fa",
-      text: "Saverio e il suo team si prendono cura del mio piccolo giardino da Aprile 2024 , ma i risultati del loro ottimo lavoro sono già visibili. Tutti sono professionisti con esperienza profonda, sanno cosa fare e offrono soluzioni e le piante che cresceranno bene in condizioni difficili. Saverio ha le mani d’oro, sa riparare vari impianti nel giardino e si vede che gli piace lavorare con le piante. Grazie mille Saverio!"
+      text: "Saverio e il suo team si prendono cura del mio piccolo giardino da aprile 2024, ma i risultati del loro ottimo lavoro sono già visibili. Tutti sono professionisti con esperienza profonda, sanno cosa fare e offrono soluzioni e le piante che cresceranno bene in condizioni difficili. Saverio ha le mani d’oro, sa riparare vari impianti nel giardino e si vede che gli piace lavorare con le piante. Grazie mille Saverio!"
     }
   ];
 
