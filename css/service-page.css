@@ -657,11 +657,11 @@
 }
 
 @media (min-width: 921px) {
-  .service-rank3--potatura .service-rank3__heading .section-kicker {
+  .service-rank3__heading .section-kicker {
     display: none;
   }
 
-  .service-rank3--potatura .service-rank3__heading > p:not(.section-kicker) {
+  .service-rank3__heading > p:not(.section-kicker) {
     padding: clamp(18px, 1.8vw, 26px) clamp(32px, 3.2vw, 50px) clamp(18px, 1.8vw, 26px) clamp(28px, 2.4vw, 36px);
     color: #173f2e;
     background: linear-gradient(90deg, rgba(250, 251, 247, 0.82) 0%, rgba(250, 251, 247, 0.72) 68%, rgba(250, 251, 247, 0.56) 100%);
