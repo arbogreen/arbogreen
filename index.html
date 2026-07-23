@@ -3,7 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
     <title>Arbricoltore tra Perugia e Siena | Arbogreen Service. se stai cercando tree climbing, potature e abbattimenti vicino a me oppure creazione di giardini, Arbogreen Service è l'impresa da contattare</title>
+    <meta name="description" content="Arbogreen Service esegue potature, abbattimenti, tree climbing, cura di giardini e impianti di irrigazione tra Perugia e Siena.">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
@@ -32,11 +39,12 @@
               <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4 3 3 3-3"/></svg>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="#service-tab-1">Potature e abbattimenti</a></li>
-              <li><a href="#service-tab-2">Tree climbing</a></li>
-              <li><a href="#service-tab-3">Servizio fitosanitario</a></li>
-              <li><a href="#service-tab-4">Creazione e cura di giardini</a></li>
-              <li><a href="#service-tab-5">Impianti di irrigazione</a></li>
+              <li><a href="servizi/potatura-alberi.html">Potature</a></li>
+              <li><a href="servizi/abbattimento-alberi.html">Abbattimenti</a></li>
+              <li><a href="servizi/tree-climbing.html">Tree climbing</a></li>
+              <li><a href="servizi/trattamento-fitosanitario.html">Servizio fitosanitario</a></li>
+              <li><a href="servizi/creazione-cura-giardini.html">Creazione e cura di giardini</a></li>
+              <li><a href="servizi/impianti-irrigazione.html">Impianti di irrigazione</a></li>
             </ul>
           </li>
           <li class="site-nav__item"><a class="site-nav__link" href="#chi-sono">Chi siamo</a></li>
@@ -65,13 +73,13 @@
         <div class="hero__media" aria-hidden="true">
           <picture>
             <source media="(max-width: 640px)" srcset="assets/hero-abbattimento-mobile-enhanced.jpg">
-            <img class="hero__slide hero__slide--abbattimento is-active" src="assets/hero-abbattimento-enhanced.jpg" alt="" fetchpriority="high">
+            <img class="hero__slide hero__slide--abbattimento is-active" src="assets/hero-abbattimento-enhanced.jpg" alt="" fetchpriority="high" decoding="async">
           </picture>
           <picture>
             <source media="(max-width: 640px)" srcset="assets/hero-potatura-mobile.jpg">
-            <img class="hero__slide hero__slide--potatura" src="assets/hero-potatura-desktop.jpg" alt="" loading="lazy">
+            <img class="hero__slide hero__slide--potatura" src="assets/hero-potatura-desktop.jpg" alt="" loading="lazy" decoding="async">
           </picture>
-          <img class="hero__slide" src="assets/hero-tronchi-enhanced.jpg" alt="" loading="lazy">
+          <img class="hero__slide" src="assets/hero-tronchi-enhanced.jpg" alt="" loading="lazy" decoding="async">
         </div>
         <div class="hero__shade" aria-hidden="true"></div>
 
@@ -110,8 +118,8 @@
             <span>Clienti<br>soddisfatti</span>
           </div>
           <div class="hero-stats__item">
-            <strong data-target="10+">10+</strong>
-            <span>Certificati <br>& Patentini</span>
+            <strong data-target="10" data-suffix="+">10+</strong>
+            <span>certificati e<br>patentini</span>
           </div>
         </div>
       </section>
@@ -143,15 +151,15 @@
           <div class="services__layout">
             <div class="services__stage">
               <article class="service-panel is-active" id="service-panel-1" role="tabpanel" aria-labelledby="service-tab-1" aria-hidden="false">
-                <a class="service-panel__link" href="" aria-label="Approfondisci il servizio Potature e abbattimenti">
+                <a class="service-panel__link" href="servizi/potatura-alberi.html" aria-label="Approfondisci il servizio Potature">
                   <div class="service-panel__slides">
-                    <img class="service-panel__slide is-active" src="assets/hero-abbattimento-enhanced.jpg" alt="" loading="lazy">
-                    <img class="service-panel__slide" src="assets/service-pruning-02-upscaled.jpg" alt="" loading="lazy">
+                    <img class="service-panel__slide is-active" src="assets/service-pruning-02-upscaled.jpg" alt="" loading="lazy">
                     <img class="service-panel__slide" src="assets/service-pruning-03-upscaled.jpg" alt="" loading="lazy">
+                    <img class="service-panel__slide" src="assets/hero-potatura-desktop.jpg" alt="" loading="lazy">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
-                      <h2>Potature e abbattimenti</h2>
+                      <h2>Potature</h2>
                       <span class="service-panel__cta">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4.5 4.5"/></svg>
                         <span>Approfondisci il servizio</span>
@@ -161,7 +169,7 @@
                     <p class="service-panel__description"></p>
                   </div>
                 </a>
-                <div class="service-panel__controls" aria-label="Seleziona una foto di Potature e abbattimenti">
+                <div class="service-panel__controls" aria-label="Seleziona una foto di Potature">
                   <button type="button" data-slide-direction="previous" aria-label="Foto precedente">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
                   </button>
@@ -172,11 +180,40 @@
               </article>
 
               <article class="service-panel" id="service-panel-2" role="tabpanel" aria-labelledby="service-tab-2" aria-hidden="true">
-                <a class="service-panel__link" href="" aria-label="Approfondisci il servizio Tree climbing">
+                <a class="service-panel__link" href="servizi/abbattimento-alberi.html" aria-label="Approfondisci il servizio Abbattimenti">
+                  <div class="service-panel__slides">
+                    <img class="service-panel__slide is-active" src="assets/hero-abbattimento-enhanced.jpg" alt="" loading="lazy">
+                    <img class="service-panel__slide" src="assets/hero-tronchi-enhanced.jpg" alt="" loading="lazy">
+                    <img class="service-panel__slide" src="assets/equipment-crane-pine-upscaled.jpg" alt="" loading="lazy">
+                  </div>
+                  <div class="service-panel__overlay">
+                    <div class="service-panel__heading">
+                      <h2>Abbattimenti</h2>
+                      <span class="service-panel__cta">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4.5 4.5"/></svg>
+                        <span>Approfondisci il servizio</span>
+                      </span>
+                    </div>
+                    <span class="service-panel__line" aria-hidden="true"></span>
+                    <p class="service-panel__description"></p>
+                  </div>
+                </a>
+                <div class="service-panel__controls" aria-label="Seleziona una foto di Abbattimenti">
+                  <button type="button" data-slide-direction="previous" aria-label="Foto precedente">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+                  </button>
+                  <button type="button" data-slide-direction="next" aria-label="Foto successiva">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+                  </button>
+                </div>
+              </article>
+
+              <article class="service-panel" id="service-panel-3" role="tabpanel" aria-labelledby="service-tab-3" aria-hidden="true">
+                <a class="service-panel__link" href="servizi/tree-climbing.html" aria-label="Approfondisci il servizio Tree climbing">
                   <div class="service-panel__slides">
                     <img class="service-panel__slide is-active" src="assets/service-tree-climbing-01-upscaled.jpg" alt="" loading="lazy">
                     <img class="service-panel__slide" src="assets/service-tree-climbing-02-upscaled.jpg" alt="" loading="lazy">
-                    <img class="service-panel__slide" src="assets/hero-potatura-desktop.jpg" alt="" loading="lazy">
+                    <img class="service-panel__slide" src="assets/hero-tree-climbing.jpg" alt="" loading="lazy">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -200,8 +237,8 @@
                 </div>
               </article>
 
-              <article class="service-panel service-panel--fitosanitario" id="service-panel-3" role="tabpanel" aria-labelledby="service-tab-3" aria-hidden="true">
-                <a class="service-panel__link" href="" aria-label="Approfondisci il Servizio fitosanitario">
+              <article class="service-panel service-panel--fitosanitario" id="service-panel-4" role="tabpanel" aria-labelledby="service-tab-4" aria-hidden="true">
+                <a class="service-panel__link" href="servizi/trattamento-fitosanitario.html" aria-label="Approfondisci il Servizio fitosanitario">
                   <div class="service-panel__slides">
                     <img class="service-panel__slide is-active" src="assets/service-fitosanitario-01-upscaled.jpg" alt="" loading="lazy">
                   </div>
@@ -219,8 +256,8 @@
                 </a>
               </article>
 
-              <article class="service-panel service-panel--giardini" id="service-panel-4" role="tabpanel" aria-labelledby="service-tab-4" aria-hidden="true">
-                <a class="service-panel__link" href="" aria-label="Approfondisci il servizio Creazione e cura di giardini">
+              <article class="service-panel service-panel--giardini" id="service-panel-5" role="tabpanel" aria-labelledby="service-tab-5" aria-hidden="true">
+                <a class="service-panel__link" href="servizi/creazione-cura-giardini.html" aria-label="Approfondisci il servizio Creazione e cura di giardini">
                   <div class="service-panel__slides">
                     <img class="service-panel__slide is-active" src="assets/service-gardens-01-upscaled.jpg" alt="" loading="lazy">
                     <img class="service-panel__slide" src="assets/service-gardens-02-upscaled.jpg" alt="" loading="lazy">
@@ -249,11 +286,11 @@
                 </div>
               </article>
 
-              <article class="service-panel service-panel--irrigazione" id="service-panel-5" role="tabpanel" aria-labelledby="service-tab-5" aria-hidden="true">
-                <div class="service-panel__link service-panel__link--static" aria-label="Impianti di irrigazione">
+              <article class="service-panel service-panel--irrigazione" id="service-panel-6" role="tabpanel" aria-labelledby="service-tab-6" aria-hidden="true">
+                <a class="service-panel__link" href="servizi/impianti-irrigazione.html" aria-label="Approfondisci il servizio Impianti di irrigazione">
                   <div class="service-panel__slides">
                     <img class="service-panel__slide is-active" src="assets/service-irrigazione-installazione.jpg" alt="" loading="lazy">
-                    <img class="service-panel__slide" src="assets/service-irrigazione-01.png" alt="" loading="lazy">
+                    <img class="service-panel__slide" src="assets/service-irrigazione-01-optimized.jpg" alt="" loading="lazy">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -266,7 +303,7 @@
                     <span class="service-panel__line" aria-hidden="true"></span>
                     <p class="service-panel__description"></p>
                   </div>
-                </div>
+                </a>
                 <div class="service-panel__controls" aria-label="Seleziona una foto di Impianti di irrigazione">
                   <button type="button" data-slide-direction="previous" aria-label="Foto precedente">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
@@ -284,27 +321,33 @@
                 <span class="service-tab__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><path d="M12 3 7 10h3l-4 6h12l-4-6h3L12 3Z"/><path d="M12 16v5"/></svg>
                 </span>
-                <span>Potature e abbattimenti</span>
+                <span>Potature</span>
               </button>
               <button class="service-tab" id="service-tab-2" type="button" role="tab" aria-selected="false" aria-controls="service-panel-2" data-service="1" tabindex="-1">
+                <span class="service-tab__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M7 20h10M9 20v-4h6v4M8 16l1-5 3-7 3 7 1 5M6 11h12"/></svg>
+                </span>
+                <span>Abbattimenti</span>
+              </button>
+              <button class="service-tab" id="service-tab-3" type="button" role="tab" aria-selected="false" aria-controls="service-panel-3" data-service="2" tabindex="-1">
                 <span class="service-tab__icon" aria-hidden="true">
                   <span class="service-tab__rope-knot"></span>
                 </span>
                 <span>Tree climbing</span>
               </button>
-              <button class="service-tab" id="service-tab-3" type="button" role="tab" aria-selected="false" aria-controls="service-panel-3" data-service="2" tabindex="-1">
+              <button class="service-tab" id="service-tab-4" type="button" role="tab" aria-selected="false" aria-controls="service-panel-4" data-service="3" tabindex="-1">
                 <span class="service-tab__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.6 2.8 8 7 10 4.2-2 7-5.4 7-10V6l-7-3Z"/><path d="M9 14c3.5 0 5-2 6-5-3.5 0-5.5 1.7-6 5Zm0 0-1 2"/></svg>
                 </span>
                 <span>Servizio fitosanitario</span>
               </button>
-              <button class="service-tab" id="service-tab-4" type="button" role="tab" aria-selected="false" aria-controls="service-panel-4" data-service="3" tabindex="-1">
+              <button class="service-tab" id="service-tab-5" type="button" role="tab" aria-selected="false" aria-controls="service-panel-5" data-service="4" tabindex="-1">
                 <span class="service-tab__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><path d="M12 21v-9"/><path d="M12 15c-4 0-7-3-7-8 4 0 7 2 7 6m0-1c0-4 3-7 7-7 0 5-3 8-7 8"/></svg>
                 </span>
                 <span>Creazione e cura giardini</span>
               </button>
-              <button class="service-tab" id="service-tab-5" type="button" role="tab" aria-selected="false" aria-controls="service-panel-5" data-service="4" tabindex="-1">
+              <button class="service-tab" id="service-tab-6" type="button" role="tab" aria-selected="false" aria-controls="service-panel-6" data-service="5" tabindex="-1">
                 <span class="service-tab__icon" aria-hidden="true">
                   <span class="service-tab__irrigation-icon irrigation-icon-mask"></span>
                 </span>
@@ -454,7 +497,7 @@
                   <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </span>
               </button>
-              <p class="areas__description"> grazie alla sede situata in posizione centrale, a Citta Della Pieve, raggiungiamo agevolmente ogni zona nelle provincie.</p>
+              <p class="areas__description">Grazie alla sede situata in posizione centrale, a Città della Pieve, raggiungiamo agevolmente le due province. Il primo passo è un sopralluogo per valutare condizioni e accessi e capire se intervenire con una <a href="servizi/potatura-alberi.html">potatura</a>, un <a href="servizi/abbattimento-alberi.html">abbattimento controllato</a> o in <a href="servizi/tree-climbing.html">tree climbing</a>. Per giardini e aree verdi valutiamo invece il <a href="servizi/trattamento-fitosanitario.html">trattamento fitosanitario</a>, la <a href="servizi/creazione-cura-giardini.html">creazione o il recupero del giardino</a> e la realizzazione di un <a href="servizi/impianti-irrigazione.html">impianto di irrigazione</a>.</p>
             </div>
           </div>
         </div>
@@ -595,11 +638,12 @@
           <nav class="footer-nav" aria-labelledby="footer-services-title">
             <h2 id="footer-services-title">Servizi</h2>
             <ul>
-              <li><a href="#service-tab-1">Potature e abbattimenti</a></li>
-              <li><a href="#service-tab-2">Tree climbing</a></li>
-              <li><a href="#service-tab-3">Servizio fitosanitario</a></li>
-              <li><a href="#service-tab-4">Creazione e cura di giardini</a></li>
-              <li><a href="#service-tab-5">Impianti di irrigazione</a></li>
+              <li><a href="#service-tab-1">Potature</a></li>
+              <li><a href="#service-tab-2">Abbattimenti</a></li>
+              <li><a href="#service-tab-3">Tree climbing</a></li>
+              <li><a href="#service-tab-4">Servizio fitosanitario</a></li>
+              <li><a href="#service-tab-5">Creazione e cura di giardini</a></li>
+              <li><a href="#service-tab-6">Impianti di irrigazione</a></li>
             </ul>
           </nav>
 

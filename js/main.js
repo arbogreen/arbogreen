@@ -126,6 +126,26 @@
   const areaCityMarkers = [...document.querySelectorAll("[data-area-city]")];
   const statNumbers = [...document.querySelectorAll(".hero-stats strong[data-target]")];
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const serviceCtaBanner = document.querySelector(".service-cta-banner");
+  const serviceFieldSection = document.querySelector(".service-main > .service-visual");
+
+  if (serviceCtaBanner) {
+    if (serviceFieldSection) {
+      serviceFieldSection.insertAdjacentElement("afterend", serviceCtaBanner);
+    } else {
+      serviceCtaBanner.remove();
+    }
+  }
+
+  const serviceRevealBlocks = [...document.querySelectorAll(".service-reveal")];
+
+  if (reviewTrack) {
+    reviewTrack.style.animationPlayState = "paused";
+  }
+
+  if (serviceRevealBlocks.length) {
+    document.documentElement.classList.add("service-js");
+  }
 
   let activeSlide = 0;
   let slideTimer;
@@ -191,6 +211,23 @@
 
     peopleCopyBlocks.forEach((copyBlock) => peopleCopyObserver.observe(copyBlock));
     peopleMediaBlocks.forEach((mediaBlock) => peopleCopyObserver.observe(mediaBlock));
+  }
+
+  if (serviceRevealBlocks.length) {
+    if ("IntersectionObserver" in window && !reducedMotion.matches) {
+      const serviceRevealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("is-entering", entry.isIntersecting);
+        });
+      }, {
+        threshold: 0.14,
+        rootMargin: "0px 0px -8%"
+      });
+
+      serviceRevealBlocks.forEach((block) => serviceRevealObserver.observe(block));
+    } else {
+      serviceRevealBlocks.forEach((block) => block.classList.add("is-entering"));
+    }
   }
 
   if (areasSection) {
@@ -369,7 +406,12 @@
     }
   });
 
-  if (reviewTrack) {
+  let reviewsInitialized = false;
+
+  const initializeReviews = () => {
+    if (!reviewTrack || reviewsInitialized) return;
+
+    reviewsInitialized = true;
     const googleReviewsUrl = document.querySelector(".reviews__google-link")?.href || "#";
 
     const reviewCards = reviews.map((review, index) => {
@@ -429,34 +471,129 @@
       reviewTrack.appendChild(clone);
     });
 
+    reviewTrack.style.removeProperty("animation-play-state");
+
     if (reviewSlider) {
       let reviewResumeTimer;
-      let reviewScrollEndTimer;
+      let reviewHoldTimer;
+      let reviewClickSuppressionTimer;
+      let reviewTouchOrigin;
+      let reviewLongPressActive = false;
+      let suppressNextReviewClick = false;
+      const reviewHoldDelay = 320;
+      const reviewMoveThreshold = 10;
 
       const pauseReviewScroll = () => {
         window.clearTimeout(reviewResumeTimer);
         reviewSlider.classList.add("is-paused");
       };
 
-      const resumeReviewScroll = () => {
+      const resumeReviewScroll = (delay = 1800) => {
         window.clearTimeout(reviewResumeTimer);
+
+        if (delay === 0) {
+          reviewSlider.classList.remove("is-paused");
+          return;
+        }
+
         reviewResumeTimer = window.setTimeout(() => {
           reviewSlider.classList.remove("is-paused");
-        }, 1800);
+        }, delay);
       };
 
-      reviewSlider.addEventListener("touchstart", pauseReviewScroll, { passive: true });
-      reviewSlider.addEventListener("touchend", resumeReviewScroll, { passive: true });
-      reviewSlider.addEventListener("touchcancel", resumeReviewScroll, { passive: true });
-      reviewSlider.addEventListener("pointerenter", pauseReviewScroll);
-      reviewSlider.addEventListener("pointerleave", resumeReviewScroll);
-      reviewSlider.addEventListener("focusin", pauseReviewScroll);
-      reviewSlider.addEventListener("focusout", resumeReviewScroll);
-      reviewSlider.addEventListener("scroll", () => {
-        pauseReviewScroll();
-        window.clearTimeout(reviewScrollEndTimer);
-        reviewScrollEndTimer = window.setTimeout(resumeReviewScroll, 180);
+      const clearReviewHold = () => {
+        window.clearTimeout(reviewHoldTimer);
+        reviewHoldTimer = undefined;
+      };
+
+      const endReviewTouch = () => {
+        clearReviewHold();
+        reviewTouchOrigin = undefined;
+
+        if (reviewLongPressActive) {
+          suppressNextReviewClick = true;
+          window.clearTimeout(reviewClickSuppressionTimer);
+          reviewClickSuppressionTimer = window.setTimeout(() => {
+            suppressNextReviewClick = false;
+          }, 500);
+        }
+
+        reviewLongPressActive = false;
+        resumeReviewScroll(0);
+      };
+
+      reviewSlider.addEventListener("touchstart", (event) => {
+        if (event.touches.length !== 1) return;
+
+        const touch = event.touches[0];
+        reviewTouchOrigin = { x: touch.clientX, y: touch.clientY };
+        reviewLongPressActive = false;
+        suppressNextReviewClick = false;
+        window.clearTimeout(reviewClickSuppressionTimer);
+        clearReviewHold();
+        reviewHoldTimer = window.setTimeout(() => {
+          reviewLongPressActive = true;
+          pauseReviewScroll();
+        }, reviewHoldDelay);
       }, { passive: true });
+
+      reviewSlider.addEventListener("touchmove", (event) => {
+        if (!reviewTouchOrigin || event.touches.length !== 1) return;
+
+        const touch = event.touches[0];
+        const moved = Math.hypot(
+          touch.clientX - reviewTouchOrigin.x,
+          touch.clientY - reviewTouchOrigin.y
+        );
+
+        if (moved <= reviewMoveThreshold) return;
+
+        clearReviewHold();
+        reviewTouchOrigin = undefined;
+        reviewLongPressActive = false;
+        resumeReviewScroll(0);
+      }, { passive: true });
+
+      reviewSlider.addEventListener("touchend", endReviewTouch, { passive: true });
+      reviewSlider.addEventListener("touchcancel", endReviewTouch, { passive: true });
+      reviewSlider.addEventListener("pointerenter", (event) => {
+        if (event.pointerType === "mouse") pauseReviewScroll();
+      });
+      reviewSlider.addEventListener("pointerleave", (event) => {
+        if (event.pointerType === "mouse") resumeReviewScroll();
+      });
+      reviewSlider.addEventListener("focusin", (event) => {
+        if (event.target.matches(":focus-visible")) pauseReviewScroll();
+      });
+      reviewSlider.addEventListener("focusout", () => resumeReviewScroll());
+      reviewSlider.addEventListener("contextmenu", (event) => {
+        if (reviewLongPressActive || suppressNextReviewClick) event.preventDefault();
+      });
+      reviewSlider.addEventListener("click", (event) => {
+        if (!suppressNextReviewClick) return;
+
+        event.preventDefault();
+        suppressNextReviewClick = false;
+      });
+    }
+  };
+
+  if (reviewTrack) {
+    const reviewsSection = reviewSlider?.closest(".reviews") || reviewTrack;
+
+    if ("IntersectionObserver" in window) {
+      const reviewsObserver = new IntersectionObserver((entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+
+        initializeReviews();
+        reviewsObserver.disconnect();
+      }, {
+        threshold: 0.1
+      });
+
+      reviewsObserver.observe(reviewsSection);
+    } else {
+      initializeReviews();
     }
   }
 
