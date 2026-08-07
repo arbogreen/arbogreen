@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder Comune 2</title>
+  <desc id="desc">Elemento grafico provvisorio, non rappresenta confini geografici.</desc>
+  <g fill="none" stroke="#82978a" stroke-width="2">
+    <circle cx="360" cy="220" r="154" stroke-dasharray="10 14"/>
+    <circle cx="360" cy="220" r="106" opacity=".55"/>
+    <path d="M190 220h340M360 50v340" opacity=".42"/>
+    <path d="m252 112 216 216M468 112 252 328" opacity=".22"/>
+  </g>
+  <g fill="#c0cbc2" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+    <text x="360" y="202" font-size="20" font-weight="600" letter-spacing="6">PLACEHOLDER</text>
+    <text x="360" y="242" font-size="34" font-weight="300">Comune 2</text>
+    <text x="360" y="286" font-size="15" letter-spacing="4" opacity=".76">SVG PROVVISORIO 03</text>
+  </g>
+</svg>

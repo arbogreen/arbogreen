@@ -3,19 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="assets/favicon/favicon.ico">
-    <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon/favicon-48x48.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
     <title>Arboricoltore tra Perugia e Siena | Arbogreen Service. Se stai cercando tree climbing, potature e abbattimenti vicino a me oppure creazione di giardini, Arbogreen Service è l'impresa da contattare</title>
-    <meta name="description" content="Arbogreen Service offre potature, abbattimenti controllati, tree climbing, trattamenti fitosanitari, giardini e irrigazione tra Perugia e Siena.">
+    <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact-page.css">
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#home" aria-label="Arbogreen Service, torna alla home">
+      <a class="brand" href="index.html#home" aria-label="Arbogreen Service, torna alla home">
         <img class="brand__mark" src="assets/arbogreen-mark.png" alt="" width="72" height="72">
         <span class="brand__wordmark" aria-hidden="true">
           <span class="brand__name"><span>ARBO</span>GREEN</span>
@@ -32,7 +29,7 @@
 
       <nav class="site-nav" aria-label="Navigazione principale">
         <ul class="site-nav__list" id="primary-navigation">
-          <li class="site-nav__item"><a class="site-nav__link" href="#recensioni">Recensioni</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#recensioni">Recensioni</a></li>
           <li class="site-nav__item site-nav__item--dropdown">
             <button class="site-nav__link dropdown-toggle" type="button" aria-expanded="false">
               Servizi
@@ -47,7 +44,7 @@
               <li><a href="servizi/impianti-irrigazione.html">Impianti di irrigazione</a></li>
             </ul>
           </li>
-          <li class="site-nav__item"><a class="site-nav__link" href="#chi-sono">Chi siamo</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#chi-sono">Chi siamo</a></li>
           <li class="site-nav__item site-nav__item--dropdown">
             <button class="site-nav__link dropdown-toggle" type="button" aria-expanded="false">
               Aree
@@ -58,8 +55,8 @@
               <li><a href="aree/provincia-siena.html">Siena</a></li>
             </ul>
           </li>
-          <li class="site-nav__item"><a class="site-nav__link" href="#faq">FAQ</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="contatti.html">Contatti</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#faq">FAQ</a></li>
+          <li class="site-nav__item"><a class="site-nav__link is-current" href="contatti.html" aria-current="page">Contatti</a></li>
         </ul>
       </nav>
 
@@ -68,88 +65,107 @@
       </a>
     </header>
 
-    <main>
-      <section class="hero" id="home" aria-labelledby="hero-title">
-        <div class="hero__media" aria-hidden="true">
-          <picture>
-            <source media="(max-width: 640px)" srcset="assets/hero-abbattimento-mobile-enhanced.jpg">
-            <img class="hero__slide hero__slide--abbattimento is-active" src="assets/hero-abbattimento-enhanced.jpg" alt="" fetchpriority="high" decoding="async">
-          </picture>
-          <picture>
-            <source media="(max-width: 640px)" srcset="assets/hero-potatura-mobile.jpg">
-            <img class="hero__slide hero__slide--potatura" src="assets/hero-potatura-desktop.jpg" alt="" loading="lazy" decoding="async">
-          </picture>
-          <img class="hero__slide" src="assets/hero-tronchi-enhanced.jpg" alt="" loading="lazy" decoding="async">
-        </div>
-        <div class="hero__shade" aria-hidden="true"></div>
+    <main class="contact-page">
+      <section class="contact-hero" id="contatti" aria-labelledby="contact-hero-title">
+        <div class="contact-hero__inner">
+          <h1 id="contact-hero-title">
+            Chiedi il parere di un professionista...<br>
+            Chiama <span class="hero__title-accent">Arbogreen Service</span>
+          </h1>
 
-        <div class="hero__inner">
-          <div class="hero__copy">
-            <p class="hero__eyebrow">Agrotecnico certificato</p>
-            <h1 class="hero__title" id="hero-title">
-              <span>Miglior arboricoltore</span>
-              <span class="hero__title-accent">tra Siena e Perugia</span>
-            </h1>
-            <a class="hero__cta" href="https://wa.me/393387363594" target="_blank" rel="noopener noreferrer" aria-label="Apri la chat WhatsApp per richiedere un preventivo">
+          <div class="contact-hero__copy">
+            <p class="contact-hero__text">
+              Che si tratti di un giardino da curare, piante invasive da contenere o un albero pericoloso da abbattere, raccontaci la situazione. Valuteremo il lavoro e individueremo la soluzione più adatta, nel rispetto dello spazio e della sicurezza.
+            </p>
+            <a class="hero__cta contact-hero__cta" href="https://wa.me/393387363594" target="_blank" rel="noopener noreferrer" aria-label="Richiedi un preventivo su WhatsApp">
               Richiedi preventivo
             </a>
           </div>
 
-          <div class="hero__selectors" role="tablist" aria-label="Seleziona una fotografia della hero">
-            <button class="hero__selector is-active" type="button" role="tab" aria-selected="true" data-slide="0">
-              <span class="sr-only">Operatore durante un abbattimento in quota</span>
-            </button>
-            <button class="hero__selector" type="button" role="tab" aria-selected="false" data-slide="1">
-              <span class="sr-only">Operatori durante un intervento in tree climbing</span>
-            </button>
-            <button class="hero__selector" type="button" role="tab" aria-selected="false" data-slide="2">
-              <span class="sr-only">Tronchi tagliati nel bosco</span>
-            </button>
-          </div>
-        </div>
+          <div class="contact-hero__contact-column">
+            <div class="contact-hero__gallery" aria-hidden="true">
+              <img class="contact-hero__gallery-slide" src="assets/hero-potatura-desktop.jpg" alt="" decoding="async">
+              <img class="contact-hero__gallery-slide" src="assets/hero-tree-climbing.jpg" alt="" decoding="async">
+              <img class="contact-hero__gallery-slide" src="assets/hero-abbattimento-enhanced.jpg" alt="" decoding="async">
+              <img class="contact-hero__gallery-slide" src="assets/service-gardens-01-upscaled.jpg" alt="" decoding="async">
+              <img class="contact-hero__gallery-slide" src="assets/service-irrigazione-installazione.jpg" alt="" decoding="async">
+            </div>
 
-        <div class="hero-stats" aria-label="I numeri di Arbogreen Service">
-          <div class="hero-stats__item">
-            <strong data-target="18">18</strong>
-            <span>Anni di<br>esperienza</span>
-          </div>
-          <div class="hero-stats__item">
-            <strong data-target="500" data-suffix="+">500+</strong>
-            <span>Clienti<br>soddisfatti</span>
-          </div>
-          <div class="hero-stats__item">
-            <strong data-target="10" data-suffix="+">10+</strong>
-            <span>Certificati e<br>patentini</span>
-          </div>
-        </div>
-      </section>
+            <div class="contact-final__contacts contact-hero__contacts" aria-label="Recapiti Arbogreen Service">
+              <a class="contact-card" href="tel:+393387363594">
+                <span class="contact-card__label">Telefono</span>
+                <strong>338 736 3594</strong>
+                <span class="contact-card__arrow" aria-hidden="true">→</span>
+              </a>
 
-      <section class="reviews" id="recensioni" aria-labelledby="reviews-title">
-        <div class="reviews__heading">
-          <div>
-            <p class="section-kicker">Testimonianze</p>
-            <h2 id="reviews-title">Cosa dice chi si è già affidato a noi</h2>
-          </div>
-          <a class="reviews__google-link" href="https://share.google/JcYtOMgAchDH1OLlR" target="_blank" rel="noopener noreferrer">
-            Vedi tutte le recensioni
-            <span aria-hidden="true">&#8599;</span>
-          </a>
-        </div>
+              <a class="contact-card" href="mailto:arbogreenservice@gmail.com">
+                <span class="contact-card__label">Email</span>
+                <strong>arbogreenservice@gmail.com</strong>
+                <span class="contact-card__arrow" aria-hidden="true">→</span>
+              </a>
 
-        <div class="reviews-slider" aria-label="Recensioni Google dei clienti">
-          <div class="reviews-slider__track">
-            <p class="reviews-slider__fallback">Caricamento delle recensioni&hellip;</p>
+              <a class="contact-card" href="https://wa.me/393387363594" target="_blank" rel="noopener noreferrer">
+                <span class="contact-card__label">WhatsApp</span>
+                <strong>Scrivici su WhatsApp</strong>
+                <span class="contact-card__arrow" aria-hidden="true">→</span>
+              </a>
+
+              <a class="contact-card" href="https://www.instagram.com/arbogreenservice/" target="_blank" rel="noopener noreferrer">
+                <span class="contact-card__label">Instagram</span>
+                <strong>@arbogreenservice</strong>
+                <span class="contact-card__arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
           </div>
         </div>
 
       </section>
 
-      <section class="services" id="servizi" aria-label="Servizi offerti">
-        <div class="services__inner">
-          <p class="services__eyebrow">Di cosa ci <span>occupiamo</span></p>
+      <section class="contact-service-map" id="servizi" aria-labelledby="contact-services-title">
+        <div class="contact-service-map__services" aria-labelledby="contact-services-title">
+          <h2 class="sr-only" id="contact-services-title">Servizi offerti</h2>
 
-          <div class="services__layout">
-            <div class="services__stage">
+          <div class="contact-compact-services">
+            <div class="services__selector contact-compact-services__selector" role="tablist" aria-label="Seleziona un servizio">
+              <button class="service-tab is-active" id="service-tab-1" type="button" role="tab" aria-selected="true" aria-controls="service-panel-1" data-service="0" aria-label="Potature">
+                <span class="service-tab__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 3 7 10h3l-4 6h12l-4-6h3L12 3Z"/><path d="M12 16v5"/></svg>
+                </span>
+                <span>Potature</span>
+              </button>
+              <button class="service-tab" id="service-tab-2" type="button" role="tab" aria-selected="false" aria-controls="service-panel-2" data-service="1" tabindex="-1" aria-label="Abbattimenti">
+                <span class="service-tab__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M7 20h10M9 20v-4h6v4M8 16l1-5 3-7 3 7 1 5M6 11h12"/></svg>
+                </span>
+                <span>Abbattimenti</span>
+              </button>
+              <button class="service-tab" id="service-tab-3" type="button" role="tab" aria-selected="false" aria-controls="service-panel-3" data-service="2" tabindex="-1" aria-label="Tree climbing">
+                <span class="service-tab__icon" aria-hidden="true">
+                  <span class="service-tab__rope-knot"></span>
+                </span>
+                <span>Tree climbing</span>
+              </button>
+              <button class="service-tab" id="service-tab-4" type="button" role="tab" aria-selected="false" aria-controls="service-panel-4" data-service="3" tabindex="-1" aria-label="Servizio fitosanitario">
+                <span class="service-tab__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.6 2.8 8 7 10 4.2-2 7-5.4 7-10V6l-7-3Z"/><path d="M9 14c3.5 0 5-2 6-5-3.5 0-5.5 1.7-6 5Zm0 0-1 2"/></svg>
+                </span>
+                <span>Servizio fitosanitario</span>
+              </button>
+              <button class="service-tab" id="service-tab-5" type="button" role="tab" aria-selected="false" aria-controls="service-panel-5" data-service="4" tabindex="-1" aria-label="Creazione e cura di giardini">
+                <span class="service-tab__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 21v-9"/><path d="M12 15c-4 0-7-3-7-8 4 0 7 2 7 6m0-1c0-4 3-7 7-7 0 5-3 8-7 8"/></svg>
+                </span>
+                <span>Creazione e cura di giardini</span>
+              </button>
+              <button class="service-tab" id="service-tab-6" type="button" role="tab" aria-selected="false" aria-controls="service-panel-6" data-service="5" tabindex="-1" aria-label="Impianti di irrigazione">
+                <span class="service-tab__icon" aria-hidden="true">
+                  <span class="service-tab__irrigation-icon irrigation-icon-mask"></span>
+                </span>
+                <span>Impianti di irrigazione</span>
+              </button>
+            </div>
+
+            <div class="services__stage contact-compact-services__stage">
               <article class="service-panel is-active" id="service-panel-1" role="tabpanel" aria-labelledby="service-tab-1" aria-hidden="false">
                 <a class="service-panel__link" href="servizi/potatura-alberi.html" aria-label="Approfondisci il servizio Potature">
                   <div class="service-panel__slides">
@@ -166,7 +182,6 @@
                       </span>
                     </div>
                     <span class="service-panel__line" aria-hidden="true"></span>
-                    <p class="service-panel__description"></p>
                   </div>
                 </a>
                 <div class="service-panel__controls" aria-label="Seleziona una foto di Potature">
@@ -195,7 +210,6 @@
                       </span>
                     </div>
                     <span class="service-panel__line" aria-hidden="true"></span>
-                    <p class="service-panel__description"></p>
                   </div>
                 </a>
                 <div class="service-panel__controls" aria-label="Seleziona una foto di Abbattimenti">
@@ -224,7 +238,6 @@
                       </span>
                     </div>
                     <span class="service-panel__line" aria-hidden="true"></span>
-                    <p class="service-panel__description"></p>
                   </div>
                 </a>
                 <div class="service-panel__controls" aria-label="Seleziona una foto di Tree climbing">
@@ -251,7 +264,6 @@
                       </span>
                     </div>
                     <span class="service-panel__line" aria-hidden="true"></span>
-                    <p class="service-panel__description"></p>
                   </div>
                 </a>
               </article>
@@ -273,7 +285,6 @@
                       </span>
                     </div>
                     <span class="service-panel__line" aria-hidden="true"></span>
-                    <p class="service-panel__description"></p>
                   </div>
                 </a>
                 <div class="service-panel__controls" aria-label="Seleziona una foto di Creazione e cura di giardini">
@@ -294,14 +305,13 @@
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
-                      <h2>Installazione impianti di irrigazione</h2>
+                      <h2>Impianti di irrigazione</h2>
                       <span class="service-panel__cta">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4.5 4.5"/></svg>
                         <span>Approfondisci il servizio</span>
                       </span>
                     </div>
                     <span class="service-panel__line" aria-hidden="true"></span>
-                    <p class="service-panel__description"></p>
                   </div>
                 </a>
                 <div class="service-panel__controls" aria-label="Seleziona una foto di Impianti di irrigazione">
@@ -313,146 +323,38 @@
                   </button>
                 </div>
               </article>
-
-            </div>
-
-            <div class="services__selector" role="tablist" aria-label="Seleziona un servizio">
-              <button class="service-tab is-active" id="service-tab-1" type="button" role="tab" aria-selected="true" aria-controls="service-panel-1" data-service="0">
-                <span class="service-tab__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M12 3 7 10h3l-4 6h12l-4-6h3L12 3Z"/><path d="M12 16v5"/></svg>
-                </span>
-                <span>Potature</span>
-              </button>
-              <button class="service-tab" id="service-tab-2" type="button" role="tab" aria-selected="false" aria-controls="service-panel-2" data-service="1" tabindex="-1">
-                <span class="service-tab__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M7 20h10M9 20v-4h6v4M8 16l1-5 3-7 3 7 1 5M6 11h12"/></svg>
-                </span>
-                <span>Abbattimenti</span>
-              </button>
-              <button class="service-tab" id="service-tab-3" type="button" role="tab" aria-selected="false" aria-controls="service-panel-3" data-service="2" tabindex="-1">
-                <span class="service-tab__icon" aria-hidden="true">
-                  <span class="service-tab__rope-knot"></span>
-                </span>
-                <span>Tree climbing</span>
-              </button>
-              <button class="service-tab" id="service-tab-4" type="button" role="tab" aria-selected="false" aria-controls="service-panel-4" data-service="3" tabindex="-1">
-                <span class="service-tab__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.6 2.8 8 7 10 4.2-2 7-5.4 7-10V6l-7-3Z"/><path d="M9 14c3.5 0 5-2 6-5-3.5 0-5.5 1.7-6 5Zm0 0-1 2"/></svg>
-                </span>
-                <span>Servizio fitosanitario</span>
-              </button>
-              <button class="service-tab" id="service-tab-5" type="button" role="tab" aria-selected="false" aria-controls="service-panel-5" data-service="4" tabindex="-1">
-                <span class="service-tab__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M12 21v-9"/><path d="M12 15c-4 0-7-3-7-8 4 0 7 2 7 6m0-1c0-4 3-7 7-7 0 5-3 8-7 8"/></svg>
-                </span>
-                <span>Creazione e cura di giardini</span>
-              </button>
-              <button class="service-tab" id="service-tab-6" type="button" role="tab" aria-selected="false" aria-controls="service-panel-6" data-service="5" tabindex="-1">
-                <span class="service-tab__icon" aria-hidden="true">
-                  <span class="service-tab__irrigation-icon irrigation-icon-mask"></span>
-                </span>
-                <span>Impianti di irrigazione</span>
-              </button>
             </div>
           </div>
-
-          <section class="vta-intro" aria-labelledby="vta-title">
-            <h3 id="vta-title"><span>VTA -</span> Valutazione visiva di stabilità degli alberi </h3>
-            <span class="vta-intro__line" aria-hidden="true"></span>
-            <p>Il VTA è un metodo utilizzato in arboricoltura per valutare la salute e la stabilità di un albero. Attraverso un’attenta analisi visiva, permette di individuare eventuali difetti o rischi e definire gli interventi necessari per conservarlo in sicurezza.</p>
-          </section>
         </div>
-      </section>
 
-      <div class="people-sections">
-        <section class="about" id="chi-sono" aria-labelledby="about-title">
-          <div class="about__inner">
-            <div class="about__gallery" aria-label="Spazi riservati alle foto della sezione Chi siamo">
-              <div class="photo-placeholder photo-placeholder--portrait" role="img" aria-label="Prima foto da inserire">
-                <span>Foto 01</span>
-              </div>
-              <div class="photo-placeholder photo-placeholder--detail" role="img" aria-label="Certificati professionali">
-                <img src="assets/certificati-chi-sono.png" alt="Certificati professionali" loading="lazy" decoding="async">
-              </div>
-            </div>
-
-            <div class="about__copy-stack">
-              <div class="people-copy about__copy about__copy--intro">
-                <h2 id="about-title">La mia storia</h2>
-                <span class="people-copy__line" aria-hidden="true"></span>
-                <p class="people-copy__placeholder">Mi chiamo Saverio, il verde è sempre stato parte del mio percorso. Dopo il diploma come Perito Agrario, nel 2008 ho iniziato a lavorare nel settore, trasformando una passione in una professione.</p>
-                <p class="people-copy__placeholder">Negli anni ho conseguito l'abilitazione come Perito Agrario, la certificazione regionale di Giardiniere d'Arte e Arboricoltore, oltre alle abilitazioni per i lavori in quota e l'utilizzo di piattaforme elevabili.</p>
-                <p class="people-copy__placeholder">Nel 2021 ho aperto la mia impresa, portando con me un'esperienza costruita direttamente sul campo.</p>
-              </div>
-              <div class="people-copy about__copy about__copy--closing">
-                <p class="people-copy__placeholder">Credo in un modo di fare giardinaggio che unisce competenza, rispetto per la natura e attenzione ai cambiamenti climatici. Per questo progetto e realizzo giardini belli da vivere, ma anche sostenibili, privilegiando soluzioni che riducono il consumo d'acqua e semplificano la manutenzione nel tempo.</p>
-                <p class="people-copy__placeholder">Ogni giardino racconta una storia diversa. Il mio obiettivo è valorizzarla, creando spazi verdi destinati a durare negli anni.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="equipment" id="attrezzature" aria-labelledby="equipment-title">
-          <div class="equipment__inner">
-            <div class="people-copy equipment__copy">
-              <h2 id="equipment-title">Vasta gamma di attrezzature per le esigenze di ogni giardino</h2>
-              <span class="people-copy__line" aria-hidden="true"></span>
-              <p class="people-copy__placeholder">Abbiamo ogni mezzo per realizzare il giardino che desideravi. Che si tratti di irrigazioni, abbattimenti o piantumazioni, abbiamo le conoscenze e i mezzi per consegnare anche la richiesta più difficile senza intoppi.</p>
-            </div>
-          </div>
-
-          <div class="equipment-slider" aria-label="Attrezzature Arbogreen Service">
-            <div class="equipment-slider__track">
-              <figure class="equipment-card">
-                <img src="assets/equipment-crane-olive-upscaled.jpg" alt="Autogru che solleva un ulivo" loading="lazy" decoding="async">
-              </figure>
-              <figure class="equipment-card">
-                <img src="assets/equipment-crane-pine-upscaled.jpg" alt="Camion con gru durante un intervento su un pino" loading="lazy" decoding="async">
-              </figure>
-              <figure class="equipment-card">
-                <img src="assets/equipment-platform-upscaled.jpg" alt="Piattaforma elevabile per lavori sugli alberi" loading="lazy" decoding="async">
-              </figure>
-              <figure class="equipment-card">
-                <img src="assets/equipment-01.png" alt="Motoseghe e attrezzature da taglio in officina" loading="lazy" decoding="async">
-              </figure>
-              <figure class="equipment-card">
-                <img src="assets/equipment-02.png" alt="Attrezzature professionali per lavori in giardino" loading="lazy" decoding="async">
-              </figure>
-              <figure class="equipment-card">
-                <img src="assets/equipment-chainsaw-log.jpg" alt="Motosega professionale su un tronco appena tagliato" loading="lazy" decoding="async">
-              </figure>
-              <figure class="equipment-card" aria-hidden="true">
-                <img src="assets/equipment-crane-olive-upscaled.jpg" alt="" loading="lazy" decoding="async">
-              </figure>
-              <figure class="equipment-card" aria-hidden="true">
-                <img src="assets/equipment-crane-pine-upscaled.jpg" alt="" loading="lazy" decoding="async">
-              </figure>
-              <figure class="equipment-card" aria-hidden="true">
-                <img src="assets/equipment-platform-upscaled.jpg" alt="" loading="lazy" decoding="async">
-              </figure>
-              <figure class="equipment-card" aria-hidden="true">
-                <img src="assets/equipment-01.png" alt="" loading="lazy" decoding="async">
-              </figure>
-              <figure class="equipment-card" aria-hidden="true">
-                <img src="assets/equipment-02.png" alt="" loading="lazy" decoding="async">
-              </figure>
-              <figure class="equipment-card" aria-hidden="true">
-                <img src="assets/equipment-chainsaw-log.jpg" alt="" loading="lazy" decoding="async">
-              </figure>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <section class="areas" id="aree" aria-labelledby="areas-title">
-        <div class="areas__inner">
-          <header class="areas__heading">
-            <h2 id="areas-title">Interveniamo tra <span>Perugia</span> e <span>Siena</span></h2>
-           
-          </header>
-
-          <div class="areas__layout">
+        <div class="areas contact-area-compact" id="aree">
+          <div class="contact-area-compact__content">
             <div class="area-map">
+              <div class="areas__options" aria-label="Seleziona un’area di intervento">
+                <h2 class="area-option__heading">
+                  <button class="area-option is-active" id="area-perugia" type="button" data-area-option="perugia" data-page-url="aree/provincia-perugia.html" aria-pressed="true">
+                    <span class="area-option__number" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 11h2m2 0h2M9 15h2m2 0h2M10 21v-3h4v3"/></svg>
+                    </span>
+                    <span class="area-option__content">Perugia</span>
+                    <span class="area-option__cta" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </span>
+                  </button>
+                </h2>
+                <h2 class="area-option__heading">
+                  <button class="area-option" id="area-siena" type="button" data-area-option="siena" data-page-url="aree/provincia-siena.html" aria-pressed="false">
+                    <span class="area-option__number" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 11h2m2 0h2M9 15h2m2 0h2M10 21v-3h4v3"/></svg>
+                    </span>
+                    <span class="area-option__content">Siena</span>
+                    <span class="area-option__cta" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </span>
+                  </button>
+                </h2>
+              </div>
+
               <svg class="area-map__svg" viewBox="0 0 920 650" role="img" aria-labelledby="area-map-title area-map-description">
                 <title id="area-map-title">Mappa delle province di Perugia e Siena</title>
                 <desc id="area-map-description">Confini reali delle due province con la sede di Città della Pieve evidenziata.</desc>
@@ -481,141 +383,8 @@
                   <text x="20" y="-18">Sede · Città della Pieve</text>
                 </g>
               </svg>
+
               <p class="area-map__source">Confini provinciali: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a></p>
-            </div>
-
-            <div class="areas__options" aria-label="Seleziona un’area di intervento">
-              <button class="area-option is-active" id="area-perugia" type="button" data-area-option="perugia" data-page-url="aree/provincia-perugia.html" aria-pressed="true">
-                <span class="area-option__number" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 11h2m2 0h2M9 15h2m2 0h2M10 21v-3h4v3"/></svg>
-                </span>
-                <span class="area-option__content">
-                  <strong>Perugia</strong>
-              
-                </span>
-                <span class="area-option__cta" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </span>
-              </button>
-              <button class="area-option" id="area-siena" type="button" data-area-option="siena" data-page-url="aree/provincia-siena.html" aria-pressed="false">
-                <span class="area-option__number" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 11h2m2 0h2M9 15h2m2 0h2M10 21v-3h4v3"/></svg>
-                </span>
-                <span class="area-option__content">
-                  <strong>Siena</strong>
-
-                </span>
-                <span class="area-option__cta" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </span>
-              </button>
-              <p class="areas__description">Grazie alla sede situata in posizione centrale, a Città della Pieve, raggiungiamo agevolmente le due province. Il primo passo è un sopralluogo per valutare condizioni e accessi e capire se intervenire con una <a href="servizi/potatura-alberi.html">potatura</a>, un <a href="servizi/abbattimento-alberi.html">abbattimento controllato</a> o in <a href="servizi/tree-climbing.html">tree climbing</a>. Per giardini e aree verdi valutiamo invece il <a href="servizi/trattamento-fitosanitario.html">trattamento fitosanitario</a>, la <a href="servizi/creazione-cura-giardini.html">creazione o il recupero del giardino</a> e la realizzazione di un <a href="servizi/impianti-irrigazione.html">impianto di irrigazione</a>.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-       <section class="faq" id="faq" aria-labelledby="faq-title">
-        <div class="faq__inner">
-          <header class="faq__heading">
-            <h2 id="faq-title">Domande <span>frequenti</span></h2>
-          </header>
-
-          <div class="faq__list">
-            <details class="faq-item" open>
-              <summary>
-                <span>Quanto costa la realizzazione o la manutenzione di un giardino?</span>
-                <span class="faq-item__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
-                </span>
-              </summary>
-              <div class="faq-item__answer">
-                <p>Il costo varia in base alla superficie, al tipo di intervento e alle esigenze del cliente. Dopo un sopralluogo valutiamo attentamente il lavoro da eseguire e forniamo un preventivo chiaro, personalizzato e senza impegno.</p>
-              </div>
-            </details>
-
-            <details class="faq-item">
-              <summary>
-                <span>Con quale frequenza è consigliabile effettuare la manutenzione del giardino?</span>
-                <span class="faq-item__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
-                </span>
-              </summary>
-              <div class="faq-item__answer">
-                <p>Dipende dalle caratteristiche del giardino e dalle stagioni. In genere una manutenzione regolare permette di mantenere prato, piante e siepi sempre in salute, prevenendo interventi più impegnativi e costosi nel tempo.</p>
-              </div>
-            </details>
-
-            <details class="faq-item">
-              <summary>
-                <span>Realizzate impianti di irrigazione che permettono di risparmiare acqua?</span>
-                <span class="faq-item__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
-                </span>
-              </summary>
-              <div class="faq-item__answer">
-                <p>Sì. Progettiamo e installiamo impianti di irrigazione studiati per distribuire l'acqua in modo efficiente, riducendo gli sprechi e garantendo il corretto fabbisogno delle piante. Privilegiamo soluzioni sostenibili che semplificano anche la gestione del giardino.</p>
-              </div>
-            </details>
-
-            <details class="faq-item">
-              <summary>
-                <span>In quanto tempo è possibile realizzare un nuovo giardino?</span>
-                <span class="faq-item__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
-                </span>
-              </summary>
-              <div class="faq-item__answer">
-                <p>Le tempistiche dipendono dalle dimensioni del progetto e dalle lavorazioni previste. Dopo il sopralluogo forniamo una stima precisa dei tempi, organizzando ogni fase dell'intervento per consegnare il giardino nei tempi concordati e con la massima cura dei dettagli.</p>
-              </div>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <section class="contact-final" id="contatti" aria-labelledby="contact-final-title">
-        <div class="contact-final__inner">
-          <div class="contact-final__layout">
-            <div class="contact-final__copy">
-              <h2 id="contact-final-title">Devi sistemare il giardino, potare delle piante invasive oppure <span>abbattere un albero pericoloso?</span></h2>
-              <a class="contact-final__cta" href="https://wa.me/393387363594" target="_blank" rel="noopener noreferrer">
-                <span>Contattaci e ricevi una valutazione</span>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
-            </div>
-
-            <div class="contact-final__contacts" aria-label="Recapiti Arbogreen Service">
-              <div class="contact-final__brand">
-                <img src="assets/arbogreen-mark.png" alt="" width="116" height="116">
-                <span>
-                  <strong><span>ARBO</span>GREEN</strong>
-                  <small>Service</small>
-                </span>
-              </div>
-
-              <a class="contact-card" href="tel:+393387363594">
-                <span class="contact-card__label">Telefono</span>
-                <strong>338 736 3594</strong>
-                <span class="contact-card__arrow" aria-hidden="true">→</span>
-              </a>
-
-              <a class="contact-card" href="mailto:arbogreenservice@gmail.com">
-                <span class="contact-card__label">Email</span>
-                <strong>arbogreenservice@gmail.com</strong>
-                <span class="contact-card__arrow" aria-hidden="true">→</span>
-              </a>
-
-              <a class="contact-card" href="https://wa.me/393387363594" target="_blank" rel="noopener noreferrer">
-                <span class="contact-card__label">WhatsApp</span>
-                <strong>Scrivici su WhatsApp</strong>
-                <span class="contact-card__arrow" aria-hidden="true">→</span>
-              </a>
-
-              <a class="contact-card" href="https://www.instagram.com/arbogreenservice/" target="_blank" rel="noopener noreferrer">
-                <span class="contact-card__label">Instagram</span>
-                <strong>@arbogreenservice</strong>
-                <span class="contact-card__arrow" aria-hidden="true">→</span>
-              </a>
             </div>
           </div>
         </div>
@@ -626,7 +395,7 @@
       <div class="site-footer__inner">
         <div class="site-footer__grid">
           <div class="footer-brand">
-            <a class="footer-brand__identity" href="#home" aria-label="Arbogreen Service, torna alla home">
+            <a class="footer-brand__identity" href="index.html#home" aria-label="Arbogreen Service, torna alla home">
               <img src="assets/arbogreen-mark.png" alt="Arbogreen Service" width="112" height="112">
               <span>
                 <strong><span>ARBO</span>GREEN</strong>
@@ -639,10 +408,10 @@
           <nav class="footer-nav" aria-labelledby="footer-quick-title">
             <h2 id="footer-quick-title">Link rapidi</h2>
             <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#recensioni">Recensioni</a></li>
-              <li><a href="#chi-sono">Chi siamo</a></li>
-              <li><a href="#faq">FAQ</a></li>
+              <li><a href="index.html#home">Home</a></li>
+              <li><a href="index.html#recensioni">Recensioni</a></li>
+              <li><a href="index.html#chi-sono">Chi siamo</a></li>
+              <li><a href="index.html#faq">FAQ</a></li>
               <li><a href="contatti.html">Contatti</a></li>
             </ul>
           </nav>
@@ -650,12 +419,12 @@
           <nav class="footer-nav" aria-labelledby="footer-services-title">
             <h2 id="footer-services-title">Servizi</h2>
             <ul>
-              <li><a href="#service-tab-1">Potature</a></li>
-              <li><a href="#service-tab-2">Abbattimenti</a></li>
-              <li><a href="#service-tab-3">Tree climbing</a></li>
-              <li><a href="#service-tab-4">Servizio fitosanitario</a></li>
-              <li><a href="#service-tab-5">Creazione e cura di giardini</a></li>
-              <li><a href="#service-tab-6">Impianti di irrigazione</a></li>
+              <li><a href="servizi/potatura-alberi.html">Potature</a></li>
+              <li><a href="servizi/abbattimento-alberi.html">Abbattimenti</a></li>
+              <li><a href="servizi/tree-climbing.html">Tree climbing</a></li>
+              <li><a href="servizi/trattamento-fitosanitario.html">Servizio fitosanitario</a></li>
+              <li><a href="servizi/creazione-cura-giardini.html">Creazione e cura di giardini</a></li>
+              <li><a href="servizi/impianti-irrigazione.html">Impianti di irrigazione</a></li>
             </ul>
           </nav>
 
@@ -706,10 +475,9 @@
         </div>
 
         <div class="site-footer__bottom">
-
           <nav aria-label="Informazioni legali">
             <a href="https://www.iubenda.com/privacy-policy/72864372">Privacy Policy</a>
-            <a href="https://www.termsfeed.com/live/f329d223-ccea-4401-91e3-6720007f3888">Terms & Conditions</a>
+            <a href="https://www.termsfeed.com/live/f329d223-ccea-4401-91e3-6720007f3888">Terms &amp; Conditions</a>
           </nav>
         </div>
       </div>
