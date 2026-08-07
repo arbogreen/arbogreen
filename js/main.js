@@ -125,6 +125,7 @@
   const areaMapRegions = [...document.querySelectorAll("[data-area-map]")];
   const areaCityMarkers = [...document.querySelectorAll("[data-area-city]")];
   const statNumbers = [...document.querySelectorAll(".hero-stats strong[data-target]")];
+  const contactGallerySlides = [...document.querySelectorAll(".contact-hero__gallery-slide")];
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const serviceCtaBanner = document.querySelector(".service-cta-banner");
   const serviceFieldSection = document.querySelector(".service-main > .service-visual");
@@ -153,6 +154,59 @@
   let transitionTimer;
   let entryTimer;
   let statsAnimationFrame;
+
+  const initContactGallery = async () => {
+    if (!contactGallerySlides.length) return;
+
+    const showGallerySlide = (activeSlide) => {
+      contactGallerySlides.forEach((slide) => {
+        slide.classList.toggle("is-active", slide === activeSlide);
+      });
+    };
+
+    showGallerySlide(contactGallerySlides[0]);
+    if (reducedMotion.matches || contactGallerySlides.length < 2) return;
+
+    const waitForGallerySlide = (slide) => new Promise((resolve) => {
+      const preload = new Image();
+      let settled = false;
+
+      const finish = async () => {
+        if (settled) return;
+        settled = true;
+
+        try {
+          await preload.decode();
+          await slide.decode();
+        } catch {
+          // onload and naturalWidth confirm the resource is usable even if decode() rejects.
+        }
+
+        resolve(preload.naturalWidth && slide.naturalWidth ? slide : null);
+      };
+
+      preload.addEventListener("load", finish, { once: true });
+      preload.addEventListener("error", () => {
+        if (settled) return;
+        settled = true;
+        resolve(null);
+      }, { once: true });
+      preload.src = slide.currentSrc || slide.src;
+
+      if (preload.complete && preload.naturalWidth) finish();
+    });
+
+    const availableSlides = (await Promise.all(contactGallerySlides.map(waitForGallerySlide))).filter(Boolean);
+    if (availableSlides.length < 2) return;
+
+    let activeGallerySlide = 0;
+    showGallerySlide(availableSlides[activeGallerySlide]);
+
+    window.setInterval(() => {
+      activeGallerySlide = (activeGallerySlide + 1) % availableSlides.length;
+      showGallerySlide(availableSlides[activeGallerySlide]);
+    }, 3000);
+  };
 
   const closeDropdowns = (exception) => {
     dropdownToggles.forEach((toggle) => {
@@ -373,6 +427,8 @@
 
   const startAutoplay = () => {
     window.clearInterval(slideTimer);
+    if (slides.length < 2) return;
+
     slideTimer = window.setInterval(() => {
       changeSlide((activeSlide + 1) % slides.length);
     }, 10000);
@@ -704,6 +760,7 @@
   window.addEventListener("hashchange", () => openLinkedPanel(window.location.hash));
 
   animateStats();
+  initContactGallery();
   startAutoplay();
   startServiceAutoplay();
 })();
