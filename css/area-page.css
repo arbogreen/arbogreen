@@ -1,0 +1,2565 @@
+.siena-page {
+  background: #071510;
+}
+
+.siena-main {
+  position: relative;
+  overflow: clip;
+}
+
+.siena-section-inner {
+  width: min(1340px, calc(100% - clamp(40px, 8vw, 152px)));
+  margin-inline: auto;
+}
+
+/* 01 — Comuni serviti */
+.siena-territory {
+  --territory-current: #85ab29;
+  --territory-transition-height: clamp(81px, 8.1vw, 117px);
+  position: relative;
+  min-height: auto;
+  padding: calc(var(--header-height) + clamp(32px, 3.5vw, 56px)) 0 var(--territory-transition-height);
+  color: var(--white);
+  background:
+    radial-gradient(circle at 18% 28%, rgba(141, 181, 30, 0.14), transparent 34%),
+    radial-gradient(circle at 82% 76%, rgba(130, 151, 138, 0.14), transparent 34%),
+    #0a1b15;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.siena-territory--photo {
+  background: #0a1b15 var(--hero-photo) center 52% / cover no-repeat;
+}
+
+.siena-territory--photo:not(.siena-territory--photo-perugia)::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  content: "";
+  pointer-events: none;
+}
+
+.siena-territory--photo .siena-territory__panel {
+  position: relative;
+  top: clamp(-48px, -3vw, -32px);
+  overflow: hidden;
+  border-radius: clamp(20px, 2vw, 30px);
+  background: rgba(10, 27, 21, 0.7);
+}
+
+.siena-territory--photo .siena-territory__panel .siena-territory__media,
+.siena-territory--photo .siena-territory__panel .siena-territory__selector {
+  background: transparent;
+}
+
+.siena-territory--photo .siena-territory__panel .siena-territory__selector {
+  --territory-selector-height: 406px;
+  align-self: start;
+}
+
+.siena-territory--photo .siena-territory__panel .siena-territory__media {
+  border-color: transparent;
+}
+
+.siena-territory::after {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: var(--territory-transition-height);
+  background: linear-gradient(180deg, #0a1b15 0%, #718b7c 100%);
+  content: "";
+  pointer-events: none;
+}
+
+.siena-territory .siena-section-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.siena-territory__copy {
+  max-width: 1050px;
+}
+
+.siena-territory__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 18px;
+  color: var(--accent-bright);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.siena-territory__eyebrow::before {
+  width: 34px;
+  height: 1px;
+  background: var(--accent-bright);
+  content: "";
+}
+
+.siena-territory__copy h1 {
+  max-width: none;
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(2rem, 6.5vw, 7.7rem);
+  font-weight: 250;
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+  white-space: nowrap;
+}
+
+.siena-territory__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(270px, 0.9fr);
+  align-items: center;
+  gap: clamp(38px, 5vw, 80px);
+  width: 80%;
+  margin: clamp(48px, 5vw, 68px) auto 0;
+}
+
+.siena-territory__media {
+  position: relative;
+  display: grid;
+  min-height: clamp(344px, 33.6vw, 464px);
+  margin: 0;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.siena-territory__map {
+  position: relative;
+  width: min(88%, 720px);
+  aspect-ratio: 720 / 520;
+}
+
+.siena-territory__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* La geometria dei comuni serve al riempimento e al puntatore: i confini non
+   stanno qui, ma nel layer unico più sotto. */
+.siena-territory__comune {
+  fill: none;
+  stroke: none;
+  transition: fill 180ms ease;
+}
+
+.siena-territory__comune[role="button"] {
+  cursor: pointer;
+  /* senza fill dipinto l'interno non sarebbe sensibile: qui lo rendiamo tale */
+  pointer-events: all;
+}
+
+.siena-territory__comune.is-preview,
+.siena-territory__comune.is-pinned {
+  fill: var(--accent-bright);
+}
+
+.siena-territory__comune--current {
+  fill: var(--territory-current);
+  pointer-events: none;
+}
+
+/* Il ring di default del browser è un rettangolo sul bounding box: sulla mappa
+   non segue la forma del comune e sconfina sui vicini. Lo togliamo sempre --
+   anche al click, dove comparirebbe senza servire a nulla -- e lo sostituiamo,
+   solo per il focus da tastiera, con un contorno che segue la forma. */
+.siena-territory__comune:focus {
+  outline: none;
+}
+
+.siena-territory__comune:focus-visible {
+  stroke: var(--white);
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Confini: un solo gruppo, con l'opacità sul gruppo e non sul singolo tratto.
+   Due comuni confinanti disegnano lo stesso confine due volte: come elementi
+   traslucidi separati l'alpha si somma (34% + 34% = 56%) e i confini interni
+   leggono più marcati di quelli esterni. Composto una volta sola, lo spessore
+   resta uniforme su tutta la mappa, perimetro e comune corrente compresi. */
+.siena-territory__borders {
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.34;
+  pointer-events: none;
+}
+
+.siena-territory__selector {
+  --territory-selector-height: 348px;
+  display: flex;
+  height: var(--territory-selector-height);
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.23);
+}
+
+.siena-territory__picker {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.siena-territory__box {
+  display: none;
+}
+
+.siena-territory__options-scroll {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: rgba(165, 203, 40, 0.5) transparent;
+  scrollbar-width: thin;
+}
+
+.siena-territory__options-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.siena-territory__options-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.siena-territory__options-scroll::-webkit-scrollbar-thumb {
+  background: rgba(165, 203, 40, 0.42);
+  border-radius: 999px;
+}
+
+.siena-territory__options-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(165, 203, 40, 0.68);
+}
+
+.siena-territory__option {
+  position: relative;
+  margin: 0;
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+  min-height: 58px;
+  flex: 0 0 auto;
+  align-items: center;
+  padding: 13px 36px 13px 4px;
+  color: rgba(255, 255, 255, 0.72);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.23);
+  font: inherit;
+  font-size: clamp(1.02rem, 1.35vw, 1.4rem);
+  font-weight: 350;
+  text-align: left;
+  cursor: pointer;
+  transition: color 200ms ease, padding-left 240ms ease;
+}
+
+.siena-territory__option::after {
+  position: absolute;
+  right: 8px;
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: opacity 200ms ease, transform 240ms ease;
+}
+
+.siena-territory__option:hover,
+.siena-territory__option.is-preview,
+.siena-territory__option--current,
+.siena-territory__option.is-active {
+  padding-left: 18px;
+  color: var(--accent-bright);
+}
+
+.siena-territory__option--current {
+  cursor: default;
+}
+
+.siena-territory__option--current::after,
+.siena-territory__option.is-preview::after,
+.siena-territory__option.is-active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.siena-territory__option:focus-visible {
+  color: var(--accent-bright);
+  outline: 2px solid var(--accent-bright);
+  outline-offset: -3px;
+}
+
+/* Composizione continua: Servizi, FAQ e ingresso del Metodo */
+.siena-forest-flow {
+  position: relative;
+  z-index: 0;
+  color: var(--white);
+  background: linear-gradient(
+    180deg,
+    #718b7c 0%,
+    #b8c4bb 18%,
+    #e7ebe5 34%,
+    #e7ebe5 56%,
+    #91a497 70%,
+    #587366 84%,
+    #315144 93%,
+    #0a1b15 98%,
+    #071510 100%
+  );
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.siena-forest-flow::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: url("../assets/forest-transition.png") center clamp(150px, 12vw, 210px) / auto 78% no-repeat;
+  content: "";
+  opacity: 0.22;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.45) 14%, #000 30%, #000 72%, transparent 94%);
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.45) 14%, #000 30%, #000 72%, transparent 94%);
+  pointer-events: none;
+}
+
+.siena-forest-flow > section {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+/* 02 — Servizi */
+.siena-services {
+  padding: clamp(28px, 2.7vw, 39px) 0 clamp(40px, 4vw, 58px);
+  color: #071510;
+}
+
+/* Misura standard degli H2 delle pagine area: dimensionata perché il
+   titolo più lungo ("Servizi Arbogreen nella provincia di Perugia",
+   ~16.9em col fallback Arial) stia su una riga nel contenitore da
+   ~721px di viewport in su; sotto i 720px può tornare a capo. */
+.siena-main {
+  --area-h2-size: clamp(2.3rem, 4.2vw, 4.4rem);
+}
+
+.siena-services h2 {
+  margin: 0;
+  font-size: var(--area-h2-size);
+  font-weight: 270;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.siena-services__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(48px, 8vw, 126px);
+  margin-top: clamp(46px, 5vw, 72px);
+  border-top: 1px solid rgba(21, 59, 43, 0.24);
+}
+
+.siena-service-link {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 82px;
+  padding: 18px 5px;
+  color: #071510;
+  border-bottom: 1px solid rgba(21, 59, 43, 0.24);
+  font-size: clamp(1.15rem, 1.65vw, 1.65rem);
+  font-weight: 420;
+  letter-spacing: -0.025em;
+  text-decoration: none;
+}
+
+.siena-service-link__icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  color: #597315;
+  border: 1px solid rgba(21, 59, 43, 0.42);
+  border-radius: 50%;
+  transition: color 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+
+.siena-service-link__icon > svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.siena-service-link__icon .service-tab__rope-knot {
+  width: 26px;
+  height: 14px;
+}
+
+.siena-service-link__icon .service-tab__irrigation-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.siena-service-link > :nth-child(2),
+.siena-service-link__arrow {
+  transition: color 200ms ease, transform 240ms ease;
+}
+
+.siena-service-link__arrow {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  color: rgba(7, 21, 16, 0.54);
+}
+
+.siena-service-link__arrow svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.45;
+}
+
+.siena-service-link:hover .siena-service-link__icon,
+.siena-service-link:focus-visible .siena-service-link__icon {
+  color: #071510;
+  background: var(--accent-bright);
+  border-color: var(--accent-bright);
+}
+
+.siena-service-link:hover > :nth-child(2),
+.siena-service-link:focus-visible > :nth-child(2) {
+  transform: translateX(8px);
+}
+
+.siena-service-link:hover .siena-service-link__arrow,
+.siena-service-link:focus-visible .siena-service-link__arrow {
+  color: #7fa410;
+  transform: translateX(4px);
+}
+
+.siena-service-link:focus-visible {
+  outline: 2px solid #7fa410;
+  outline-offset: 4px;
+}
+
+/* 03 — FAQ */
+.siena-faq {
+  padding: clamp(34px, 3vw, 50px) 0 clamp(70px, 6vw, 96px);
+  color: #153b2b;
+}
+
+.siena-faq .service-faq {
+  margin: 0;
+  padding: 0;
+}
+
+.siena-faq .service-faq__heading h2 {
+  margin: 0;
+  color: #153b2b;
+  font-size: clamp(2.25rem, 4vw, 4.3rem);
+  font-weight: 280;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.siena-faq .service-heading-line {
+  background: rgba(21, 59, 43, 0.24);
+}
+
+.siena-method {
+  padding: clamp(56px, 5vw, 80px) 0 clamp(68px, 6vw, 96px);
+}
+
+.siena-method__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(330px, 0.85fr);
+  align-items: center;
+  gap: clamp(52px, 6vw, 94px);
+}
+
+.siena-method__visual h2 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(3rem, 5.4vw, 5.9rem);
+  font-weight: 250;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+}
+
+.siena-method__track {
+  position: relative;
+  height: clamp(280px, 26vw, 350px);
+  margin-top: clamp(38px, 4vw, 62px);
+}
+
+.siena-method__line {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.siena-method__line path {
+  fill: none;
+  stroke: var(--accent-bright);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.siena-method__line marker path {
+  stroke-width: 1.5;
+}
+
+.siena-method__line-path--mobile {
+  display: none;
+}
+
+.siena-method__step {
+  position: absolute;
+  display: grid;
+  width: clamp(48px, 4.5vw, 64px);
+  aspect-ratio: 1;
+  padding: 0;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  background: #123126;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: color 220ms ease, background 220ms ease, border-color 220ms ease, transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.siena-method__step svg {
+  width: 43%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.65;
+}
+
+.siena-method__step--1 { top: 76.25%; left: 22.3%; }
+.siena-method__step--2 { top: 20.6%; left: 43.1%; }
+.siena-method__step--3 { top: 76.25%; left: 64%; }
+.siena-method__step--4 { top: 20.6%; left: 84.9%; }
+
+.siena-method__step.is-active {
+  z-index: 2;
+  color: #0a1b15;
+  background: var(--accent-bright);
+  border-color: var(--accent-bright);
+  box-shadow: 0 0 0 8px rgba(165, 203, 40, 0.12);
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.siena-method__step:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 7px;
+}
+
+.siena-method__panel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  min-height: 330px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(7, 21, 16, 0.58);
+  backdrop-filter: blur(3px);
+}
+
+.siena-method__content {
+  padding: clamp(32px, 4vw, 56px) clamp(18px, 2.2vw, 34px);
+}
+
+.siena-method__content h3 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(1.7rem, 2.6vw, 2.75rem);
+  font-weight: 320;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.siena-method__content p {
+  margin: 22px 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(1rem, 1.15vw, 1.12rem);
+  line-height: 1.7;
+}
+
+.siena-method__control {
+  display: grid;
+  width: 48px;
+  height: 72px;
+  padding: 0;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.72);
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.siena-method__control:hover,
+.siena-method__control:focus-visible {
+  color: #071510;
+  background: var(--accent-bright);
+  outline: 0;
+}
+
+/* 05 — Contatti */
+.siena-contact {
+  position: relative;
+  padding: clamp(88px, 8vw, 132px) 0 clamp(92px, 9vw, 144px);
+  background:
+    radial-gradient(circle at 51% 20%, rgba(165, 203, 40, 0.1), transparent 24%),
+    #071510;
+  overflow: hidden;
+}
+
+.siena-contact__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(340px, 1.06fr) minmax(300px, 0.92fr);
+  align-items: stretch;
+  gap: clamp(38px, 4vw, 70px);
+}
+
+.siena-contact__title h2 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(2.584rem, 4.6835vw, 5.41025rem);
+  font-weight: 250;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+  overflow-wrap: anywhere;
+}
+
+.siena-contact__title h2 > span:not(.siena-contact__headline) {
+  display: block;
+  margin-top: 0.18em;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.36em;
+  font-weight: 560;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.siena-contact__actions {
+  padding-top: 62px;
+}
+
+.siena-contact__cta {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 24px;
+  color: #0a1b15;
+  background: var(--accent-bright);
+  border: 1px solid var(--accent-bright);
+  font-weight: 750;
+  text-decoration: none;
+  transition: color 200ms ease, background 200ms ease, transform 200ms ease;
+}
+
+.siena-contact__cta:hover,
+.siena-contact__cta:focus-visible {
+  color: var(--white);
+  background: transparent;
+  outline: 2px solid var(--white);
+  outline-offset: 4px;
+  transform: translateY(-3px);
+}
+
+.siena-contact__links {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(36px, 4vw, 58px);
+}
+
+.siena-contact__links::before,
+.siena-contact__links::after {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.22);
+  content: "";
+  pointer-events: none;
+}
+
+.siena-contact__links::before {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+}
+
+.siena-contact__links::after {
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 1px;
+}
+
+.siena-contact__links a {
+  display: flex;
+  min-width: 0;
+  min-height: 102px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.siena-contact__links a:hover,
+.siena-contact__links a:focus-visible {
+  color: var(--accent-bright);
+  background: rgba(255, 255, 255, 0.045);
+  outline: 2px solid var(--accent-bright);
+  outline-offset: -2px;
+}
+
+.siena-contact__links small {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.siena-contact__links strong {
+  margin-top: 7px;
+  font-size: clamp(0.82rem, 1vw, 1rem);
+  font-weight: 550;
+  overflow-wrap: anywhere;
+}
+
+.siena-contact__media {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.siena-contact__location {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  color: rgba(255, 255, 255, 0.78);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.siena-contact__location svg {
+  width: 22px;
+  fill: none;
+  stroke: var(--accent-bright);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.siena-contact__carousel {
+  position: relative;
+  height: 430px;
+  overflow: hidden;
+}
+
+.siena-contact__slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 320ms ease;
+}
+
+.siena-contact__slide.is-active {
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+}
+
+.siena-contact__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.siena-contact__photo-placeholder {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .siena-method__inner {
+    grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.85fr);
+    gap: 38px;
+  }
+
+  .siena-contact__grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1.1fr);
+  }
+
+  .siena-contact__media {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+  }
+
+  .siena-contact__location {
+    align-content: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 0;
+  }
+
+  .siena-contact__carousel {
+    height: 300px;
+  }
+}
+
+@media (max-width: 920px) {
+  .siena-section-inner {
+    width: min(100% - 40px, 720px);
+  }
+
+  .siena-territory {
+    padding-top: calc(var(--header-height) + 38px);
+  }
+
+  .siena-territory__layout {
+    grid-template-columns: 1fr;
+    gap: 42px;
+    width: 100%;
+  }
+
+  .siena-territory__selector {
+    grid-row: 1;
+  }
+
+  .siena-territory__media {
+    grid-row: 2;
+    min-height: 352px;
+  }
+
+  /* Selettore a rotella: la casella fissa in cima allo scorrevole
+     definisce il secondo comune evidenziato sulla mappa. */
+  .siena-territory__box {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: block;
+    height: var(--territory-row-height, 58px);
+    border: 1px solid var(--accent-bright);
+    pointer-events: none;
+  }
+
+  .siena-territory__options-scroll {
+    scroll-snap-type: y mandatory;
+  }
+
+  .siena-territory__option {
+    scroll-snap-align: start;
+  }
+
+  .siena-forest-flow::before {
+    background-position: center 120px;
+    background-size: auto 76%;
+  }
+
+  .siena-faq .service-faq {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .siena-method__inner {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .siena-method__track {
+    height: min(43vw, 330px);
+    min-height: 250px;
+  }
+
+  .siena-method__panel {
+    min-height: 260px;
+  }
+
+  .siena-contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .siena-contact__title {
+    max-width: 620px;
+  }
+
+  .siena-contact__actions {
+    padding-top: 70px;
+  }
+
+  .siena-contact__media {
+    grid-column: auto;
+    display: block;
+  }
+
+  .siena-contact__location {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .siena-contact__carousel {
+    height: 380px;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .siena-section-inner {
+    width: calc(100% - 30px);
+  }
+
+  .siena-territory {
+    --territory-transition-height: clamp(63px, 17.1vw, 81px);
+    padding-top: calc(var(--header-height) + 28px);
+    padding-bottom: var(--territory-transition-height);
+  }
+
+  .siena-territory__copy h1 {
+    font-size: clamp(2.3rem, 12.4vw, 5rem);
+    white-space: normal;
+  }
+
+  .siena-territory__layout {
+    gap: 28px;
+    margin-top: 40px;
+  }
+
+  .siena-territory--photo .siena-territory__panel {
+    top: -18px;
+    border-radius: 20px;
+  }
+
+  .siena-territory__selector {
+    --territory-selector-height: 372px;
+  }
+
+  .siena-territory--photo .siena-territory__panel .siena-territory__selector {
+    --territory-selector-height: 434px;
+  }
+
+  .siena-territory__option {
+    min-height: 62px;
+    font-size: 1.08rem;
+  }
+
+  .siena-territory__media {
+    min-height: 272px;
+  }
+
+  .siena-services__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .siena-service-link {
+    min-height: 72px;
+  }
+
+  .siena-faq {
+    padding-top: 28px;
+    padding-bottom: 62px;
+  }
+
+  .siena-method {
+    padding-top: 48px;
+  }
+
+  .siena-method__track {
+    min-height: 210px;
+    height: 58vw;
+  }
+
+  .siena-method__line-path--desktop {
+    display: none;
+  }
+
+  .siena-method__line-path--mobile {
+    display: inline;
+  }
+
+  .siena-method__line marker path {
+    stroke-width: 0.6655;
+  }
+
+  .siena-method__step {
+    width: 44px;
+  }
+
+  .siena-method__step.is-active {
+    box-shadow: 0 0 0 6px rgba(165, 203, 40, 0.12);
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+
+  .siena-method__panel {
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    min-height: 300px;
+  }
+
+  .siena-method__control {
+    width: 42px;
+  }
+
+  .siena-method__content {
+    padding-inline: 10px;
+  }
+
+  .siena-contact__title h2 {
+    font-size: clamp(3rem, 18vw, 5rem);
+  }
+
+  .siena-contact__actions {
+    padding-top: 76px;
+  }
+
+  .siena-contact__links a {
+    min-height: 94px;
+    padding: 13px;
+  }
+
+  .siena-contact__carousel {
+    height: 300px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .siena-territory__comune,
+  .siena-territory__option,
+  .siena-territory__option::after,
+  .siena-service-link > :nth-child(2),
+  .siena-service-link__arrow,
+  .siena-method__step,
+  .siena-method__control,
+  .siena-contact__cta,
+  .siena-contact__links a,
+  .siena-contact__slide {
+    transition: none;
+  }
+
+  .siena-service-link:hover > :nth-child(2),
+  .siena-service-link:focus-visible > :nth-child(2),
+  .siena-service-link:hover .siena-service-link__arrow,
+  .siena-service-link:focus-visible .siena-service-link__arrow,
+  .siena-contact__cta:hover,
+  .siena-contact__cta:focus-visible {
+    transform: none;
+  }
+}
+
+/* Variante locale Provincia di Siena: raccordi e Contatti */
+.siena-page--province-siena .siena-territory::after {
+  bottom: -1px;
+  height: calc(var(--territory-transition-height) + 1px);
+  background: linear-gradient(
+    180deg,
+    #0a1b15 0%,
+    #10271e 18%,
+    #28463a 40%,
+    #48675a 64%,
+    #637e70 83%,
+    #718b7c 100%
+  );
+}
+
+.siena-page--province-siena .siena-forest-flow::before {
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.45) 14%,
+    #000 30%,
+    #000 66%,
+    rgba(0, 0, 0, 0.72) 71%,
+    rgba(0, 0, 0, 0.28) 76%,
+    transparent 80%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.45) 14%,
+    #000 30%,
+    #000 66%,
+    rgba(0, 0, 0, 0.72) 71%,
+    rgba(0, 0, 0, 0.28) 76%,
+    transparent 80%
+  );
+}
+
+.siena-page--province-siena .siena-contact {
+  background:
+    linear-gradient(180deg, #071510 0%, rgba(7, 21, 16, 0.9) 8%, rgba(7, 21, 16, 0) 24%),
+    radial-gradient(circle at 51% 20%, rgba(165, 203, 40, 0.1), transparent 24%),
+    #071510;
+}
+
+.siena-page--province-siena .siena-contact__grid {
+  grid-template-rows: auto auto;
+  align-items: start;
+  column-gap: clamp(38px, 4vw, 70px);
+  row-gap: clamp(52px, 6vw, 88px);
+}
+
+.siena-page--province-siena .siena-contact__title {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  max-width: 1080px;
+}
+
+.siena-page--province-siena .siena-contact__title h2 {
+  overflow-wrap: normal;
+  text-wrap: balance;
+}
+
+.siena-page--province-siena .siena-contact__aside {
+  display: block;
+  margin-top: 0.18em;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: clamp(1.152rem, 2.088vw, 2.412rem);
+  font-weight: 560;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.siena-page--province-siena .siena-contact__actions {
+  grid-column: 2;
+  grid-row: 2;
+  padding-top: clamp(28px, 3vw, 48px);
+}
+
+.siena-page--province-siena .siena-contact__media {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  align-self: start;
+}
+
+@media (min-width: 1101px) {
+  .siena-page--province-siena .siena-contact__grid {
+    row-gap: clamp(20px, 2vw, 32px);
+  }
+
+  .siena-page--province-siena .siena-contact__title h2 {
+    text-wrap: initial;
+  }
+
+  .siena-page--province-siena .siena-contact__headline,
+  .siena-page--province-siena .siena-contact__headline-first,
+  .siena-page--province-siena .siena-contact__headline-rest {
+    display: block;
+  }
+
+  .siena-page--province-siena .siena-contact__headline-first {
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .siena-page--province-siena .siena-contact__headline-rest {
+    width: min(100%, var(--contact-headline-rest-width, 44%));
+  }
+
+  .siena-page--province-siena .siena-contact__aside {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    justify-self: start;
+    position: relative;
+    top: clamp(-64px, -3.4vw, -48px);
+  }
+
+  .siena-page--province-siena .siena-contact__actions {
+    position: relative;
+    top: clamp(-64px, -3.4vw, -48px);
+    padding-top: 0;
+  }
+
+  .siena-page--province-siena .siena-contact__carousel {
+    height: clamp(520px, 30vw, 580px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .siena-page--province-siena .siena-contact__grid {
+    grid-template-rows: auto auto auto;
+  }
+
+  .siena-page--province-siena .siena-contact__title {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .siena-page--province-siena .siena-contact__actions {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .siena-page--province-siena .siena-contact__media {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+}
+
+@media (max-width: 920px) {
+  .siena-page--province-siena .siena-contact__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 0;
+  }
+
+  .siena-page--province-siena .siena-contact__title,
+  .siena-page--province-siena .siena-contact__actions,
+  .siena-page--province-siena .siena-contact__media {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .siena-page--province-siena .siena-contact__actions {
+    padding-top: clamp(38px, 7vw, 56px);
+  }
+
+  .siena-page--province-siena .siena-contact__media {
+    margin-top: clamp(56px, 9vw, 76px);
+  }
+}
+
+@media (max-width: 640px) {
+  .siena-page--province-siena .siena-contact__actions {
+    padding-top: 34px;
+  }
+
+  .siena-page--province-siena .siena-contact__media {
+    margin-top: 52px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Modello 2 — nastro di card servizio (pagine comune)
+
+   Riusa il componente .service-panel di contatti.html. Le sue regole base
+   vivono in style.css e restano intatte: lì .service-panel è un tabpanel
+   nascosto (position: absolute, opacity: 0, visibility: hidden), quindi il
+   modificatore --card deve riportarlo a elemento visibile e in flusso.
+   Queste regole stanno in area-page.css, che contatti.html non carica.
+   ------------------------------------------------------------------ */
+
+.service-ribbon {
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  margin-top: clamp(52px, 5vw, 76px);
+  margin-left: calc(50% - 50vw);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.service-ribbon::-webkit-scrollbar {
+  display: none;
+}
+
+.service-ribbon.is-dragging {
+  cursor: grabbing;
+}
+
+.service-ribbon.is-dragging .service-panel__link {
+  pointer-events: none;
+}
+
+.service-ribbon__track {
+  display: flex;
+  width: max-content;
+  gap: clamp(18px, 2vw, 30px);
+  padding: 0 40px clamp(20px, 3vw, 42px);
+}
+
+/* La card: stesse misure della gamma attrezzature in home. */
+.service-panel--card {
+  position: relative;
+  color: var(--white);
+  container-type: inline-size;
+  flex: 0 0 clamp(320px, 38vw, 620px);
+  width: clamp(320px, 38vw, 620px);
+  aspect-ratio: 1.42;
+  inset: auto;
+  overflow: hidden;
+  background: #0a1b15;
+  border: 1px solid rgba(21, 59, 43, 0.16);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(31, 54, 43, 0.12);
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: none;
+  pointer-events: auto;
+}
+
+/* Il testo di .service-panel è tarato su un pannello largo quanto lo schermo:
+   dentro una card da ~520px andrebbe a capo tre volte e taglierebbe la CTA.
+   Le unità cqw lo riscalano sulla larghezza della card, quindi vale anche su
+   mobile senza breakpoint dedicati. */
+.service-panel--card .service-panel__overlay {
+  padding: 3.4cqw;
+}
+
+.service-panel--card h2 {
+  font-size: 5.4cqw;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+}
+
+.service-panel--card .service-panel__cta {
+  top: 0.6cqw;
+  margin-right: 1.5cqw;
+  font-size: 1.9cqw;
+}
+
+.service-panel--card .service-panel__cta svg {
+  width: 3.1cqw;
+  height: 3.1cqw;
+}
+
+.service-panel--card .service-panel__line {
+  margin-top: 2.6cqw;
+}
+
+/* Ancorata in fondo alla card, non subito sotto la linea. */
+.service-panel--card .service-panel__description {
+  max-width: none;
+  margin: auto 0 0;
+  padding: 1.7cqw 2.2cqw;
+  color: rgba(255, 255, 255, 0.94);
+  background: rgba(0, 0, 0, 0.42);
+  border-radius: 1.9cqw;
+  font-size: 2.5cqw;
+  line-height: 1.45;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+@media (max-width: 640px) {
+  .service-panel--card {
+    flex-basis: min(84vw, 380px);
+    width: min(84vw, 380px);
+  }
+
+  .service-ribbon__track {
+    padding-inline: 18px;
+  }
+}
+
+/* ==================================================================
+   Forme della sezione servizi (modelli 3-5) e forme FAQ, pagine area.
+
+   Ogni forma vive sotto la propria classe modificatrice sul tag
+   <section> (.siena-services--rows / --grid / --palisade / --trio /
+   --fan / --bellows e .siena-faq--cards / --bands / --tabs) ed è
+   pensata per essere clonata su ~40 pagine comune cambiando solo il
+   nome del territorio nei testi. Le classi di elemento (svc-*, faq-*)
+   sono nuove: contatti.html e le pagine servizio non le usano.
+   Le regole base di .service-panel (style.css) e .service-faq
+   (service-page.css) restano intatte.
+   ================================================================== */
+
+/* Icona a tratto condivisa dalle forme servizi */
+.svc-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  place-items: center;
+  color: #597315;
+  border: 1px solid rgba(21, 59, 43, 0.42);
+  border-radius: 50%;
+}
+
+.svc-icon > svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.svc-icon .service-tab__rope-knot {
+  width: 24px;
+  height: 13px;
+}
+
+.svc-icon .service-tab__irrigation-icon {
+  width: 23px;
+  height: 23px;
+}
+
+/* ------------------------------------------------------------------
+   Forma 1d — righe che si aprono (accordion a apertura singola).
+   Pannello scuro; il titolo della riga è un <a> al servizio,
+   l'apertura sta sul bottone chevron separato.
+   ------------------------------------------------------------------ */
+.siena-services--rows .svc-rows {
+  margin-top: clamp(40px, 4.5vw, 64px);
+  padding: clamp(14px, 1.6vw, 22px);
+  color: var(--white);
+  background: var(--ink-soft);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(7, 21, 16, 0.22);
+}
+
+.svc-rows__item {
+  border-radius: 14px;
+  transition: background 220ms ease;
+}
+
+/* Hairline tra le righe, coerente con quelle della mappa: rende leggibile
+   la scansione anche a pannello tutto chiuso, senza toccare radius e sfondi. */
+.svc-rows__item + .svc-rows__item {
+  margin-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.svc-rows__item.is-open {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.svc-rows__head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: clamp(10px, 1.2vw, 14px) clamp(12px, 1.5vw, 20px);
+}
+
+.svc-rows .svc-icon {
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+.svc-rows__title {
+  justify-self: start;
+  color: var(--white);
+  font-size: clamp(1.08rem, 1.5vw, 1.5rem);
+  font-weight: 420;
+  letter-spacing: -0.025em;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.svc-rows__title:hover,
+.svc-rows__title:focus-visible {
+  color: var(--accent-bright);
+}
+
+.svc-rows__title:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+}
+
+.svc-rows__toggle {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.78);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+
+.svc-rows__toggle svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+  transition: transform 240ms ease;
+}
+
+.svc-rows__toggle:hover,
+.svc-rows__toggle:focus-visible {
+  color: var(--accent-bright);
+  border-color: var(--accent-bright);
+}
+
+.svc-rows__toggle:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+}
+
+.svc-rows__item.is-open .svc-rows__toggle {
+  color: var(--accent-bright);
+  border-color: var(--accent-bright);
+}
+
+.svc-rows__item.is-open .svc-rows__toggle svg {
+  transform: rotate(180deg);
+}
+
+/* Apertura animata sulle track della griglia; da chiusa la riga è
+   anche visibility: hidden, così i link interni escono dal tab order. */
+.svc-rows__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 280ms ease, visibility 0s 280ms;
+}
+
+.svc-rows__item.is-open .svc-rows__body {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows 280ms ease, visibility 0s;
+}
+
+.svc-rows__inner {
+  display: grid;
+  grid-template-columns: minmax(150px, 180px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(16px, 2vw, 26px);
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 clamp(12px, 1.5vw, 20px);
+}
+
+.svc-rows__item.is-open .svc-rows__inner {
+  padding-bottom: clamp(14px, 1.6vw, 20px);
+}
+
+.svc-rows__photo {
+  width: 100%;
+  height: clamp(120px, 12vw, 150px);
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.svc-rows__text p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(0.98rem, 1.15vw, 1.1rem);
+  line-height: 1.6;
+}
+
+.svc-rows__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  color: var(--accent-bright);
+  font-size: 0.95rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.svc-rows__cta span {
+  transition: transform 200ms ease;
+}
+
+.svc-rows__cta:hover span,
+.svc-rows__cta:focus-visible span {
+  transform: translateX(4px);
+}
+
+.svc-rows__cta:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .svc-rows__inner {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .svc-rows__photo {
+    height: 150px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Forma 2a — griglia 3x2 di righe basse. Statica, senza JavaScript:
+   foto quadrata ~52px, nome e descrizione sempre visibili.
+   ------------------------------------------------------------------ */
+.siena-services--grid .svc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1.4vw, 18px);
+  margin-top: clamp(40px, 4.5vw, 64px);
+}
+
+.svc-grid__card {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 1.6vw, 20px);
+  padding: clamp(12px, 1.4vw, 18px) clamp(14px, 1.7vw, 22px);
+  color: #071510;
+  background: var(--white);
+  border: 1px solid rgba(21, 59, 43, 0.16);
+  border-radius: 10px;
+  box-shadow: 0 10px 26px rgba(31, 54, 43, 0.06);
+  text-decoration: none;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.svc-grid__card:hover,
+.svc-grid__card:focus-visible {
+  border-color: rgba(21, 59, 43, 0.4);
+  box-shadow: 0 24px 60px rgba(31, 54, 43, 0.16);
+}
+
+.svc-grid__card:focus-visible {
+  outline: 2px solid #7fa410;
+  outline-offset: 3px;
+}
+
+.svc-grid__thumb {
+  width: 112px;
+  height: 84px;
+  flex: 0 0 auto;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.svc-grid__text {
+  display: block;
+  min-width: 0;
+}
+
+.svc-grid__name {
+  display: block;
+  font-size: clamp(1.02rem, 1.25vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.svc-grid__desc {
+  display: block;
+  margin-top: 5px;
+  color: rgba(16, 23, 22, 0.72);
+  font-size: clamp(0.9rem, 1vw, 0.98rem);
+  line-height: 1.5;
+}
+
+@media (max-width: 720px) {
+  .siena-services--grid .svc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Forma 2c — palizzata a sei colonne. Da desktop la descrizione
+   compare solo su hover/focus; sotto ~720px pila verticale con
+   descrizione sempre visibile.
+   ------------------------------------------------------------------ */
+.siena-services--palisade .svc-palisade {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(8px, 1vw, 12px);
+  margin-top: clamp(40px, 4.5vw, 64px);
+}
+
+.svc-palisade__col {
+  position: relative;
+  display: block;
+  height: clamp(294px, 31vw, 388px);
+  overflow: hidden;
+  color: var(--white);
+  background: #0a1b15;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.svc-palisade__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.svc-palisade__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 16, 12, 0.55);
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.svc-palisade__veil {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  background: linear-gradient(180deg, rgba(6, 16, 12, 0) 0%, rgba(6, 16, 12, 0.82) 46%);
+}
+
+.svc-palisade__label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(0.92rem, 1.05vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.svc-palisade .svc-icon {
+  width: 34px;
+  height: 34px;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+.svc-palisade .svc-icon > svg {
+  width: 18px;
+  height: 18px;
+}
+
+.svc-palisade .svc-icon .service-tab__rope-knot {
+  width: 20px;
+  height: 11px;
+}
+
+.svc-palisade .svc-icon .service-tab__irrigation-icon {
+  width: 19px;
+  height: 19px;
+}
+
+.svc-palisade__desc {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: max-height 260ms ease, opacity 220ms ease, transform 260ms ease;
+}
+
+.svc-palisade__col:hover .svc-palisade__scrim,
+.svc-palisade__col:focus-visible .svc-palisade__scrim {
+  opacity: 1;
+}
+
+.svc-palisade__col:hover .svc-palisade__desc,
+.svc-palisade__col:focus-visible .svc-palisade__desc {
+  max-height: 12em;
+  opacity: 1;
+  transform: none;
+}
+
+.svc-palisade__col:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .siena-services--palisade .svc-palisade {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .svc-palisade__col {
+    height: 240px;
+  }
+
+  .svc-palisade__desc {
+    max-height: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Forma 3a — palizzata 3+3. Statica, senza JavaScript: card bianche
+   con foto orizzontale in cima e descrizione intera.
+   ------------------------------------------------------------------ */
+.siena-services--trio .svc-trio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.4vw, 18px);
+  margin-top: clamp(40px, 4.5vw, 64px);
+}
+
+@media (max-width: 720px) {
+  .siena-services--trio .svc-trio {
+    grid-template-columns: 1fr;
+  }
+}
+
+.svc-trio__card {
+  display: block;
+  overflow: hidden;
+  color: #071510;
+  background: var(--white);
+  border: 1px solid rgba(21, 59, 43, 0.16);
+  border-radius: 10px;
+  box-shadow: 0 10px 26px rgba(31, 54, 43, 0.06);
+  text-decoration: none;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.svc-trio__card:hover,
+.svc-trio__card:focus-visible {
+  border-color: rgba(21, 59, 43, 0.4);
+  box-shadow: 0 24px 60px rgba(31, 54, 43, 0.16);
+}
+
+.svc-trio__card:focus-visible {
+  outline: 2px solid #7fa410;
+  outline-offset: 3px;
+}
+
+.svc-trio__photo {
+  display: block;
+  width: 100%;
+  height: 106px;
+  object-fit: cover;
+}
+
+.svc-trio__body {
+  display: block;
+  padding: clamp(16px, 1.8vw, 23px);
+}
+
+.svc-trio__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(1.02rem, 1.25vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.svc-trio .svc-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.svc-trio .svc-icon > svg {
+  width: 19px;
+  height: 19px;
+}
+
+.svc-trio .svc-icon .service-tab__rope-knot {
+  width: 22px;
+  height: 12px;
+}
+
+.svc-trio .svc-icon .service-tab__irrigation-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.svc-trio__desc {
+  display: block;
+  margin-top: 10px;
+  color: rgba(16, 23, 22, 0.72);
+  font-size: clamp(0.92rem, 1.05vw, 1rem);
+  line-height: 1.55;
+}
+
+/* ------------------------------------------------------------------
+   Forma 4a — mazzo di schede, altezza fissa. La card attiva sta al
+   centro; le precedenti spuntano come bordi impilati a sinistra, le
+   successive a destra, quindi la posizione nella fila si legge dalla
+   distribuzione dei due mazzi: sulla prima card il mazzo è tutto a
+   destra, sull'ultima tutto a sinistra. Delle card coperte si vede la
+   sola foto. Su desktop si scorre con le frecce esterne e da tastiera;
+   il trascinamento resta al dito. Sotto ~720px il mazzo non ha senso:
+   pila verticale di sei card.
+   ------------------------------------------------------------------ */
+
+/* Il passo del mazzo vive nel CSS perché è responsive, ma serve al JS per
+   posizionare le card: registrandolo come <length> getComputedStyle lo
+   restituisce già risolto in px invece della stringa clamp(). */
+@property --fan-step {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 72px;
+}
+
+.siena-services--fan .svc-fan {
+  /* Quanto la card coperta spunta da sotto quella davanti: è il passo
+     voluto, e scende con la larghezza della finestra. Il JS lo limita poi
+     allo spazio realmente disponibile, così il mazzo non esce mai dal
+     contenitore su nessun viewport. */
+  --fan-step: clamp(28px, 5vw, 72px);
+  --fan-card-w: clamp(280px, 30vw, 340px);
+  margin-top: clamp(40px, 4.5vw, 64px);
+}
+
+.svc-fan__frame {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: clamp(10px, 1.4vw, 20px);
+}
+
+/* La finestra ospita il mazzo intero, non la sola card in scena.
+   Il taglio serve solo di lato: verticalmente l'ombra delle card deve poter
+   sfumare oltre il bordo, altrimenti sotto il mazzo si vede una riga netta.
+   overflow: hidden resta come primo valore per i browser che non conoscono
+   clip: lì si torna all'ombra tagliata di prima, senza rompere nulla.
+   touch-action: pan-y lascia al browser lo scorrimento verticale della
+   pagina e consegna al JS solo i gesti orizzontali. */
+.svc-fan__viewport {
+  position: relative;
+  min-width: 0;
+  height: clamp(340px, 33vw, 380px);
+  flex: 1 1 auto;
+  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
+  touch-action: pan-y;
+}
+
+.svc-fan__card {
+  position: absolute;
+  z-index: var(--fan-z, 0);
+  top: 0;
+  left: calc(50% - var(--fan-card-w) / 2);
+  display: flex;
+  width: var(--fan-card-w);
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  color: #071510;
+  background: var(--white);
+  border: 1px solid rgba(21, 59, 43, 0.2);
+  border-radius: 14px;
+  box-shadow: 0 18px 44px rgba(31, 54, 43, 0.16);
+  transform: translateX(var(--fan-x, 0px)) scale(var(--fan-scale, 1));
+  transition: transform 260ms ease;
+}
+
+.svc-fan__card.is-front {
+  box-shadow: 0 28px 66px rgba(31, 54, 43, 0.26);
+}
+
+/* Mazzo di partenza senza JavaScript: prima card in scena, le altre
+   impilate a destra. Con il JS attivo questi valori vengono riscritti a
+   ogni cambio, misurando la card e il passo effettivo. */
+.svc-fan__card:nth-child(1) { --fan-x: 0px; --fan-scale: 1; --fan-z: 6; }
+.svc-fan__card:nth-child(2) { --fan-x: 81px; --fan-scale: 0.95; --fan-z: 5; }
+.svc-fan__card:nth-child(3) { --fan-x: 161px; --fan-scale: 0.9; --fan-z: 4; }
+.svc-fan__card:nth-child(4) { --fan-x: 242px; --fan-scale: 0.85; --fan-z: 3; }
+.svc-fan__card:nth-child(5) { --fan-x: 322px; --fan-scale: 0.8; --fan-z: 2; }
+.svc-fan__card:nth-child(6) { --fan-x: 403px; --fan-scale: 0.75; --fan-z: 1; }
+
+/* Durante il trascinamento il mazzo segue il puntatore senza transizione
+   e il rilascio non deve consegnare il click ai link. */
+.svc-fan__viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.svc-fan__viewport.is-dragging .svc-fan__card {
+  transition: none;
+}
+
+.svc-fan__viewport.is-dragging .svc-fan__cta {
+  pointer-events: none;
+}
+
+.svc-fan__arrow {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  padding: 0;
+  place-items: center;
+  color: rgba(7, 21, 16, 0.72);
+  background: transparent;
+  border: 1px solid rgba(21, 59, 43, 0.42);
+  border-radius: 50%;
+  font: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.svc-fan__arrow:hover,
+.svc-fan__arrow:focus-visible {
+  color: #071510;
+  background: var(--accent-bright);
+  border-color: var(--accent-bright);
+}
+
+.svc-fan__arrow:focus-visible {
+  outline: 2px solid #7fa410;
+  outline-offset: 3px;
+}
+
+.svc-fan__photo {
+  display: block;
+  width: 100%;
+  height: clamp(120px, 11vw, 140px);
+  flex: 0 0 auto;
+  object-fit: cover;
+}
+
+.svc-fan__body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: clamp(14px, 1.6vw, 20px);
+  opacity: 1;
+  transition: opacity 200ms ease;
+}
+
+/* Delle card del mazzo si vede la sola foto: nome, descrizione e CTA
+   spariscono, così il verde acido non compare a pezzetti dietro la card
+   davanti. Si nasconde con l'opacità e non con visibility o display, che
+   toglierebbero i sei link dal giro del Tab: restano raggiungibili, e il
+   focus su uno di essi porta avanti la sua card. */
+.svc-fan__card:not(.is-front) .svc-fan__body {
+  opacity: 0;
+}
+
+.svc-fan__label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(1.02rem, 1.2vw, 1.15rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.svc-fan .svc-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.svc-fan .svc-icon > svg {
+  width: 19px;
+  height: 19px;
+}
+
+.svc-fan .svc-icon .service-tab__rope-knot {
+  width: 22px;
+  height: 12px;
+}
+
+.svc-fan .svc-icon .service-tab__irrigation-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.svc-fan__desc {
+  margin: 0;
+  color: rgba(16, 23, 22, 0.72);
+  font-size: clamp(0.9rem, 1vw, 0.98rem);
+  line-height: 1.5;
+}
+
+/* CTA piena: il verde acido su card chiara regge solo come riempimento */
+.svc-fan__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding: 10px 16px;
+  color: #0a1b15;
+  background: var(--accent-bright);
+  border: 1px solid var(--accent-bright);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 200ms ease, background 200ms ease;
+}
+
+.svc-fan__cta:hover,
+.svc-fan__cta:focus-visible {
+  color: #071510;
+  background: transparent;
+}
+
+.svc-fan__cta:focus-visible {
+  outline: 2px solid #7fa410;
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .svc-fan__viewport {
+    height: auto;
+    overflow: visible;
+    touch-action: auto;
+  }
+
+  .svc-fan__card,
+  .svc-fan__card.is-front {
+    position: static;
+    width: 100%;
+    box-shadow: 0 10px 26px rgba(31, 54, 43, 0.08);
+    transform: none;
+  }
+
+  /* Nella pila le card sono tutte in scena: il corpo torna visibile. */
+  .svc-fan__card:not(.is-front) .svc-fan__body {
+    opacity: 1;
+  }
+
+  .svc-fan__card + .svc-fan__card {
+    margin-top: 12px;
+  }
+
+  .svc-fan__arrow {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Forma 4g — soffietto orizzontale. Altezza fissa: hover o focus
+   allargano la colonna puntata (la classe is-open la muove il JS);
+   sotto ~860px pila verticale con descrizione sempre visibile.
+   ------------------------------------------------------------------ */
+.siena-services--bellows .svc-bellows {
+  display: flex;
+  gap: clamp(8px, 1vw, 12px);
+  height: clamp(372px, 37vw, 465px);
+  margin-top: clamp(40px, 4.5vw, 64px);
+  color: var(--white);
+}
+
+.svc-bellows__col {
+  position: relative;
+  display: block;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--white);
+  background: #0a1b15;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: flex-grow 300ms ease;
+}
+
+.svc-bellows__col.is-open {
+  flex-grow: 4.7;
+}
+
+.svc-bellows__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.svc-bellows__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 16, 12, 0.16) 0%, rgba(6, 16, 12, 0.8) 80%);
+}
+
+.svc-bellows__vname {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: translate(-50%, -50%);
+  transition: opacity 200ms ease;
+}
+
+.svc-bellows__col.is-open .svc-bellows__vname {
+  opacity: 0;
+}
+
+/* Il pannello è impaginato alla larghezza da aperto: nelle colonne
+   chiuse viene solo tagliato, così il testo non rifluisce durante
+   la transizione. */
+.svc-bellows__panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 10px;
+  width: clamp(300px, 44vw, 560px);
+  padding: clamp(14px, 1.6vw, 20px);
+  opacity: 0;
+  transition: opacity 220ms ease 80ms;
+}
+
+.svc-bellows__col.is-open .svc-bellows__panel {
+  opacity: 1;
+}
+
+.svc-bellows__label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(1.02rem, 1.2vw, 1.18rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.svc-bellows .svc-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+.svc-bellows .svc-icon > svg {
+  width: 19px;
+  height: 19px;
+}
+
+.svc-bellows .svc-icon .service-tab__rope-knot {
+  width: 22px;
+  height: 12px;
+}
+
+.svc-bellows .svc-icon .service-tab__irrigation-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.svc-bellows__desc {
+  display: block;
+  max-width: 52ch;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(0.92rem, 1vw, 1rem);
+  line-height: 1.5;
+}
+
+.svc-bellows__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent-bright);
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
+.svc-bellows__col:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+}
+
+@media (max-width: 860px) {
+  .siena-services--bellows .svc-bellows {
+    display: block;
+    height: auto;
+  }
+
+  .svc-bellows__col {
+    display: block;
+    height: 240px;
+  }
+
+  .svc-bellows__col + .svc-bellows__col {
+    margin-top: 10px;
+  }
+
+  .svc-bellows__vname {
+    display: none;
+  }
+
+  .svc-bellows__panel {
+    width: auto;
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------------------------
+   FAQ, regole condivise dalle tre forme nuove: il titolo esce dalla
+   colonna sinistra e va in cima su una riga, a scala ridotta.
+   ------------------------------------------------------------------ */
+.siena-faq--cards .service-faq,
+.siena-faq--bands .service-faq,
+.siena-faq--tabs .service-faq {
+  display: block;
+}
+
+.siena-faq--cards .service-faq__heading h2,
+.siena-faq--bands .service-faq__heading h2,
+.siena-faq--tabs .service-faq__heading h2 {
+  font-size: clamp(1.9rem, 3.2vw, 3.1rem);
+}
+
+/* ------------------------------------------------------------------
+   FAQ 5a — tre schede affiancate, tutto già aperto. Nessun JS.
+   ------------------------------------------------------------------ */
+.siena-faq--cards .faq-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: stretch;
+  gap: 12px;
+  margin-top: clamp(26px, 3vw, 40px);
+}
+
+.faq-cards__card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(20px, 2.2vw, 28px);
+  background: var(--white);
+  border: 1px solid rgba(21, 59, 43, 0.16);
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(31, 54, 43, 0.05);
+  transition: box-shadow 200ms ease;
+}
+
+.faq-cards__card:hover {
+  box-shadow: 0 24px 60px rgba(31, 54, 43, 0.12);
+}
+
+.faq-cards__q {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.05rem, 1.3vw, 1.22rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+
+.faq-cards__rule {
+  display: block;
+  height: 1px;
+  margin: clamp(14px, 1.6vw, 20px) 0;
+  background: rgba(21, 59, 43, 0.24);
+}
+
+.faq-cards__a {
+  margin: 0;
+  color: rgba(16, 23, 22, 0.78);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.65;
+}
+
+/* ------------------------------------------------------------------
+   FAQ 5b — tre fasce larghe, domanda a sinistra e risposta a destra.
+   Solo tipografia e linee: nessun riquadro, nessun JS.
+   ------------------------------------------------------------------ */
+.siena-faq--bands .faq-bands {
+  margin-top: clamp(26px, 3vw, 40px);
+  border-top: 2px solid rgba(21, 59, 43, 0.4);
+}
+
+.faq-bands__row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+  gap: clamp(20px, 3vw, 44px);
+  padding: clamp(22px, 2.6vw, 34px) 0;
+}
+
+.faq-bands__row + .faq-bands__row {
+  border-top: 1px solid rgba(21, 59, 43, 0.24);
+}
+
+.faq-bands__q {
+  margin: 0;
+  color: #153b2b;
+  font-size: clamp(1.3rem, 1.9vw, 1.9rem);
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+
+.faq-bands__a {
+  margin: 0;
+  color: rgba(16, 23, 22, 0.78);
+  font-size: clamp(0.98rem, 1.15vw, 1.1rem);
+  line-height: 1.7;
+}
+
+@media (max-width: 860px) {
+  .faq-bands__row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   FAQ 5c — tre linguette e un riquadro largo, a ingombro costante.
+   Pattern tab in js/area-page.js; risposte tutte nel DOM con hidden.
+   ------------------------------------------------------------------ */
+.siena-faq--tabs .faq-tabs {
+  margin-top: clamp(26px, 3vw, 40px);
+}
+
+.faq-tabs__list {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+}
+
+.faq-tabs__tab {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  margin-bottom: -1px;
+  padding: clamp(14px, 1.6vw, 20px) clamp(14px, 1.8vw, 24px);
+  color: rgba(16, 23, 22, 0.72);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(21, 59, 43, 0.16);
+  border-radius: 12px 12px 0 0;
+  font: inherit;
+  font-size: clamp(0.95rem, 1.1vw, 1.08rem);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.faq-tabs__tab:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* La linguetta attiva chiude il bordo sul riquadro sottostante */
+.faq-tabs__tab.is-active {
+  z-index: 1;
+  color: var(--ink);
+  background: var(--white);
+  border-bottom-color: var(--white);
+}
+
+.faq-tabs__tab:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: -4px;
+}
+
+/* Il riquadro è dimensionato sulla risposta lunga: cambiando
+   linguetta l'ingombro non cambia. */
+.faq-tabs__panel {
+  min-height: 190px;
+  padding: clamp(20px, 2.4vw, 32px);
+  background: var(--white);
+  border: 1px solid rgba(21, 59, 43, 0.16);
+  border-radius: 0 12px 12px 12px;
+}
+
+.faq-tabs__panel p {
+  max-width: 920px;
+  margin: 0;
+  color: rgba(16, 23, 22, 0.78);
+  font-size: clamp(0.98rem, 1.15vw, 1.1rem);
+  line-height: 1.7;
+}
+
+@media (max-width: 720px) {
+  .faq-tabs__list {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .faq-tabs__tab {
+    margin-bottom: 0;
+    border: 1px solid rgba(21, 59, 43, 0.16);
+    border-radius: 10px;
+  }
+
+  .faq-tabs__tab.is-active {
+    border-color: rgba(21, 59, 43, 0.3);
+  }
+
+  .faq-tabs__panel {
+    min-height: 230px;
+    margin-top: 6px;
+    border-radius: 12px;
+  }
+}
+
+/* Spegnimento del movimento per tutte le forme nuove */
+@media (prefers-reduced-motion: reduce) {
+  .svc-rows__item,
+  .svc-rows__title,
+  .svc-rows__toggle,
+  .svc-rows__toggle svg,
+  .svc-rows__body,
+  .svc-rows__cta span,
+  .svc-grid__card,
+  .svc-palisade__scrim,
+  .svc-palisade__desc,
+  .svc-trio__card,
+  .svc-fan__card,
+  .svc-fan__body,
+  .svc-fan__cta,
+  .svc-fan__arrow,
+  .svc-bellows__col,
+  .svc-bellows__vname,
+  .svc-bellows__panel,
+  .faq-cards__card,
+  .faq-tabs__tab {
+    transition: none;
+  }
+
+  .svc-rows__cta:hover span,
+  .svc-rows__cta:focus-visible span {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Normalizzazione degli H2 di FAQ, metodo e contatti alla misura
+   standard (--area-h2-size). Si attiva SOLO con la classe aggiunta sul
+   <main> delle pagine indicate: le regole condivise qui sopra restano
+   intatte per le pagine non normalizzate (Sinalunga, Asciano,
+   provincia di Perugia). Footer, navbar e H1 esclusi.
+   ------------------------------------------------------------------ */
+.siena-main--h2-standard .siena-faq .service-faq__heading h2,
+.siena-main--h2-standard .siena-method__visual h2,
+.siena-main--h2-standard .siena-contact__title h2 {
+  font-size: var(--area-h2-size);
+}
