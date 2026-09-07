@@ -788,8 +788,13 @@
   color: rgba(21, 59, 43, 0.92);
   font-weight: 700;
   font-size: 0.95rem;
-  text-underline-offset: 0.2em;
+  text-decoration: none;
   transition: color 240ms ease;
+}
+
+.service-rank3__more span {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 .service-rank3__item:first-child + .service-rank3__more {
