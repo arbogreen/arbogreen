@@ -14,6 +14,100 @@
     <link rel="canonical" href="https://arbogreenservice.com/servizi/trattamento-fitosanitario.html">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/service-page.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://arbogreenservice.com/#business",
+            "name": "Arbogreen Service",
+            "url": "https://arbogreenservice.com/",
+            "telephone": "+39 338 736 3594",
+            "email": "arbogreenservice@gmail.com",
+            "logo": "https://arbogreenservice.com/assets/arbogreen-logo.png",
+            "image": [
+              "https://arbogreenservice.com/assets/hero-abbattimento-enhanced.jpg",
+              "https://arbogreenservice.com/assets/hero-potatura-desktop.jpg",
+              "https://arbogreenservice.com/assets/hero-tronchi-enhanced.jpg"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Città della Pieve",
+              "addressRegion": "PG",
+              "addressCountry": "IT"
+            }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://arbogreenservice.com/servizi/trattamento-fitosanitario.html#service",
+            "name": "Trattamenti fitosanitari per alberi e giardini",
+            "description": "Trattamenti fitosanitari per alberi e giardini tra Perugia e Siena, con sopralluogo per riconoscere sintomi, cause e intervento più adatto.",
+            "url": "https://arbogreenservice.com/servizi/trattamento-fitosanitario.html",
+            "image": "https://arbogreenservice.com/assets/service-fitosanitario-01-upscaled.jpg",
+            "provider": {
+              "@id": "https://arbogreenservice.com/#business"
+            },
+            "areaServed": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Provincia di Perugia"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Provincia di Siena"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Come capire se una pianta è malata o infestata?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Un sintomo non identifica automaticamente una malattia. Foglie gialle, macchie o rami che seccano possono dipendere da parassiti, ma anche da poca o troppa acqua, problemi alle radici, terreno inadatto o danni meccanici. Conviene osservare quando è iniziato il problema, quali parti coinvolge e se peggiora rapidamente, evitando trattamenti generici prima di averne individuato la causa."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "È possibile riconoscere il problema dalle fotografie?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Le foto possono servire per un primo orientamento, ma raramente bastano per una diagnosi sicura. Sono utili almeno una vista dell’intera pianta, una del terreno e del colletto e immagini nitide dei sintomi sopra e sotto le foglie. Se cause diverse producono segni simili, occorre osservare la pianta sul posto prima di decidere se e come intervenire."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Cosa fare se si notano nidi di processionaria?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Non toccare, scuotere, bruciare o tentare di tagliare il nido: i peli urticanti possono disperdersi anche senza contatto diretto con il bruco. È prudente impedire l’accesso sotto la pianta, soprattutto a bambini e animali, e far valutare posizione e altezza del nido da un operatore attrezzato. Il metodo di rimozione dipende anche dal periodo in cui viene individuato."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://arbogreenservice.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Trattamenti fitosanitari per alberi e giardini",
+                "item": "https://arbogreenservice.com/servizi/trattamento-fitosanitario.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body class="service-page">
     <header class="site-header">
@@ -51,7 +145,7 @@
     </header>
     <main class="service-main">
       <section class="service-hero" id="service-hero" aria-labelledby="service-title" style="--hero-position: center;">
-        <picture class="service-hero__media"><img src="../assets/service-fitosanitario-01-upscaled.jpg" alt="Operatore durante un intervento nel verde" fetchpriority="high"></picture>
+        <img class="service-hero__media" src="../assets/service-fitosanitario-01-upscaled.jpg" alt="Operatore durante un intervento nel verde" width="2048" height="915" srcset="../assets/service-fitosanitario-01-upscaled-w480.jpg 480w, ../assets/service-fitosanitario-01-upscaled-w960.jpg 960w, ../assets/service-fitosanitario-01-upscaled-w1440.jpg 1440w, ../assets/service-fitosanitario-01-upscaled.jpg 2048w" sizes="100vw" fetchpriority="high">
         <div class="service-hero__shade" aria-hidden="true"></div>
         <div class="service-hero__inner service-reveal"><p class="section-kicker">Agrotecnico certificato</p><h1 id="service-title"><span class="hero__title-accent">Trattamenti fitosanitari</span> per alberi e giardini</h1><div class="service-actions"><a class="service-action service-action--primary" href="#contatti">Descrivi i sintomi</a></div></div>
       </section>
@@ -82,10 +176,10 @@
             <p class="section-kicker">Perché Arbogreen</p>
             <h2 id="intro-title">Troviamo sempre il <span class="hero__title-accent">trattamento</span> corretto</h2>
             <span class="service-heading-line" aria-hidden="true"></span>
-            <p>Non basta individuare il sintomo: spesso lo stesso sintomo può essere causato da diversi problemi. Sono l'abilità accumulata negli anni e lo studio della situazione a 360° a permetterci di proporre la soluzione corretta.</p>
+            <p>Non basta individuare il sintomo: spesso lo stesso sintomo può essere causato da diversi problemi. Sono l'abilità accumulata negli anni e lo studio della situazione a 360° a permetterci di proporre la soluzione corretta. Sul pino il caso che vediamo più spesso è <a class="service-copy-link" href="../approfondimenti/processionaria-pino.html">la processionaria</a>, che va affrontata nella stagione giusta. Dove l'intervento comporta il taglio, <a class="service-copy-link" href="../approfondimenti/riciclo-legna-urbana.html">il legno recuperabile viene messo da parte</a>.</p>
             <p>Grazie alla sede di Città della Pieve raggiungiamo agevolmente le province di <a class="service-copy-link" href="../aree/provincia-perugia.html">Perugia</a> e <a class="service-copy-link" href="../aree/provincia-siena.html">Siena</a>. Il primo passo è riconoscere il problema: verifichiamo sintomi visivi, escludiamo le cause improbabili e verifichiamo le ultime ipotesi. Poi definiamo l’intervento.</p>
           </div>
-          <figure class="service-intro__media service-reveal"><img src="../assets/photo-fitosanitario-perche-arbogreen-upscaled.jpg" alt="Giardino curato con prato, alberi e aiuole" loading="lazy" decoding="async"></figure>
+          <figure class="service-intro__media service-reveal"><img src="../assets/photo-fitosanitario-perche-arbogreen-upscaled.jpg" alt="Giardino curato con prato, alberi e aiuole" width="1618" height="2048" srcset="../assets/photo-fitosanitario-perche-arbogreen-upscaled-w480.jpg 480w, ../assets/photo-fitosanitario-perche-arbogreen-upscaled-w960.jpg 960w, ../assets/photo-fitosanitario-perche-arbogreen-upscaled-w1440.jpg 1440w, ../assets/photo-fitosanitario-perche-arbogreen-upscaled.jpg 1618w" sizes="(max-width: 900px) 100vw, 45vw" loading="lazy" decoding="async"></figure>
         </div>
       </section>
 

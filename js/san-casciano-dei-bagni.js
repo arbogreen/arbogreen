@@ -2,7 +2,7 @@
    Tutto il comportamento sta in js/area-page.js, caricato subito dopo. */
 
 window.arbogreenAreaPhotos = [
-  { source: "../assets/photo-abbattimento-terra-upscaled.jpg" },
+  { source: "../assets/equipment-chainsaw-log.jpg" },
   { source: "../assets/provincia-perugia/contatti-perugia-04.jpeg" },
   { source: "../assets/photo-potatura-hero-upscaled.jpg" },
   { source: "../assets/2026-06-30.jpg" },

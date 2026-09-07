@@ -3,7 +3,7 @@
 
 window.arbogreenAreaPhotos = [
   { source: "../assets/qualification-tree-climbing.jpg" },
-  { source: "../assets/photo-abbattimento-terra-upscaled.jpg" },
+  { source: "../assets/equipment-chainsaw-log.jpg" },
   { source: "../assets/provincia-perugia/contatti-perugia-04.jpeg" },
   { source: "../assets/photo-potatura-hero-upscaled.jpg" },
   { source: "../assets/2026-06-30.jpg" },

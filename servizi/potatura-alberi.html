@@ -14,6 +14,100 @@
     <link rel="canonical" href="https://arbogreenservice.com/servizi/potatura-alberi.html">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/service-page.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://arbogreenservice.com/#business",
+            "name": "Arbogreen Service",
+            "url": "https://arbogreenservice.com/",
+            "telephone": "+39 338 736 3594",
+            "email": "arbogreenservice@gmail.com",
+            "logo": "https://arbogreenservice.com/assets/arbogreen-logo.png",
+            "image": [
+              "https://arbogreenservice.com/assets/hero-abbattimento-enhanced.jpg",
+              "https://arbogreenservice.com/assets/hero-potatura-desktop.jpg",
+              "https://arbogreenservice.com/assets/hero-tronchi-enhanced.jpg"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Città della Pieve",
+              "addressRegion": "PG",
+              "addressCountry": "IT"
+            }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://arbogreenservice.com/servizi/potatura-alberi.html#service",
+            "name": "Potature di alberi e siepi tra Perugia e Siena",
+            "description": "Potature di alberi e siepi tra Perugia e Siena: sopralluoghi, gestione della chioma, interventi mirati e recupero della legna urbana.",
+            "url": "https://arbogreenservice.com/servizi/potatura-alberi.html",
+            "image": "https://arbogreenservice.com/assets/photo-potatura-hero-upscaled.jpg",
+            "provider": {
+              "@id": "https://arbogreenservice.com/#business"
+            },
+            "areaServed": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Provincia di Perugia"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Provincia di Siena"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Qual è il periodo migliore per potare un albero?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Non c’è un mese valido per tutti gli alberi. Il periodo cambia secondo specie, tipo di taglio e risposta della pianta: molti interventi si programmano durante il riposo vegetativo, mentre altri vanno eseguiti in momenti differenti. I rami secchi o spezzati, invece, possono richiedere una valutazione immediata. Prima si stabilisce perché potare, poi si sceglie quando farlo."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Come capire se un albero ha bisogno di essere potato?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Un albero non deve essere potato automaticamente ogni anno. Una valutazione è utile se ci sono rami morti o lesionati, sfregamenti tra branche, ostacoli su tetti e passaggi oppure una crescita che ha creato problemi concreti. Se la chioma è sana, stabile e non causa interferenze, può essere corretto non tagliare: ogni ferita è comunque una ferita per l’albero."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quanto costa la potatura di un albero?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Una cifra seria non si ricava dalla sola altezza o da una fotografia. Vanno verificati accesso, quantità e diametro dei rami da rimuovere, presenza di edifici o linee vicine, tecnica di salita e lavoro necessario a terra. Il preventivo dovrebbe inoltre chiarire se raccolta, cippatura o trasporto del materiale sono compresi."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://arbogreenservice.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Potature di alberi e siepi tra Perugia e Siena",
+                "item": "https://arbogreenservice.com/servizi/potatura-alberi.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body class="service-page">
     <header class="site-header">
@@ -69,10 +163,7 @@
     </header>
     <main class="service-main">
       <section class="service-hero" id="service-hero" aria-labelledby="service-title" style="--hero-position: 68% top;">
-        <picture class="service-hero__media">
-          <source media="(max-width: 640px)" srcset="../assets/photo-potatura-hero-upscaled.jpg">
-          <img src="../assets/photo-potatura-hero-upscaled.jpg" alt="Operatore durante la potatura di una siepe" fetchpriority="high">
-        </picture>
+        <img class="service-hero__media" src="../assets/photo-potatura-hero-upscaled.jpg" alt="Operatore durante la potatura di una siepe" width="2048" height="1599" srcset="../assets/photo-potatura-hero-upscaled-w480.jpg 480w, ../assets/photo-potatura-hero-upscaled-w960.jpg 960w, ../assets/photo-potatura-hero-upscaled-w1440.jpg 1440w, ../assets/photo-potatura-hero-upscaled.jpg 2048w" sizes="100vw" fetchpriority="high">
         <div class="service-hero__shade" aria-hidden="true"></div>
         <div class="service-hero__inner service-reveal">
           <p class="section-kicker">Agrotecnico certificato</p>
@@ -151,7 +242,7 @@
             <p>Grazie alla sede di Città della Pieve raggiungiamo agevolmente molte città tra la provincia di <a class="service-copy-link" href="../aree/provincia-perugia.html">Perugia</a> e la provincia di <a class="service-copy-link" href="../aree/provincia-siena.html">Siena</a>. Il primo passo è sempre osservare la pianta e lo spazio circostante: verifichiamo difetti, bersagli e spazio a terra, poi definiamo priorità e modalità di taglio.</p>
           </div>
           <figure class="service-intro__media service-reveal">
-            <img src="../assets/service-pruning-03-upscaled.jpg" alt="Area di lavoro durante la potatura della vegetazione" loading="lazy" decoding="async">
+            <img src="../assets/service-pruning-03-upscaled.jpg" alt="Area di lavoro durante la potatura della vegetazione" width="2048" height="1230" srcset="../assets/service-pruning-03-upscaled-w480.jpg 480w, ../assets/service-pruning-03-upscaled-w960.jpg 960w, ../assets/service-pruning-03-upscaled-w1440.jpg 1440w, ../assets/service-pruning-03-upscaled.jpg 2048w" sizes="(max-width: 900px) 100vw, 45vw" loading="lazy" decoding="async">
           </figure>
         </div>
       </section>
@@ -173,9 +264,10 @@
                 </span>
                 <p>Si eliminano rami secchi, danneggiati o in conflitto, mantenendo diametri di taglio contenuti e una distribuzione equilibrata della vegetazione.</p>
                 <span class="service-rank3__mobile-media" aria-hidden="true">
-                  <img src="../assets/photo-potatura-gestione-chioma-upscaled.jpg" alt="" loading="lazy" decoding="async" style="--rank3-position: center 52%;">
+                  <img src="../assets/photo-potatura-gestione-chioma-upscaled.jpg" alt="" width="2048" height="1306" srcset="../assets/photo-potatura-gestione-chioma-upscaled-w480.jpg 480w, ../assets/photo-potatura-gestione-chioma-upscaled-w960.jpg 960w, ../assets/photo-potatura-gestione-chioma-upscaled-w1440.jpg 1440w, ../assets/photo-potatura-gestione-chioma-upscaled.jpg 2048w" sizes="100vw" loading="lazy" decoding="async" style="--rank3-position: center 52%;">
                 </span>
               </button>
+              <a class="service-rank3__more" href="../approfondimenti/potatura-olivi.html">Approfondisci la potatura degli olivi</a>
               <button class="service-rank3__item" type="button" data-rank3-control aria-pressed="false">
                 <span class="service-rank3__item-top">
                   <h3>Potatura di siepi</h3>
@@ -183,9 +275,10 @@
                 </span>
                 <p>Tagli regolari mantengono forma e densità senza scoprire il legno vecchio, che in molte specie ricaccia con difficoltà.</p>
                 <span class="service-rank3__mobile-media" aria-hidden="true">
-                  <img src="../assets/photo-potatura-siepi-upscaled.jpg" alt="" loading="lazy" decoding="async" style="--rank3-position: center 50%;">
+                  <img src="../assets/photo-potatura-siepi-upscaled.jpg" alt="" width="2048" height="1361" srcset="../assets/photo-potatura-siepi-upscaled-w480.jpg 480w, ../assets/photo-potatura-siepi-upscaled-w960.jpg 960w, ../assets/photo-potatura-siepi-upscaled-w1440.jpg 1440w, ../assets/photo-potatura-siepi-upscaled.jpg 2048w" sizes="100vw" loading="lazy" decoding="async" style="--rank3-position: center 50%;">
                 </span>
               </button>
+              <a class="service-rank3__more" href="../approfondimenti/potatura-siepi.html">Scopri di più sulle siepi</a>
               <button class="service-rank3__item" type="button" data-rank3-control aria-pressed="false">
                 <span class="service-rank3__item-top">
                   <h3>Riciclo della legna urbana</h3>
@@ -193,14 +286,15 @@
                 </span>
                 <p>La legna recuperabile prodotta dall’abbattimento viene riutilizzata per creare oggetti di utilizzo come panchine, tavoli o sedie.</p>
                 <span class="service-rank3__mobile-media" aria-hidden="true">
-                  <img src="../assets/photo-potatura-riciclo-legno-upscaled.jpg" alt="" loading="lazy" decoding="async" style="--rank3-position: center;">
+                  <img src="../assets/photo-potatura-riciclo-legno-upscaled.jpg" alt="" width="2048" height="1613" srcset="../assets/photo-potatura-riciclo-legno-upscaled-w480.jpg 480w, ../assets/photo-potatura-riciclo-legno-upscaled-w960.jpg 960w, ../assets/photo-potatura-riciclo-legno-upscaled-w1440.jpg 1440w, ../assets/photo-potatura-riciclo-legno-upscaled.jpg 2048w" sizes="100vw" loading="lazy" decoding="async" style="--rank3-position: center;">
                 </span>
               </button>
+              <a class="service-rank3__more" href="../approfondimenti/riciclo-legna-urbana.html">Guarda che fine fa la legna</a>
             </div>
             <figure class="service-rank3__media service-reveal">
-              <img class="is-active" src="../assets/photo-potatura-gestione-chioma-upscaled.jpg" alt="Alberi e siepi dopo un intervento di gestione della chioma" loading="lazy" decoding="async" data-rank3-image style="--rank3-position: center 52%;">
-              <img class="" src="../assets/photo-potatura-siepi-upscaled.jpg" alt="Operatore durante la potatura di una siepe" loading="lazy" decoding="async" data-rank3-image style="--rank3-position: center 50%;">
-              <img class="" src="../assets/photo-potatura-riciclo-legno-upscaled.jpg" alt="Panchina realizzata recuperando il legno urbano" loading="lazy" decoding="async" data-rank3-image style="--rank3-position: center;">
+              <img class="is-active" src="../assets/photo-potatura-gestione-chioma-upscaled.jpg" alt="Alberi e siepi dopo un intervento di gestione della chioma" width="2048" height="1306" srcset="../assets/photo-potatura-gestione-chioma-upscaled-w480.jpg 480w, ../assets/photo-potatura-gestione-chioma-upscaled-w960.jpg 960w, ../assets/photo-potatura-gestione-chioma-upscaled-w1440.jpg 1440w, ../assets/photo-potatura-gestione-chioma-upscaled.jpg 2048w" sizes="(max-width: 900px) 100vw, 45vw" loading="lazy" decoding="async" data-rank3-image style="--rank3-position: center 52%;">
+              <img class="" src="../assets/photo-potatura-siepi-upscaled.jpg" alt="Operatore durante la potatura di una siepe" width="2048" height="1361" srcset="../assets/photo-potatura-siepi-upscaled-w480.jpg 480w, ../assets/photo-potatura-siepi-upscaled-w960.jpg 960w, ../assets/photo-potatura-siepi-upscaled-w1440.jpg 1440w, ../assets/photo-potatura-siepi-upscaled.jpg 2048w" sizes="(max-width: 900px) 100vw, 45vw" loading="lazy" decoding="async" data-rank3-image style="--rank3-position: center 50%;">
+              <img class="" src="../assets/photo-potatura-riciclo-legno-upscaled.jpg" alt="Panchina realizzata recuperando il legno urbano" width="2048" height="1613" srcset="../assets/photo-potatura-riciclo-legno-upscaled-w480.jpg 480w, ../assets/photo-potatura-riciclo-legno-upscaled-w960.jpg 960w, ../assets/photo-potatura-riciclo-legno-upscaled-w1440.jpg 1440w, ../assets/photo-potatura-riciclo-legno-upscaled.jpg 2048w" sizes="(max-width: 900px) 100vw, 45vw" loading="lazy" decoding="async" data-rank3-image style="--rank3-position: center;">
             </figure>
           </div>
         </div>
@@ -208,12 +302,12 @@
 
       <section class="service-visual service-visual--potatura" aria-labelledby="visual-title">
         <div class="visual-marquee" aria-hidden="true">
-          <img src="../assets/hero-potatura-desktop.jpg" alt="" loading="lazy" decoding="async" style="--visual-position: center 48%;">
-          <img src="../assets/service-pruning-02-upscaled.jpg" alt="" loading="lazy" decoding="async" style="--visual-position: center;">
-          <img src="../assets/service-pruning-03-upscaled.jpg" alt="" loading="lazy" decoding="async" style="--visual-position: 64% center;">
-          <img src="../assets/hero-potatura-desktop.jpg" alt="" loading="lazy" decoding="async" style="--visual-position: center 48%;">
-          <img src="../assets/service-pruning-02-upscaled.jpg" alt="" loading="lazy" decoding="async" style="--visual-position: center;">
-          <img src="../assets/service-pruning-03-upscaled.jpg" alt="" loading="lazy" decoding="async" style="--visual-position: 64% center;">
+          <img src="../assets/hero-potatura-desktop.jpg" alt="" width="2048" height="1152" srcset="../assets/hero-potatura-desktop-w480.jpg 480w, ../assets/hero-potatura-desktop-w960.jpg 960w, ../assets/hero-potatura-desktop-w1440.jpg 1440w, ../assets/hero-potatura-desktop.jpg 2048w" sizes="(max-width: 900px) 90vw, 920px" loading="lazy" decoding="async" style="--visual-position: center 48%;">
+          <img src="../assets/service-pruning-02-upscaled.jpg" alt="" width="2048" height="981" srcset="../assets/service-pruning-02-upscaled-w480.jpg 480w, ../assets/service-pruning-02-upscaled-w960.jpg 960w, ../assets/service-pruning-02-upscaled-w1440.jpg 1440w, ../assets/service-pruning-02-upscaled.jpg 2048w" sizes="(max-width: 900px) 90vw, 920px" loading="lazy" decoding="async" style="--visual-position: center;">
+          <img src="../assets/service-pruning-03-upscaled.jpg" alt="" width="2048" height="1230" srcset="../assets/service-pruning-03-upscaled-w480.jpg 480w, ../assets/service-pruning-03-upscaled-w960.jpg 960w, ../assets/service-pruning-03-upscaled-w1440.jpg 1440w, ../assets/service-pruning-03-upscaled.jpg 2048w" sizes="(max-width: 900px) 90vw, 920px" loading="lazy" decoding="async" style="--visual-position: 64% center;">
+          <img src="../assets/hero-potatura-desktop.jpg" alt="" width="2048" height="1152" srcset="../assets/hero-potatura-desktop-w480.jpg 480w, ../assets/hero-potatura-desktop-w960.jpg 960w, ../assets/hero-potatura-desktop-w1440.jpg 1440w, ../assets/hero-potatura-desktop.jpg 2048w" sizes="(max-width: 900px) 90vw, 920px" loading="lazy" decoding="async" style="--visual-position: center 48%;">
+          <img src="../assets/service-pruning-02-upscaled.jpg" alt="" width="2048" height="981" srcset="../assets/service-pruning-02-upscaled-w480.jpg 480w, ../assets/service-pruning-02-upscaled-w960.jpg 960w, ../assets/service-pruning-02-upscaled-w1440.jpg 1440w, ../assets/service-pruning-02-upscaled.jpg 2048w" sizes="(max-width: 900px) 90vw, 920px" loading="lazy" decoding="async" style="--visual-position: center;">
+          <img src="../assets/service-pruning-03-upscaled.jpg" alt="" width="2048" height="1230" srcset="../assets/service-pruning-03-upscaled-w480.jpg 480w, ../assets/service-pruning-03-upscaled-w960.jpg 960w, ../assets/service-pruning-03-upscaled-w1440.jpg 1440w, ../assets/service-pruning-03-upscaled.jpg 2048w" sizes="(max-width: 900px) 90vw, 920px" loading="lazy" decoding="async" style="--visual-position: 64% center;">
         </div>
         <svg class="service-visual__motion service-visual__motion--potatura" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true" focusable="false">
           <path class="service-visual__motion-trail" d="M22 382C94 336 118 190 230 178C315 169 330 278 424 244C513 212 526 96 636 112C748 128 744 292 848 276C914 266 947 190 982 142"/>

@@ -18,22 +18,95 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Arbogreen Service",
-        "url": "https://arbogreenservice.com/aree/montepulciano.html",
-        "telephone": "+39 338 736 3594",
-        "email": "arbogreenservice@gmail.com",
-        "image": "https://arbogreenservice.com/assets/arbogreen-logo.png",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Città della Pieve",
-          "addressRegion": "PG",
-          "addressCountry": "IT"
-        },
-        "areaServed": {
-          "@type": "AdministrativeArea",
-          "name": "Comune di Montepulciano"
-        }
+        "@graph": [
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://arbogreenservice.com/#business",
+            "name": "Arbogreen Service",
+            "url": "https://arbogreenservice.com/",
+            "telephone": "+39 338 736 3594",
+            "email": "arbogreenservice@gmail.com",
+            "logo": "https://arbogreenservice.com/assets/arbogreen-logo.png",
+            "image": [
+              "https://arbogreenservice.com/assets/hero-abbattimento-enhanced.jpg",
+              "https://arbogreenservice.com/assets/hero-potatura-desktop.jpg",
+              "https://arbogreenservice.com/assets/hero-tronchi-enhanced.jpg"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Città della Pieve",
+              "addressRegion": "PG",
+              "addressCountry": "IT"
+            }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://arbogreenservice.com/aree/montepulciano.html#service",
+            "name": "Arboricoltura e cura del verde a Montepulciano",
+            "description": "Potatura e abbattimento alberi, tree climbing, trattamenti fitosanitari, cura giardini e irrigazione a Montepulciano. Richiedi un sopralluogo.",
+            "url": "https://arbogreenservice.com/aree/montepulciano.html",
+            "image": "https://arbogreenservice.com/assets/2026-03-29%20(4).jpg",
+            "provider": {
+              "@id": "https://arbogreenservice.com/#business"
+            },
+            "areaServed": {
+              "@type": "AdministrativeArea",
+              "name": "Comune di Montepulciano"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Arbogreen lavora a Montepulciano?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sì. Dalla sede di Città della Pieve raggiungiamo Montepulciano senza difficoltà. La prima cosa che serve sapere non è quale intervento vuoi, ma dove si trova la pianta e come ci si arriva: da lì cambia tutto il resto, dal mezzo da usare al tempo necessario."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "E se al giardino non arriva nessun mezzo?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Si lavora lo stesso, in tree climbing. Quando vie strette, cancelli o dislivelli escludono gru e piattaforma, si sale in fune e si cala il materiale a pezzi controllati. È più lento di un intervento da terra, ma non chiede spazio di manovra e non costringe a passare sopra il resto del giardino."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quanto spazio serve intorno alla pianta?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Dipende da come si sale. Una piattaforma vuole un appoggio stabile e una via d’accesso larga; la gru ha bisogno di stabilizzatori e di spazio libero sopra. In fune basta molto meno, ma serve un’area a terra dove calare e raccogliere il materiale in sicurezza. Nel sopralluogo si misura proprio questo."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://arbogreenservice.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Provincia di Siena",
+                "item": "https://arbogreenservice.com/aree/provincia-siena.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Montepulciano",
+                "item": "https://arbogreenservice.com/aree/montepulciano.html"
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>
@@ -91,7 +164,7 @@
     </header>
 
     <main class="siena-main siena-main--h2-standard">
-      <section class="siena-territory siena-territory--photo" id="zone-servite" aria-labelledby="siena-title" data-territory-selector data-province="Siena" data-current="montepulciano" style="--hero-photo: url('../assets/photo-abbattimento-hero-upscaled.jpg');">
+      <section class="siena-territory siena-territory--photo" id="zone-servite" aria-labelledby="siena-title" data-territory-selector data-province="Siena" data-current="montepulciano" style="--hero-photo: url('../assets/2026-03-29 (4).jpg'); --hero-photo-mobile: url('../assets/2026-03-29 (4)-w960.jpg');">
         <div class="siena-section-inner">
           <header class="siena-territory__copy service-reveal">
             <p class="siena-territory__eyebrow">Agrotecnico certificato</p>
@@ -227,7 +300,7 @@
                 </div>
                 <div class="svc-rows__body" id="svc-rows-body-1">
                   <div class="svc-rows__inner">
-                    <img class="svc-rows__photo" src="../assets/service-pruning-02-upscaled.jpg" alt="Intervento di potatura sulla chioma di un albero" loading="lazy" decoding="async">
+                    <img class="svc-rows__photo" src="../assets/service-pruning-02-upscaled.jpg" alt="Intervento di potatura sulla chioma di un albero" width="2048" height="981" srcset="../assets/service-pruning-02-upscaled-w480.jpg 480w, ../assets/service-pruning-02-upscaled-w960.jpg 960w, ../assets/service-pruning-02-upscaled-w1440.jpg 1440w, ../assets/service-pruning-02-upscaled.jpg 2048w" sizes="180px" loading="lazy" decoding="async">
                     <div class="svc-rows__text">
                       <p>Tagli di ritorno sulla branca giusta, mai capitozzature: la chioma resta stabile e la ferita si richiude.</p>
                       <a class="svc-rows__cta" href="../servizi/potatura-alberi.html">Approfondisci il servizio <span aria-hidden="true">→</span></a>
@@ -245,7 +318,7 @@
                 </div>
                 <div class="svc-rows__body" id="svc-rows-body-2">
                   <div class="svc-rows__inner">
-                    <img class="svc-rows__photo" src="../assets/hero-abbattimento-enhanced.jpg" alt="Abbattimento controllato di un albero calato a sezioni" loading="lazy" decoding="async">
+                    <img class="svc-rows__photo" src="../assets/hero-abbattimento-enhanced.jpg" alt="Abbattimento controllato di un albero calato a sezioni" width="2048" height="1152" srcset="../assets/hero-abbattimento-enhanced-w480.jpg 480w, ../assets/hero-abbattimento-enhanced-w960.jpg 960w, ../assets/hero-abbattimento-enhanced-w1440.jpg 1440w, ../assets/hero-abbattimento-enhanced.jpg 2048w" sizes="180px" loading="lazy" decoding="async">
                     <div class="svc-rows__text">
                       <p>Quando l’albero non è più sicuro lo caliamo a sezioni, con le corde, anche a due metri da una casa.</p>
                       <a class="svc-rows__cta" href="../servizi/abbattimento-alberi.html">Approfondisci il servizio <span aria-hidden="true">→</span></a>
@@ -263,7 +336,7 @@
                 </div>
                 <div class="svc-rows__body" id="svc-rows-body-3">
                   <div class="svc-rows__inner">
-                    <img class="svc-rows__photo" src="../assets/service-tree-climbing-01-upscaled.jpg" alt="Operatori in quota durante un intervento di tree climbing" loading="lazy" decoding="async">
+                    <img class="svc-rows__photo" src="../assets/service-tree-climbing-01-upscaled.jpg" alt="Operatori in quota durante un intervento di tree climbing" width="2048" height="1024" srcset="../assets/service-tree-climbing-01-upscaled-w480.jpg 480w, ../assets/service-tree-climbing-01-upscaled-w960.jpg 960w, ../assets/service-tree-climbing-01-upscaled-w1440.jpg 1440w, ../assets/service-tree-climbing-01-upscaled.jpg 2048w" sizes="180px" loading="lazy" decoding="async">
                     <div class="svc-rows__text">
                       <p>Saliamo in chioma su corda dove gru e piattaforma non entrano. Prato e aiuole restano intatti.</p>
                       <a class="svc-rows__cta" href="../servizi/tree-climbing.html">Approfondisci il servizio <span aria-hidden="true">→</span></a>
@@ -281,7 +354,7 @@
                 </div>
                 <div class="svc-rows__body" id="svc-rows-body-4">
                   <div class="svc-rows__inner">
-                    <img class="svc-rows__photo" src="../assets/service-fitosanitario-01-upscaled.jpg" alt="Operatore durante un trattamento fitosanitario nel verde" loading="lazy" decoding="async">
+                    <img class="svc-rows__photo" src="../assets/service-fitosanitario-01-upscaled.jpg" alt="Operatore durante un trattamento fitosanitario nel verde" width="2048" height="915" srcset="../assets/service-fitosanitario-01-upscaled-w480.jpg 480w, ../assets/service-fitosanitario-01-upscaled-w960.jpg 960w, ../assets/service-fitosanitario-01-upscaled-w1440.jpg 1440w, ../assets/service-fitosanitario-01-upscaled.jpg 2048w" sizes="180px" loading="lazy" decoding="async">
                     <div class="svc-rows__text">
                       <p>Prima la diagnosi, poi il trattamento: processionaria, punteruolo o funghi si combattono in modo diverso.</p>
                       <a class="svc-rows__cta" href="../servizi/trattamento-fitosanitario.html">Approfondisci il servizio <span aria-hidden="true">→</span></a>
@@ -299,7 +372,7 @@
                 </div>
                 <div class="svc-rows__body" id="svc-rows-body-5">
                   <div class="svc-rows__inner">
-                    <img class="svc-rows__photo" src="../assets/service-gardens-01-upscaled.jpg" alt="Giardino curato con prato, alberi e arbusti" loading="lazy" decoding="async">
+                    <img class="svc-rows__photo" src="../assets/service-gardens-01-upscaled.jpg" alt="Giardino curato con prato, alberi e arbusti" width="2048" height="1413" srcset="../assets/service-gardens-01-upscaled-w480.jpg 480w, ../assets/service-gardens-01-upscaled-w960.jpg 960w, ../assets/service-gardens-01-upscaled-w1440.jpg 1440w, ../assets/service-gardens-01-upscaled.jpg 2048w" sizes="180px" loading="lazy" decoding="async">
                     <div class="svc-rows__text">
                       <p>Progettiamo il verde sul terreno che c’è davvero, e poi lo seguiamo stagione dopo stagione.</p>
                       <a class="svc-rows__cta" href="../servizi/creazione-cura-giardini.html">Approfondisci il servizio <span aria-hidden="true">→</span></a>
@@ -317,7 +390,7 @@
                 </div>
                 <div class="svc-rows__body" id="svc-rows-body-6">
                   <div class="svc-rows__inner">
-                    <img class="svc-rows__photo" src="../assets/service-irrigazione-installazione.jpg" alt="Installazione delle tubazioni di un impianto di irrigazione" loading="lazy" decoding="async">
+                    <img class="svc-rows__photo" src="../assets/service-irrigazione-installazione.jpg" alt="Installazione delle tubazioni di un impianto di irrigazione" width="2048" height="803" srcset="../assets/service-irrigazione-installazione-w480.jpg 480w, ../assets/service-irrigazione-installazione-w960.jpg 960w, ../assets/service-irrigazione-installazione-w1440.jpg 1440w, ../assets/service-irrigazione-installazione.jpg 2048w" sizes="180px" loading="lazy" decoding="async">
                     <div class="svc-rows__text">
                       <p>Misuriamo portata e pressione prima di scavare: è lì che si decide se l’impianto bagnerà tutto.</p>
                       <a class="svc-rows__cta" href="../servizi/impianti-irrigazione.html">Approfondisci il servizio <span aria-hidden="true">→</span></a>
@@ -338,16 +411,16 @@
               </div>
               <div class="faq-bands service-reveal">
                 <div class="faq-bands__row">
-                  <h3 class="faq-bands__q">Arbogreen opera nella provincia di Siena?</h3>
-                  <p class="faq-bands__a">Sì. Nella provincia di Siena puoi richiedere ad Arbogreen interventi su alberi, giardini, salute delle piante e impianti di irrigazione. Ogni richiesta viene valutata in base alle condizioni e allo spazio disponibile.</p>
+                  <h3 class="faq-bands__q">Arbogreen lavora a Montepulciano?</h3>
+                  <p class="faq-bands__a">Sì. Dalla sede di Città della Pieve raggiungiamo Montepulciano senza difficoltà. La prima cosa che serve sapere non è quale intervento vuoi, ma dove si trova la pianta e come ci si arriva: da lì cambia tutto il resto, dal mezzo da usare al tempo necessario.</p>
                 </div>
                 <div class="faq-bands__row">
-                  <h3 class="faq-bands__q">Quando è necessario un sopralluogo?</h3>
-                  <p class="faq-bands__a">Quando fotografie e informazioni iniziali non bastano, il sopralluogo permette di verificare alberi, accessi, area di lavoro e possibili criticità. Da qui si definisce il passaggio successivo in sicurezza.</p>
+                  <h3 class="faq-bands__q">E se al giardino non arriva nessun mezzo?</h3>
+                  <p class="faq-bands__a">Si lavora lo stesso, in tree climbing. Quando vie strette, cancelli o dislivelli escludono gru e piattaforma, si sale in fune e si cala il materiale a pezzi controllati. È più lento di un intervento da terra, ma non chiede spazio di manovra e non costringe a passare sopra il resto del giardino.</p>
                 </div>
                 <div class="faq-bands__row">
-                  <h3 class="faq-bands__q">Quali interventi puoi richiedere a Montepulciano?</h3>
-                  <p class="faq-bands__a">Puoi richiedere potatura alberi, abbattimento alberi, tree climbing, trattamento fitosanitario, creazione e cura giardini e impianti di irrigazione. La valutazione iniziale definisce l’intervento più adatto.</p>
+                  <h3 class="faq-bands__q">Quanto spazio serve intorno alla pianta?</h3>
+                  <p class="faq-bands__a">Dipende da come si sale. Una piattaforma vuole un appoggio stabile e una via d’accesso larga; la gru ha bisogno di stabilizzatori e di spazio libero sopra. In fune basta molto meno, ma serve un’area a terra dove calare e raccogliere il materiale in sicurezza. Nel sopralluogo si misura proprio questo.</p>
                 </div>
               </div>
             </div>

@@ -32,6 +32,12 @@
   background: #0a1b15 var(--hero-photo) center 52% / cover no-repeat;
 }
 
+@media (max-width: 900px) {
+  .siena-territory--photo {
+    background-image: var(--hero-photo-mobile, var(--hero-photo));
+  }
+}
+
 .siena-territory--photo:not(.siena-territory--photo-perugia)::before {
   position: absolute;
   z-index: 0;
@@ -2438,7 +2444,15 @@
   margin-top: clamp(26px, 3vw, 40px);
 }
 
+/* Le linguette in riga 1, i tre pannelli tutti nella stessa cella di riga 2:
+   è la griglia a tenere costante l'ingombro del riquadro — vedi sotto. */
+.faq-tabs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .faq-tabs__list {
+  grid-row: 1;
   display: flex;
   align-items: stretch;
   gap: 6px;
@@ -2480,14 +2494,28 @@
   outline-offset: -4px;
 }
 
-/* Il riquadro è dimensionato sulla risposta lunga: cambiando
-   linguetta l'ingombro non cambia. */
+/* Il riquadro è dimensionato sulla risposta lunga: cambiando linguetta
+   l'ingombro non cambia. A reggere questo intento non è più un'altezza
+   minima in pixel — che tiene finché le risposte ci stanno dentro, e cede
+   quando cambiano o quando cambia la larghezza — ma la griglia: i tre
+   pannelli occupano la stessa cella, quindi il riquadro misura sempre la
+   risposta più lunga, a qualsiasi viewport. */
 .faq-tabs__panel {
-  min-height: 190px;
+  grid-row: 2;
+  grid-column: 1;
   padding: clamp(20px, 2.4vw, 32px);
   background: var(--white);
   border: 1px solid rgba(21, 59, 43, 0.16);
   border-radius: 0 12px 12px 12px;
+}
+
+/* Il pannello non attivo resta nel flusso e diventa solo invisibile: è così
+   che continua a contare per l'altezza della cella, pur restando fuori
+   dall'albero di accessibilità e non raggiungibile da tastiera. Il pattern
+   tab in js/area-page.js non cambia: mette e toglie `hidden` come prima. */
+.faq-tabs__panel[hidden] {
+  display: block;
+  visibility: hidden;
 }
 
 .faq-tabs__panel p {
@@ -2515,7 +2543,6 @@
   }
 
   .faq-tabs__panel {
-    min-height: 230px;
     margin-top: 6px;
     border-radius: 12px;
   }

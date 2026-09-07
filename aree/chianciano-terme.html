@@ -18,22 +18,95 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Arbogreen Service",
-        "url": "https://arbogreenservice.com/aree/chianciano-terme.html",
-        "telephone": "+39 338 736 3594",
-        "email": "arbogreenservice@gmail.com",
-        "image": "https://arbogreenservice.com/assets/arbogreen-logo.png",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Città della Pieve",
-          "addressRegion": "PG",
-          "addressCountry": "IT"
-        },
-        "areaServed": {
-          "@type": "AdministrativeArea",
-          "name": "Comune di Chianciano Terme"
-        }
+        "@graph": [
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://arbogreenservice.com/#business",
+            "name": "Arbogreen Service",
+            "url": "https://arbogreenservice.com/",
+            "telephone": "+39 338 736 3594",
+            "email": "arbogreenservice@gmail.com",
+            "logo": "https://arbogreenservice.com/assets/arbogreen-logo.png",
+            "image": [
+              "https://arbogreenservice.com/assets/hero-abbattimento-enhanced.jpg",
+              "https://arbogreenservice.com/assets/hero-potatura-desktop.jpg",
+              "https://arbogreenservice.com/assets/hero-tronchi-enhanced.jpg"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Città della Pieve",
+              "addressRegion": "PG",
+              "addressCountry": "IT"
+            }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://arbogreenservice.com/aree/chianciano-terme.html#service",
+            "name": "Arboricoltura e cura del verde a Chianciano Terme",
+            "description": "Potatura e abbattimento alberi, tree climbing, trattamenti fitosanitari, cura giardini e irrigazione a Chianciano Terme. Richiedi un sopralluogo.",
+            "url": "https://arbogreenservice.com/aree/chianciano-terme.html",
+            "image": "https://arbogreenservice.com/assets/service-gardens-04-upscaled.jpg",
+            "provider": {
+              "@id": "https://arbogreenservice.com/#business"
+            },
+            "areaServed": {
+              "@type": "AdministrativeArea",
+              "name": "Comune di Chianciano Terme"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Quanto dura di solito un intervento a Chianciano Terme?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Dipende più dall’accesso che dalla pianta. Lo stesso abbattimento può chiudersi in mezza giornata dove il mezzo arriva sotto la chioma e richiederne due dove il materiale va calato a pezzi e portato fuori a mano. È una delle cose che il sopralluogo serve a stabilire, insieme al prezzo: sapere quanti giorni servono conta quanto sapere quanto costa."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Si riesce a lavorare senza rovinare prato e aiuole sotto?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sì, e si decide prima. Dove il terreno è delicato si protegge il passaggio, si calano i pezzi invece di lasciarli cadere e si concentra il transito su una via sola. Un mezzo pesante su un prato bagnato lascia segni che restano una stagione: se le condizioni non ci sono, conviene spostare la data o cambiare tecnica."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quanto rumore e quanto disagio comporta?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Motoseghe e cippatrice fanno rumore, e non c’è modo di evitarlo: quello che si può fare è concentrarlo. Si programmano le lavorazioni rumorose in blocco invece di spalmarle sulla giornata, si tiene libero il passaggio dove serve e si avvisa in anticipo se occorre occupare per qualche ora un accesso condiviso. Chi ha vicini a ridosso lo dica prima: cambia l’organizzazione."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://arbogreenservice.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Provincia di Siena",
+                "item": "https://arbogreenservice.com/aree/provincia-siena.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Chianciano Terme",
+                "item": "https://arbogreenservice.com/aree/chianciano-terme.html"
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>
@@ -91,7 +164,7 @@
     </header>
 
     <main class="siena-main siena-main--h2-standard">
-      <section class="siena-territory siena-territory--photo" id="zone-servite" aria-labelledby="siena-title" data-territory-selector data-province="Siena" data-current="chianciano-terme" style="--hero-photo: url('../assets/service-gardens-04-upscaled.jpg');">
+      <section class="siena-territory siena-territory--photo" id="zone-servite" aria-labelledby="siena-title" data-territory-selector data-province="Siena" data-current="chianciano-terme" style="--hero-photo: url('../assets/service-gardens-04-upscaled.jpg'); --hero-photo-mobile: url('../assets/service-gardens-04-upscaled-w960.jpg');">
         <div class="siena-section-inner">
           <header class="siena-territory__copy service-reveal">
             <p class="siena-territory__eyebrow">Agrotecnico certificato</p>
@@ -222,7 +295,7 @@
               <article class="service-panel service-panel--card">
                 <a class="service-panel__link" href="../servizi/potatura-alberi.html" aria-label="Approfondisci il servizio Potatura alberi">
                   <div class="service-panel__slides">
-                    <img class="service-panel__slide is-active" src="../assets/service-pruning-02-upscaled.jpg" alt="Intervento di potatura sulla chioma di un albero" loading="lazy" decoding="async">
+                    <img class="service-panel__slide is-active" src="../assets/service-pruning-02-upscaled.jpg" alt="Intervento di potatura sulla chioma di un albero" width="2048" height="981" srcset="../assets/service-pruning-02-upscaled-w480.jpg 480w, ../assets/service-pruning-02-upscaled-w960.jpg 960w, ../assets/service-pruning-02-upscaled-w1440.jpg 1440w, ../assets/service-pruning-02-upscaled.jpg 2048w" sizes="(max-width: 900px) 80vw, 620px" loading="lazy" decoding="async">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -240,7 +313,7 @@
               <article class="service-panel service-panel--card">
                 <a class="service-panel__link" href="../servizi/abbattimento-alberi.html" aria-label="Approfondisci il servizio Abbattimento alberi">
                   <div class="service-panel__slides">
-                    <img class="service-panel__slide is-active" src="../assets/hero-abbattimento-enhanced.jpg" alt="Abbattimento controllato di un albero calato a sezioni" loading="lazy" decoding="async">
+                    <img class="service-panel__slide is-active" src="../assets/hero-abbattimento-enhanced.jpg" alt="Abbattimento controllato di un albero calato a sezioni" width="2048" height="1152" srcset="../assets/hero-abbattimento-enhanced-w480.jpg 480w, ../assets/hero-abbattimento-enhanced-w960.jpg 960w, ../assets/hero-abbattimento-enhanced-w1440.jpg 1440w, ../assets/hero-abbattimento-enhanced.jpg 2048w" sizes="(max-width: 900px) 80vw, 620px" loading="lazy" decoding="async">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -258,7 +331,7 @@
               <article class="service-panel service-panel--card">
                 <a class="service-panel__link" href="../servizi/tree-climbing.html" aria-label="Approfondisci il servizio Tree climbing">
                   <div class="service-panel__slides">
-                    <img class="service-panel__slide is-active" src="../assets/service-tree-climbing-01-upscaled.jpg" alt="Operatori in quota durante un intervento di tree climbing" loading="lazy" decoding="async">
+                    <img class="service-panel__slide is-active" src="../assets/service-tree-climbing-01-upscaled.jpg" alt="Operatori in quota durante un intervento di tree climbing" width="2048" height="1024" srcset="../assets/service-tree-climbing-01-upscaled-w480.jpg 480w, ../assets/service-tree-climbing-01-upscaled-w960.jpg 960w, ../assets/service-tree-climbing-01-upscaled-w1440.jpg 1440w, ../assets/service-tree-climbing-01-upscaled.jpg 2048w" sizes="(max-width: 900px) 80vw, 620px" loading="lazy" decoding="async">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -276,7 +349,7 @@
               <article class="service-panel service-panel--card">
                 <a class="service-panel__link" href="../servizi/trattamento-fitosanitario.html" aria-label="Approfondisci il servizio Trattamento fitosanitario">
                   <div class="service-panel__slides">
-                    <img class="service-panel__slide is-active" src="../assets/service-fitosanitario-01-upscaled.jpg" alt="Operatore durante un trattamento fitosanitario nel verde" loading="lazy" decoding="async">
+                    <img class="service-panel__slide is-active" src="../assets/service-fitosanitario-01-upscaled.jpg" alt="Operatore durante un trattamento fitosanitario nel verde" width="2048" height="915" srcset="../assets/service-fitosanitario-01-upscaled-w480.jpg 480w, ../assets/service-fitosanitario-01-upscaled-w960.jpg 960w, ../assets/service-fitosanitario-01-upscaled-w1440.jpg 1440w, ../assets/service-fitosanitario-01-upscaled.jpg 2048w" sizes="(max-width: 900px) 80vw, 620px" loading="lazy" decoding="async">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -294,7 +367,7 @@
               <article class="service-panel service-panel--card">
                 <a class="service-panel__link" href="../servizi/creazione-cura-giardini.html" aria-label="Approfondisci il servizio Creazione e cura giardini">
                   <div class="service-panel__slides">
-                    <img class="service-panel__slide is-active" src="../assets/service-gardens-01-upscaled.jpg" alt="Giardino curato con prato, alberi e arbusti" loading="lazy" decoding="async">
+                    <img class="service-panel__slide is-active" src="../assets/service-gardens-01-upscaled.jpg" alt="Giardino curato con prato, alberi e arbusti" width="2048" height="1413" srcset="../assets/service-gardens-01-upscaled-w480.jpg 480w, ../assets/service-gardens-01-upscaled-w960.jpg 960w, ../assets/service-gardens-01-upscaled-w1440.jpg 1440w, ../assets/service-gardens-01-upscaled.jpg 2048w" sizes="(max-width: 900px) 80vw, 620px" loading="lazy" decoding="async">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -312,7 +385,7 @@
               <article class="service-panel service-panel--card">
                 <a class="service-panel__link" href="../servizi/impianti-irrigazione.html" aria-label="Approfondisci il servizio Impianti di irrigazione">
                   <div class="service-panel__slides">
-                    <img class="service-panel__slide is-active" src="../assets/service-irrigazione-installazione.jpg" alt="Installazione delle tubazioni di un impianto di irrigazione" loading="lazy" decoding="async">
+                    <img class="service-panel__slide is-active" src="../assets/service-irrigazione-installazione.jpg" alt="Installazione delle tubazioni di un impianto di irrigazione" width="2048" height="803" srcset="../assets/service-irrigazione-installazione-w480.jpg 480w, ../assets/service-irrigazione-installazione-w960.jpg 960w, ../assets/service-irrigazione-installazione-w1440.jpg 1440w, ../assets/service-irrigazione-installazione.jpg 2048w" sizes="(max-width: 900px) 80vw, 620px" loading="lazy" decoding="async">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -331,7 +404,7 @@
               <article class="service-panel service-panel--card" aria-hidden="true">
                 <a class="service-panel__link" href="../servizi/potatura-alberi.html" tabindex="-1" aria-label="Approfondisci il servizio Potatura alberi">
                   <div class="service-panel__slides">
-                    <img class="service-panel__slide is-active" src="../assets/service-pruning-02-upscaled.jpg" alt="Intervento di potatura sulla chioma di un albero" loading="lazy" decoding="async">
+                    <img class="service-panel__slide is-active" src="../assets/service-pruning-02-upscaled.jpg" alt="Intervento di potatura sulla chioma di un albero" width="2048" height="981" srcset="../assets/service-pruning-02-upscaled-w480.jpg 480w, ../assets/service-pruning-02-upscaled-w960.jpg 960w, ../assets/service-pruning-02-upscaled-w1440.jpg 1440w, ../assets/service-pruning-02-upscaled.jpg 2048w" sizes="(max-width: 900px) 80vw, 620px" loading="lazy" decoding="async">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -349,7 +422,7 @@
               <article class="service-panel service-panel--card" aria-hidden="true">
                 <a class="service-panel__link" href="../servizi/abbattimento-alberi.html" tabindex="-1" aria-label="Approfondisci il servizio Abbattimento alberi">
                   <div class="service-panel__slides">
-                    <img class="service-panel__slide is-active" src="../assets/hero-abbattimento-enhanced.jpg" alt="Abbattimento controllato di un albero calato a sezioni" loading="lazy" decoding="async">
+                    <img class="service-panel__slide is-active" src="../assets/hero-abbattimento-enhanced.jpg" alt="Abbattimento controllato di un albero calato a sezioni" width="2048" height="1152" srcset="../assets/hero-abbattimento-enhanced-w480.jpg 480w, ../assets/hero-abbattimento-enhanced-w960.jpg 960w, ../assets/hero-abbattimento-enhanced-w1440.jpg 1440w, ../assets/hero-abbattimento-enhanced.jpg 2048w" sizes="(max-width: 900px) 80vw, 620px" loading="lazy" decoding="async">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -367,7 +440,7 @@
               <article class="service-panel service-panel--card" aria-hidden="true">
                 <a class="service-panel__link" href="../servizi/tree-climbing.html" tabindex="-1" aria-label="Approfondisci il servizio Tree climbing">
                   <div class="service-panel__slides">
-                    <img class="service-panel__slide is-active" src="../assets/service-tree-climbing-01-upscaled.jpg" alt="Operatori in quota durante un intervento di tree climbing" loading="lazy" decoding="async">
+                    <img class="service-panel__slide is-active" src="../assets/service-tree-climbing-01-upscaled.jpg" alt="Operatori in quota durante un intervento di tree climbing" width="2048" height="1024" srcset="../assets/service-tree-climbing-01-upscaled-w480.jpg 480w, ../assets/service-tree-climbing-01-upscaled-w960.jpg 960w, ../assets/service-tree-climbing-01-upscaled-w1440.jpg 1440w, ../assets/service-tree-climbing-01-upscaled.jpg 2048w" sizes="(max-width: 900px) 80vw, 620px" loading="lazy" decoding="async">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -385,7 +458,7 @@
               <article class="service-panel service-panel--card" aria-hidden="true">
                 <a class="service-panel__link" href="../servizi/trattamento-fitosanitario.html" tabindex="-1" aria-label="Approfondisci il servizio Trattamento fitosanitario">
                   <div class="service-panel__slides">
-                    <img class="service-panel__slide is-active" src="../assets/service-fitosanitario-01-upscaled.jpg" alt="Operatore durante un trattamento fitosanitario nel verde" loading="lazy" decoding="async">
+                    <img class="service-panel__slide is-active" src="../assets/service-fitosanitario-01-upscaled.jpg" alt="Operatore durante un trattamento fitosanitario nel verde" width="2048" height="915" srcset="../assets/service-fitosanitario-01-upscaled-w480.jpg 480w, ../assets/service-fitosanitario-01-upscaled-w960.jpg 960w, ../assets/service-fitosanitario-01-upscaled-w1440.jpg 1440w, ../assets/service-fitosanitario-01-upscaled.jpg 2048w" sizes="(max-width: 900px) 80vw, 620px" loading="lazy" decoding="async">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -403,7 +476,7 @@
               <article class="service-panel service-panel--card" aria-hidden="true">
                 <a class="service-panel__link" href="../servizi/creazione-cura-giardini.html" tabindex="-1" aria-label="Approfondisci il servizio Creazione e cura giardini">
                   <div class="service-panel__slides">
-                    <img class="service-panel__slide is-active" src="../assets/service-gardens-01-upscaled.jpg" alt="Giardino curato con prato, alberi e arbusti" loading="lazy" decoding="async">
+                    <img class="service-panel__slide is-active" src="../assets/service-gardens-01-upscaled.jpg" alt="Giardino curato con prato, alberi e arbusti" width="2048" height="1413" srcset="../assets/service-gardens-01-upscaled-w480.jpg 480w, ../assets/service-gardens-01-upscaled-w960.jpg 960w, ../assets/service-gardens-01-upscaled-w1440.jpg 1440w, ../assets/service-gardens-01-upscaled.jpg 2048w" sizes="(max-width: 900px) 80vw, 620px" loading="lazy" decoding="async">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -421,7 +494,7 @@
               <article class="service-panel service-panel--card" aria-hidden="true">
                 <a class="service-panel__link" href="../servizi/impianti-irrigazione.html" tabindex="-1" aria-label="Approfondisci il servizio Impianti di irrigazione">
                   <div class="service-panel__slides">
-                    <img class="service-panel__slide is-active" src="../assets/service-irrigazione-installazione.jpg" alt="Installazione delle tubazioni di un impianto di irrigazione" loading="lazy" decoding="async">
+                    <img class="service-panel__slide is-active" src="../assets/service-irrigazione-installazione.jpg" alt="Installazione delle tubazioni di un impianto di irrigazione" width="2048" height="803" srcset="../assets/service-irrigazione-installazione-w480.jpg 480w, ../assets/service-irrigazione-installazione-w960.jpg 960w, ../assets/service-irrigazione-installazione-w1440.jpg 1440w, ../assets/service-irrigazione-installazione.jpg 2048w" sizes="(max-width: 900px) 80vw, 620px" loading="lazy" decoding="async">
                   </div>
                   <div class="service-panel__overlay">
                     <div class="service-panel__heading">
@@ -449,18 +522,18 @@
               </div>
               <div class="faq-tabs service-reveal" data-faq-tabs>
                 <div class="faq-tabs__list" role="tablist" aria-label="Domande frequenti">
-                  <button class="faq-tabs__tab is-active" id="faq-tab-1" type="button" role="tab" aria-selected="true" aria-controls="faq-panel-1">Arbogreen opera nella provincia di Siena?</button>
-                  <button class="faq-tabs__tab" id="faq-tab-2" type="button" role="tab" aria-selected="false" aria-controls="faq-panel-2" tabindex="-1">Quando è necessario un sopralluogo?</button>
-                  <button class="faq-tabs__tab" id="faq-tab-3" type="button" role="tab" aria-selected="false" aria-controls="faq-panel-3" tabindex="-1">Quali interventi puoi richiedere a Chianciano Terme?</button>
+                  <button class="faq-tabs__tab is-active" id="faq-tab-1" type="button" role="tab" aria-selected="true" aria-controls="faq-panel-1">Quanto dura di solito un intervento a Chianciano Terme?</button>
+                  <button class="faq-tabs__tab" id="faq-tab-2" type="button" role="tab" aria-selected="false" aria-controls="faq-panel-2" tabindex="-1">Si riesce a lavorare senza rovinare prato e aiuole sotto?</button>
+                  <button class="faq-tabs__tab" id="faq-tab-3" type="button" role="tab" aria-selected="false" aria-controls="faq-panel-3" tabindex="-1">Quanto rumore e quanto disagio comporta?</button>
                 </div>
                 <div class="faq-tabs__panel" id="faq-panel-1" role="tabpanel" aria-labelledby="faq-tab-1">
-                  <p>Sì. Nella provincia di Siena puoi richiedere ad Arbogreen interventi su alberi, giardini, salute delle piante e impianti di irrigazione. Ogni richiesta viene valutata in base alle condizioni e allo spazio disponibile.</p>
+                  <p>Dipende più dall’accesso che dalla pianta. Lo stesso abbattimento può chiudersi in mezza giornata dove il mezzo arriva sotto la chioma e richiederne due dove il materiale va calato a pezzi e portato fuori a mano. È una delle cose che il sopralluogo serve a stabilire, insieme al prezzo: sapere quanti giorni servono conta quanto sapere quanto costa.</p>
                 </div>
                 <div class="faq-tabs__panel" id="faq-panel-2" role="tabpanel" aria-labelledby="faq-tab-2" hidden>
-                  <p>Quando fotografie e informazioni iniziali non bastano, il sopralluogo permette di verificare alberi, accessi, area di lavoro e possibili criticità. Da qui si definisce il passaggio successivo in sicurezza.</p>
+                  <p>Sì, e si decide prima. Dove il terreno è delicato si protegge il passaggio, si calano i pezzi invece di lasciarli cadere e si concentra il transito su una via sola. Un mezzo pesante su un prato bagnato lascia segni che restano una stagione: se le condizioni non ci sono, conviene spostare la data o cambiare tecnica.</p>
                 </div>
                 <div class="faq-tabs__panel" id="faq-panel-3" role="tabpanel" aria-labelledby="faq-tab-3" hidden>
-                  <p>Puoi richiedere potatura alberi, abbattimento alberi, tree climbing, trattamento fitosanitario, creazione e cura giardini e impianti di irrigazione. La valutazione iniziale definisce l’intervento più adatto.</p>
+                  <p>Motoseghe e cippatrice fanno rumore, e non c’è modo di evitarlo: quello che si può fare è concentrarlo. Si programmano le lavorazioni rumorose in blocco invece di spalmarle sulla giornata, si tiene libero il passaggio dove serve e si avvisa in anticipo se occorre occupare per qualche ora un accesso condiviso. Chi ha vicini a ridosso lo dica prima: cambia l’organizzazione.</p>
                 </div>
               </div>
             </div>
