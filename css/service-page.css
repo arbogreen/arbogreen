@@ -53,7 +53,6 @@
 }
 
 .service-hero__media,
-.service-hero__media img,
 .service-hero__shade {
   position: absolute;
   inset: 0;
@@ -63,9 +62,6 @@
 
 .service-hero__media {
   z-index: -2;
-}
-
-.service-hero__media img {
   object-fit: cover;
   object-position: var(--hero-position, center);
 }
@@ -275,7 +271,7 @@
 }
 
 .qualification-strip--fitosanitario {
-  --qualification-image: url("../assets/reviews-logs.jpg");
+  --qualification-image: url("../assets/provincia-perugia/contatti-perugia-06.jpeg");
   --qualification-position: center;
 }
 
@@ -287,6 +283,32 @@
 .qualification-strip--irrigazione {
   --qualification-image: url("../assets/qualification-irrigazione.jpg");
   --qualification-position: center 62%;
+}
+
+@media (max-width: 900px) {
+  .qualification-strip--abbattimento {
+    --qualification-image: url("../assets/qualification-abbattimento-w960.jpg");
+  }
+
+  .qualification-strip--potatura {
+    --qualification-image: url("../assets/photo-potatura-qualifiche-upscaled-w960.jpg");
+  }
+
+  .qualification-strip--tree-climbing {
+    --qualification-image: url("../assets/photo-tree-climbing-qualifiche-upscaled-w960.jpg");
+  }
+
+  .qualification-strip--fitosanitario {
+    --qualification-image: url("../assets/provincia-perugia/contatti-perugia-06-w960.jpeg");
+  }
+
+  .qualification-strip--giardini {
+    --qualification-image: url("../assets/qualification-giardini-w960.jpg");
+  }
+
+  .qualification-strip--irrigazione {
+    --qualification-image: url("../assets/qualification-irrigazione-w960.jpg");
+  }
 }
 
 .qualification-strip__heading {
@@ -756,6 +778,35 @@
 
 .service-rank3__item:focus-visible {
   outline-offset: 5px;
+}
+
+.service-rank3__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: -6px 0 clamp(24px, 3vw, 36px);
+  color: rgba(21, 59, 43, 0.92);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-underline-offset: 0.2em;
+  transition: color 240ms ease;
+}
+
+.service-rank3__item:first-child + .service-rank3__more {
+  color: rgba(255, 255, 255, 0.86);
+  text-shadow: 0 2px 12px rgba(6, 16, 13, 0.42);
+}
+
+.service-rank3__more::after {
+  color: var(--accent-bright);
+  font-size: 1.15rem;
+  content: "→";
+  transition: transform 260ms ease;
+}
+
+.service-rank3__more:hover::after,
+.service-rank3__more:focus-visible::after {
+  transform: translateX(7px);
 }
 
 .service-rank3__media {
@@ -2118,7 +2169,7 @@
     display: block;
     width: 100%;
     height: min(72vw, 330px);
-    object-fit: cover;
+    object-fit: var(--rank3-fit, cover);
     object-position: var(--rank3-position, center);
     background: #0a1b13;
     filter: saturate(1.08) contrast(1.04);
@@ -2563,7 +2614,7 @@
     scroll-behavior: auto;
   }
 
-  .service-hero__media img,
+  .service-hero__media,
   .visual-marquee,
   .visual-water img:last-of-type,
   .visual-water svg,

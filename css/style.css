@@ -488,6 +488,14 @@ a:focus-visible {
     url("../assets/reviews-logs.jpg") center / cover no-repeat;
 }
 
+@media (max-width: 900px) {
+  .reviews {
+    background-image:
+      linear-gradient(rgba(9, 15, 14, 0.82), rgba(9, 15, 14, 0.9)),
+      url("../assets/reviews-logs-w960.jpg");
+  }
+}
+
 .reviews__heading {
   display: flex;
   align-items: end;

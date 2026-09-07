@@ -14,6 +14,100 @@
     <link rel="canonical" href="https://arbogreenservice.com/servizi/impianti-irrigazione.html">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/service-page.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://arbogreenservice.com/#business",
+            "name": "Arbogreen Service",
+            "url": "https://arbogreenservice.com/",
+            "telephone": "+39 338 736 3594",
+            "email": "arbogreenservice@gmail.com",
+            "logo": "https://arbogreenservice.com/assets/arbogreen-logo.png",
+            "image": [
+              "https://arbogreenservice.com/assets/hero-abbattimento-enhanced.jpg",
+              "https://arbogreenservice.com/assets/hero-potatura-desktop.jpg",
+              "https://arbogreenservice.com/assets/hero-tronchi-enhanced.jpg"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Città della Pieve",
+              "addressRegion": "PG",
+              "addressCountry": "IT"
+            }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://arbogreenservice.com/servizi/impianti-irrigazione.html#service",
+            "name": "Realizziamo impianti di irrigazione tra Perugia e Siena",
+            "description": "Impianti di irrigazione tra Perugia e Siena: progettazione e installazione di irrigatori dinamici, statici e sistemi a goccia per giardini.",
+            "url": "https://arbogreenservice.com/servizi/impianti-irrigazione.html",
+            "image": "https://arbogreenservice.com/assets/service-irrigazione-installazione.jpg",
+            "provider": {
+              "@id": "https://arbogreenservice.com/#business"
+            },
+            "areaServed": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Provincia di Perugia"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Provincia di Siena"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Come si sceglie l’impianto di irrigazione giusto?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Si parte da una prova reale di portata e pressione, non dal numero di irrigatori desiderato. Poi si separano le aree: il prato richiede una copertura uniforme, mentre aiuole e alberi sono normalmente gestiti con erogazioni più localizzate. Solo dopo si definiscono settori, tubazioni e tempi, in modo che componenti con consumi diversi non lavorino male sulla stessa linea."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Un impianto automatico può ridurre il consumo d’acqua?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sì, ma l’automazione da sola non garantisce alcun risparmio. Servono settori ben divisi, erogatori regolati, tempi aggiornati con le stagioni e controlli periodici di perdite o ugelli fuori posizione. Un impianto lasciato con la stessa programmazione tutto l’anno può invece usare più acqua del necessario."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quanto costa un impianto di irrigazione per il giardino?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Il prezzo al metro quadrato è poco indicativo: un giardino piccolo ma irregolare può richiedere più settori e più scavi di uno spazio grande e lineare. Il preventivo si prepara dopo aver misurato acqua disponibile e percorso delle linee e dovrebbe specificare scavi e ripristini, numero di settori, irrigatori o ala gocciolante, pozzetti e centralina previsti."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://arbogreenservice.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Realizziamo impianti di irrigazione tra Perugia e Siena",
+                "item": "https://arbogreenservice.com/servizi/impianti-irrigazione.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body class="service-page">
     <header class="site-header">
@@ -51,7 +145,7 @@
     </header>
     <main class="service-main">
       <section class="service-hero" id="service-hero" aria-labelledby="service-title" style="--hero-position: center;">
-        <picture class="service-hero__media"><img src="../assets/service-irrigazione-installazione.jpg" alt="Installazione delle tubazioni di un impianto di irrigazione" fetchpriority="high"></picture>
+        <img class="service-hero__media" src="../assets/service-irrigazione-installazione.jpg" alt="Installazione delle tubazioni di un impianto di irrigazione" width="2048" height="803" srcset="../assets/service-irrigazione-installazione-w480.jpg 480w, ../assets/service-irrigazione-installazione-w960.jpg 960w, ../assets/service-irrigazione-installazione-w1440.jpg 1440w, ../assets/service-irrigazione-installazione.jpg 2048w" sizes="100vw" fetchpriority="high">
         <div class="service-hero__shade" aria-hidden="true"></div>
         <div class="service-hero__inner service-reveal"><p class="section-kicker">Agrotecnico certificato</p><h1 id="service-title">Realizziamo <span class="hero__title-accent">impianti di irrigazione</span> tra Perugia e Siena</h1><div class="service-actions"><a class="service-action service-action--primary" href="#contatti">Descrivi le zone verdi</a></div></div>
       </section>
@@ -85,7 +179,7 @@
             <p>Prato, aiuole e alberi non vanno collegati alla stessa zona né tantomeno richiedono lo stesso irrigatore. In base alle distanze da coprire o alle portate, si sceglie tra irrigatori dinamici, statici e sistemi a goccia.</p>
             <p>Grazie alla sede di Città della Pieve raggiungiamo agevolmente le province di <a class="service-copy-link" href="../aree/provincia-perugia.html">Perugia</a> e <a class="service-copy-link" href="../aree/provincia-siena.html">Siena</a>. Il primo passo è valutare l’area da irrigare: verifichiamo pressione del sistema, copertura e terreno prima di definire tracciato e settori.</p>
           </div>
-          <figure class="service-intro__media service-reveal"><img src="../assets/service-irrigazione-01-optimized.jpg" alt="Tubazioni posate lungo un’aiuola durante l’installazione" loading="lazy" decoding="async"></figure>
+          <figure class="service-intro__media service-reveal"><img src="../assets/service-irrigazione-01-optimized.jpg" alt="Tubazioni posate lungo un’aiuola durante l’installazione" width="2048" height="1153" srcset="../assets/service-irrigazione-01-optimized-w480.jpg 480w, ../assets/service-irrigazione-01-optimized-w960.jpg 960w, ../assets/service-irrigazione-01-optimized-w1440.jpg 1440w, ../assets/service-irrigazione-01-optimized.jpg 2048w" sizes="(max-width: 900px) 100vw, 45vw" loading="lazy" decoding="async"></figure>
         </div>
       </section>
 
@@ -95,18 +189,18 @@
             <p class="section-kicker">Ambiti di intervento</p>
             <h2 id="rank3-title">Tre <span class="hero__title-accent">sistemi d'irrigazione</span> per ogni eventualità</h2>
             <span class="service-heading-line" aria-hidden="true"></span>
-            <p>Prima dello scavo si misurano le zone da coprire e la pressione dell'impianto e si scelgono gli irrigatori; poi si procede allo scavo.</p>
+            <p>Prima dello scavo si misurano le zone da coprire e la pressione dell'impianto e si scelgono gli irrigatori; poi si procede allo scavo. Un impianto già installato va poi seguito nel tempo: <a class="service-copy-link" href="../approfondimenti/manutenzione-impianti-irrigazione.html">riparazioni, centralina e programmazione</a> decidono quanto dura davvero. Quando il lavoro tocca anche le piante, <a class="service-copy-link" href="../approfondimenti/riciclo-legna-urbana.html">la legna di risulta viene recuperata</a>.</p>
           </div>
           <div class="service-rank3__layout">
             <div class="service-rank3__list service-reveal">
-              <button class="service-rank3__item is-active" type="button" data-rank3-control aria-pressed="true"><span class="service-rank3__item-top"><h3>Irrigatori dinamici</h3><span class="service-rank3__arrow" aria-hidden="true">→</span></span><p>Quando l'area da coprire è ampia e richiede molta acqua, si opta per irrigatori a gittata maggiore e con libertà di rotazione a 360°.</p><span class="service-rank3__mobile-media" aria-hidden="true"><img src="../assets/photo-irrigatori-dinamici-upscaled.jpg" alt="" loading="lazy" decoding="async" style="--rank3-position: center 55%;"></span></button>
-              <button class="service-rank3__item" type="button" data-rank3-control aria-pressed="false"><span class="service-rank3__item-top"><h3>Irrigatori statici</h3><span class="service-rank3__arrow" aria-hidden="true">→</span></span><p>Dove invece l'area da coprire è minore, si opta per irrigatori statici: non girano, ma hanno una bocca di erogazione regolabile anch'essa a 360°.</p><span class="service-rank3__mobile-media" aria-hidden="true"><img src="../assets/photo-irrigatori-statici-upscaled.jpg" alt="" loading="lazy" decoding="async" style="--rank3-position: center 55%;"></span></button>
-              <button class="service-rank3__item" type="button" data-rank3-control aria-pressed="false"><span class="service-rank3__item-top"><h3>Impianto a goccia</h3><span class="service-rank3__arrow" aria-hidden="true">→</span></span><p>Per le aiuole o per irrigare le piante negli orti, soprattutto se sono tante e ben organizzate, si sceglie il sistema a goccia: un tubo con piccoli fori che fanno gocciolare l'acqua. È meno invasivo e discreto.</p><span class="service-rank3__mobile-media" aria-hidden="true"><img src="../assets/service-irrigazione-01-optimized.jpg" alt="" loading="lazy" decoding="async"></span></button>
+              <button class="service-rank3__item is-active" type="button" data-rank3-control aria-pressed="true"><span class="service-rank3__item-top"><h3>Irrigatori dinamici</h3><span class="service-rank3__arrow" aria-hidden="true">→</span></span><p>Quando l'area da coprire è ampia e richiede molta acqua, si opta per irrigatori a gittata maggiore e con libertà di rotazione a 360°.</p><span class="service-rank3__mobile-media" aria-hidden="true"><img src="../assets/photo-irrigatori-dinamici.jpg" alt="" width="1950" height="2048" srcset="../assets/photo-irrigatori-dinamici-w480.jpg 480w, ../assets/photo-irrigatori-dinamici-w960.jpg 960w, ../assets/photo-irrigatori-dinamici-w1440.jpg 1440w, ../assets/photo-irrigatori-dinamici.jpg 1950w" sizes="100vw" loading="lazy" decoding="async" style="--rank3-position: center 55%;"></span></button>
+              <button class="service-rank3__item" type="button" data-rank3-control aria-pressed="false"><span class="service-rank3__item-top"><h3>Irrigatori statici</h3><span class="service-rank3__arrow" aria-hidden="true">→</span></span><p>Dove invece l'area da coprire è minore, si opta per irrigatori statici: non girano, ma hanno una bocca di erogazione regolabile anch'essa a 360°.</p><span class="service-rank3__mobile-media" aria-hidden="true"><img src="../assets/photo-irrigatori-statici.jpg" alt="" width="1950" height="2048" srcset="../assets/photo-irrigatori-statici-w480.jpg 480w, ../assets/photo-irrigatori-statici-w960.jpg 960w, ../assets/photo-irrigatori-statici-w1440.jpg 1440w, ../assets/photo-irrigatori-statici.jpg 1950w" sizes="100vw" loading="lazy" decoding="async" style="--rank3-position: center 55%;"></span></button>
+              <button class="service-rank3__item" type="button" data-rank3-control aria-pressed="false"><span class="service-rank3__item-top"><h3>Impianto a goccia</h3><span class="service-rank3__arrow" aria-hidden="true">→</span></span><p>Per le aiuole o per irrigare le piante negli orti, soprattutto se sono tante e ben organizzate, si sceglie il sistema a goccia: un tubo con piccoli fori che fanno gocciolare l'acqua. È meno invasivo e discreto.</p><span class="service-rank3__mobile-media" aria-hidden="true"><img src="../assets/service-irrigazione-01-optimized.jpg" alt="" width="2048" height="1153" srcset="../assets/service-irrigazione-01-optimized-w480.jpg 480w, ../assets/service-irrigazione-01-optimized-w960.jpg 960w, ../assets/service-irrigazione-01-optimized-w1440.jpg 1440w, ../assets/service-irrigazione-01-optimized.jpg 2048w" sizes="100vw" loading="lazy" decoding="async"></span></button>
             </div>
             <figure class="service-rank3__media service-reveal">
-              <img class="is-active" src="../assets/photo-irrigatori-dinamici-upscaled.jpg" alt="Irrigatore dinamico in funzione su un prato" loading="lazy" decoding="async" data-rank3-image style="--rank3-position: center 55%;">
-              <img class="" src="../assets/photo-irrigatori-statici-upscaled.jpg" alt="Irrigatore statico in funzione su un prato" loading="lazy" decoding="async" data-rank3-image style="--rank3-position: center 55%;">
-              <img class="" src="../assets/service-irrigazione-01-optimized.jpg" alt="Linee di irrigazione installate lungo un’aiuola" loading="lazy" decoding="async" data-rank3-image>
+              <img class="is-active" src="../assets/photo-irrigatori-dinamici.jpg" alt="Irrigatore dinamico in funzione su un prato" width="1950" height="2048" srcset="../assets/photo-irrigatori-dinamici-w480.jpg 480w, ../assets/photo-irrigatori-dinamici-w960.jpg 960w, ../assets/photo-irrigatori-dinamici-w1440.jpg 1440w, ../assets/photo-irrigatori-dinamici.jpg 1950w" sizes="(max-width: 900px) 100vw, 45vw" loading="lazy" decoding="async" data-rank3-image style="--rank3-position: center 55%;">
+              <img class="" src="../assets/photo-irrigatori-statici.jpg" alt="Irrigatore statico in funzione su un prato" width="1950" height="2048" srcset="../assets/photo-irrigatori-statici-w480.jpg 480w, ../assets/photo-irrigatori-statici-w960.jpg 960w, ../assets/photo-irrigatori-statici-w1440.jpg 1440w, ../assets/photo-irrigatori-statici.jpg 1950w" sizes="(max-width: 900px) 100vw, 45vw" loading="lazy" decoding="async" data-rank3-image style="--rank3-position: center 55%;">
+              <img class="" src="../assets/service-irrigazione-01-optimized.jpg" alt="Linee di irrigazione installate lungo un’aiuola" width="2048" height="1153" srcset="../assets/service-irrigazione-01-optimized-w480.jpg 480w, ../assets/service-irrigazione-01-optimized-w960.jpg 960w, ../assets/service-irrigazione-01-optimized-w1440.jpg 1440w, ../assets/service-irrigazione-01-optimized.jpg 2048w" sizes="(max-width: 900px) 100vw, 45vw" loading="lazy" decoding="async" data-rank3-image>
             </figure>
           </div>
         </div>
@@ -114,8 +208,8 @@
 
       <section class="service-visual service-visual--irrigazione" aria-labelledby="visual-title">
         <div class="visual-water" aria-hidden="true">
-          <img src="../assets/service-irrigazione-installazione.jpg" alt="" loading="lazy" decoding="async" style="--visual-position: center 58%;">
-          <img src="../assets/service-irrigazione-01-optimized.jpg" alt="" loading="lazy" decoding="async" style="--visual-position: center 56%;">
+          <img src="../assets/service-irrigazione-installazione.jpg" alt="" width="2048" height="803" srcset="../assets/service-irrigazione-installazione-w480.jpg 480w, ../assets/service-irrigazione-installazione-w960.jpg 960w, ../assets/service-irrigazione-installazione-w1440.jpg 1440w, ../assets/service-irrigazione-installazione.jpg 2048w" sizes="100vw" loading="lazy" decoding="async" style="--visual-position: center 58%;">
+          <img src="../assets/service-irrigazione-01-optimized.jpg" alt="" width="2048" height="1153" srcset="../assets/service-irrigazione-01-optimized-w480.jpg 480w, ../assets/service-irrigazione-01-optimized-w960.jpg 960w, ../assets/service-irrigazione-01-optimized-w1440.jpg 1440w, ../assets/service-irrigazione-01-optimized.jpg 2048w" sizes="100vw" loading="lazy" decoding="async" style="--visual-position: center 56%;">
           <svg viewBox="0 0 1000 500" preserveAspectRatio="none"><path d="M20 420C150 380 170 120 330 170s190 250 350 150 160-260 300-190"/></svg>
         </div>
         <div class="service-visual__shade" aria-hidden="true"></div>

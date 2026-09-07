@@ -1,0 +1,1537 @@
+/* ==========================================================================
+   Pagine rank 3 approfondimento — approfondimenti/*.html
+   Si carica dopo style.css e service-page.css e non li modifica.
+   Valori da brief/DESIGN-BRIEF.md §3 colori, §4 territori, §5 tipografia,
+   §6 spaziatura, §7 forma, §8 movimento. Impaginazioni da design/leva-*.html.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Deroga — PAGE-BRIEF §4
+   Nelle pagine servizio .service-section--intro ha il fondo tagliato perché
+   sfuma dentro .service-rank3, che su queste pagine non esiste: senza
+   ripristino la sezione 1 si attacca alla 2.
+
+   Barra statistiche — DESIGN-BRIEF §25 [31/08/2026]
+   .service-proof è il blocco della pagina madre, qui ancorato a
+   .service-section--intro invece che a .qualification-strip. Stile, reveal e
+   media query stanno già in css/service-page.css e non si duplicano: serve
+   solo il padding-top che quel foglio dà alla striscia qualifiche
+   (118 / 124 / 116px), perché la luce sotto la barra resti quella delle
+   rank 2 a ogni larghezza.
+   -------------------------------------------------------------------------- */
+
+.service-section--intro {
+  padding-top: clamp(118px, 8vw, 144px);
+  padding-bottom: clamp(88px, 9vw, 148px);
+}
+
+/* --------------------------------------------------------------------------
+   Raccordo sezione 1 → sezione 2 — DESIGN-BRIEF §25 [31/08/2026]
+   Le tappe del gradiente di .service-rank3, su una fascia alta quanto il
+   padding-top che la sezione ha già: parte da #153b2b, che è la tappa finale
+   di .service-section--intro, e chiude su --paper, che è il fondo su cui
+   poggia il testo. Nessuna cucitura ai due estremi, nessun testo sopra la
+   fascia, pagina invariata in altezza. Senza la texture forest-transition:
+   su ~130px non si leggerebbe.
+   Dal 05/09/2026 il selettore è il solo .appro-descend: le tre sezioni che
+   montavano .appro-when sono passate a 1m e portano la classe esplicita.
+   -------------------------------------------------------------------------- */
+
+.service-section.appro-descend {
+  --appro-descent: clamp(88px, 9vw, 148px);
+
+  color: #153b2b;
+  background:
+    linear-gradient(180deg, #153b2b 0%, #244935 10%, #496d59 22%, #6f8579 34%, #8da095 46%, #b6c2b9 62%, #e7e7df 80%, var(--paper) 100%) top / 100% var(--appro-descent) no-repeat,
+    var(--paper);
+}
+
+/* --------------------------------------------------------------------------
+   Leva 1 «Quando», impaginazione 1m — testa a bandiera, foto a fascia,
+   colonne con occhiello e filetto. DESIGN-BRIEF §12 [05/09/2026].
+   Una regola sola per le tre tavole: sezione-calendario-olivo-1B (due
+   colonne, territorio A), sezione-messa-a-dimora-2A (tre, territorio A) e
+   sezione-finestra-anno-4A (quattro, territorio B). Variano solo il numero
+   di colonne, il capoverso di testa e la nota finale — entrambi opzionali —
+   e il campo.
+   La foto a fascia usa il clamp che .appro-bands__media ha già nel foglio,
+   non i 380px delle tavole: quelle sono disegnate su un container da 1036px,
+   qui il container reale è 1296px a 1440. Scarto dichiarato in §25.
+   -------------------------------------------------------------------------- */
+
+.appro-frieze__head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.appro-frieze__head .section-kicker {
+  margin: 0;
+  color: var(--accent);
+}
+
+.appro-frieze .appro-frieze__head p:not(.section-kicker) {
+  max-width: 66ch;
+  margin: 4px 0 0;
+  font-size: clamp(1rem, 1.2vw, 1.14rem);
+  line-height: 1.65;
+}
+
+.appro-frieze__media {
+  margin: clamp(38px, 4vw, 56px) 0;
+}
+
+.appro-frieze__media img {
+  display: block;
+  width: 100%;
+  height: clamp(240px, 22vw, 300px);
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.appro-frieze__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 64px);
+}
+
+.appro-frieze--three .appro-frieze__grid,
+.appro-frieze--four .appro-frieze__grid {
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.appro-frieze--three .appro-frieze__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.appro-frieze--four .appro-frieze__grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.appro-frieze .appro-frieze__label {
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(21, 59, 43, 0.3);
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.appro-frieze .appro-frieze__col p:not(.appro-frieze__label) {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.appro-frieze .appro-frieze__col p:not(.appro-frieze__label) + p {
+  margin-top: 16px;
+}
+
+.appro-frieze .appro-frieze__note {
+  margin: clamp(38px, 4vw, 56px) 0 0;
+  padding-left: 16px;
+  border-left: 1px solid rgba(21, 59, 43, 0.3);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Territorio B — la sola sezione-finestra-anno-4A, su campo --ink-soft. */
+
+.appro-frieze--ink {
+  color: var(--white);
+  background: var(--ink-soft);
+}
+
+.appro-frieze--ink h2 {
+  color: var(--white);
+}
+
+.appro-frieze--ink .appro-frieze__head .section-kicker,
+.appro-frieze--ink .appro-frieze__label {
+  color: var(--accent-bright);
+}
+
+.appro-frieze--ink .appro-frieze__label,
+.appro-frieze--ink .appro-frieze__note {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.appro-frieze--ink .appro-frieze__head p:not(.section-kicker),
+.appro-frieze--ink .appro-frieze__col p:not(.appro-frieze__label),
+.appro-frieze--ink .appro-frieze__note {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* --------------------------------------------------------------------------
+   Leva 2 «Confronto», impaginazione 1d — due colonne speculari, chiusura in
+   fascia a piena larghezza. Territorio B: campo --ink-soft, fascia --ink.
+   -------------------------------------------------------------------------- */
+
+.appro-compare {
+  --appro-gutter: clamp(20px, 5vw, 76px);
+  padding-bottom: 0;
+  color: var(--white);
+  background: var(--ink-soft);
+}
+
+.appro-compare h2 {
+  color: var(--white);
+}
+
+.appro-compare .appro-compare__head p {
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(1rem, 1.2vw, 1.14rem);
+}
+
+.appro-compare__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(38px, 4vw, 56px);
+  border-top: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+.appro-compare__road {
+  padding: 32px clamp(24px, 3vw, 56px) 40px 0;
+}
+
+.appro-compare__road + .appro-compare__road {
+  padding-right: 0;
+  padding-left: clamp(24px, 3vw, 56px);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.appro-compare__road h3 {
+  margin: 0;
+  font-size: clamp(1.3rem, 1.7vw, 1.5rem);
+  font-weight: 520;
+}
+
+.appro-compare .appro-compare__road p {
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.appro-compare__outcomes {
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.appro-compare__outcomes li {
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.95rem;
+}
+
+.appro-compare__outcomes li + li {
+  margin-top: 8px;
+}
+
+.appro-compare__band {
+  margin: clamp(38px, 4vw, 56px) calc(var(--appro-gutter) * -1) 0;
+  padding: 28px var(--appro-gutter);
+  border-top: 1px solid rgba(255, 255, 255, 0.42);
+  background: var(--ink);
+}
+
+.appro-compare .appro-compare__band p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Leva 5 «FAQ a risposta chiusa», modello A — design/faq-chiusa.html.
+   Tavola già vestita col sistema: i suoi valori si usano come sono.
+
+   Raccordo FAQ → contatti — DESIGN-BRIEF §25 [31/08/2026], esteso il
+   05/09/2026. La fascia era alta quanto lo spazio vuoto sotto l'ultimo
+   toggle (margin del toggle + padding del blocco): 73,2px a 1440, 54 a 390,
+   con caduta lineare. Ora è il doppio — 146,4px e 108px — e la caduta non è
+   più lineare: tiene il fondo quasi pieno nella parte alta della fascia,
+   quella che passa sotto le scritte, e scarica in fretta solo nella parte
+   bassa. Dove l'alpha è 1 il colore è --paper, dove è 0 è esattamente
+   .service-closing: nessuna cucitura ai due estremi, con le risposte chiuse
+   come con tutte e tre aperte. Pagina invariata in altezza: è background.
+   Gli rgba sono i canali di --paper, la forma che il foglio adotta già su
+   .appro-faq__answer. Nessun hex nuovo.
+   Costo dichiarato, DESIGN-BRIEF §22: il toggle «Leggi la risposta completa»
+   finisce dentro la fascia e il suo contrasto scende sotto il 4,03:1 che
+   #648315 rende su --paper pieno. Decisione di Gabriele del 05/09/2026.
+   -------------------------------------------------------------------------- */
+
+.appro-faq {
+  --appro-faq-fade: calc((clamp(22px, 2.4vw, 30px) + clamp(32px, 3vw, 44px)) * 2);
+
+  position: relative;
+  z-index: 1;
+  color: #153b2b;
+  background: linear-gradient(
+    180deg,
+    var(--paper) 0,
+    var(--paper) calc(100% - var(--appro-faq-fade)),
+    rgba(245, 246, 241, 0.97) calc(100% - var(--appro-faq-fade) * 0.7),
+    rgba(245, 246, 241, 0.88) calc(100% - var(--appro-faq-fade) * 0.5),
+    rgba(245, 246, 241, 0.72) calc(100% - var(--appro-faq-fade) * 0.35),
+    rgba(245, 246, 241, 0.5) calc(100% - var(--appro-faq-fade) * 0.22),
+    rgba(245, 246, 241, 0.28) calc(100% - var(--appro-faq-fade) * 0.12),
+    rgba(245, 246, 241, 0.1) calc(100% - var(--appro-faq-fade) * 0.05),
+    transparent 100%
+  );
+}
+
+.appro-faq__inner {
+  display: grid;
+  grid-template-columns: 0.55fr 1.45fr;
+  gap: clamp(40px, 9vw, 140px);
+  align-items: start;
+  width: min(1160px, 100%);
+  margin: 0 auto;
+  padding: clamp(56px, 5vw, 80px) 40px clamp(32px, 3vw, 44px);
+}
+
+/* Colonna del titolo allargata — DESIGN-BRIEF §25 [03/09/2026]. 360px è la
+   larghezza minima, misurata a 1440, che porta l'H2 sul numero di righe
+   deciso pagina per pagina; il modificatore sta solo sulle pagine che ne
+   hanno bisogno. */
+.appro-faq--wide .appro-faq__inner {
+  grid-template-columns: 360px minmax(0, 1fr);
+}
+
+.appro-faq__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.appro-faq__kicker {
+  margin: 0;
+  color: #648315;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.appro-faq h2 {
+  margin: 0;
+  color: #153b2b;
+  font-size: clamp(2rem, 3.5vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+.appro-faq__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.appro-faq__item {
+  position: relative;
+  border-top: 1px solid rgba(21, 59, 43, 0.3);
+}
+
+.appro-faq__item:last-child {
+  border-bottom: 1px solid rgba(21, 59, 43, 0.3);
+}
+
+.appro-faq__bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: var(--accent-bright);
+  opacity: 0.25;
+  transition: opacity 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.appro-faq__item.is-open .appro-faq__bar {
+  opacity: 1;
+}
+
+.appro-faq__question {
+  margin: 0;
+  padding: clamp(22px, 2.4vw, 30px) clamp(16px, 2vw, 26px) 0;
+  color: #153b2b;
+  font-size: clamp(1.05rem, 1.45vw, 1.28rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.appro-faq__answer {
+  max-width: 920px;
+  margin: 16px clamp(16px, 2vw, 26px) 0;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 10px;
+  color: #153b2b;
+  background: rgba(245, 246, 241, 0.68);
+  font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+  line-height: 1.6;
+}
+
+.appro-faq__lead {
+  margin: 0;
+}
+
+/* Lead a due righe da chiuso — DESIGN-BRIEF §25 [03/09/2026]. Il testo resta
+   intero nel DOM (e nel nodo FAQPage): da chiuso se ne vedono due righe,
+   is-open sull'item riapre lead e pannello insieme. */
+.appro-faq__item:not(.is-open) .appro-faq__lead {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.appro-faq__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  opacity: 0;
+  transition: grid-template-rows 240ms cubic-bezier(0.22, 0.61, 0.36, 1), opacity 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.appro-faq__item.is-open .appro-faq__panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.appro-faq__panel-inner {
+  min-height: 0;
+}
+
+.appro-faq__panel-inner p {
+  margin: 0;
+  padding-top: 10px;
+}
+
+.appro-faq__toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px clamp(16px, 2vw, 26px) clamp(22px, 2.4vw, 30px);
+  padding: 0;
+  border: 0;
+  color: #648315;
+  background: none;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.appro-faq__toggle:focus-visible {
+  outline: 2px solid #648315;
+  outline-offset: 3px;
+}
+
+.appro-faq__chevron {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 13px;
+  transition: transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.appro-faq__item.is-open .appro-faq__chevron {
+  transform: rotate(180deg);
+}
+
+.appro-faq__label--open,
+.appro-faq__item.is-open .appro-faq__label--closed {
+  display: none;
+}
+
+.appro-faq__item.is-open .appro-faq__label--open {
+  display: inline;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — breakpoint del sito, DESIGN-BRIEF §6
+   Il 1040 e il min-641 non sono breakpoint nuovi: sono quelli su cui
+   css/service-page.css cambia .qualification-strip e .service-proof, e qui
+   servono solo a tenere la barra identica alle rank 2.
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 641px) {
+  .service-section--intro .service-proof__item strong {
+    font-size: clamp(1.28rem, 1.75vw, 1.75rem);
+  }
+}
+
+@media (max-width: 1040px) {
+  .service-section--intro {
+    padding-top: 124px;
+  }
+}
+
+@media (max-width: 920px) {
+  .appro-frieze__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .appro-frieze--three .appro-frieze__grid,
+  .appro-frieze--four .appro-frieze__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .appro-compare__grid {
+    grid-template-columns: 1fr;
+    border-top: 0;
+  }
+
+  .appro-compare__road {
+    padding: 20px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.42);
+  }
+
+  .appro-compare__road + .appro-compare__road {
+    margin-top: 28px;
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .appro-faq__inner,
+  .appro-faq--wide .appro-faq__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-section--intro {
+    padding-top: 116px;
+    padding-bottom: 82px;
+  }
+
+  .service-section.appro-descend {
+    --appro-descent: 82px;
+  }
+
+  .appro-frieze--three .appro-frieze__grid,
+  .appro-frieze--four .appro-frieze__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .appro-compare {
+    --appro-gutter: 18px;
+  }
+
+  .appro-faq__inner {
+    padding: 56px 20px 32px;
+  }
+
+  .appro-faq__heading {
+    gap: 14px;
+  }
+
+  .appro-faq__kicker {
+    font-size: 0.82rem;
+  }
+
+  .appro-faq h2 {
+    font-size: 2rem;
+    line-height: 1.05;
+  }
+
+  .appro-faq__question {
+    padding: 22px 16px 0;
+    font-size: 1.05rem;
+  }
+
+  .appro-faq__answer {
+    margin: 14px 16px 0;
+    padding: 16px 18px;
+    font-size: 0.98rem;
+  }
+
+  .appro-faq__toggle {
+    margin: 12px 16px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .appro-faq__bar,
+  .appro-faq__panel,
+  .appro-faq__chevron {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   Impaginazioni delle altre nove pagine — 02/09/2026
+   Stesse fonti dell'intestazione: impaginazioni dalle tavole design/leva-*,
+   vestito dal DESIGN-BRIEF (§3 colori, §4 territori, §5 tipografia, §7 forma).
+   Il raccordo sezione 1 → sezione 2 è la regola .service-section.appro-descend
+   in testa al foglio: la sezione 2 di ogni pagina monta quella classe accanto
+   alla propria classe di leva. Territorio A:
+   bordo forte var(--ink), bordo debole rgba(21,59,43,.3), fasce var(--white).
+   Territorio B: campo var(--ink-soft), blocchi e fasce var(--ink), bordi
+   rgba(255,255,255,.42) e .2 come su .appro-compare.
+   ========================================================================== */
+
+.appro-seq__step h3,
+.appro-trio__card h3,
+.appro-list__body h3,
+.appro-rows__title,
+.appro-split__box--a h3 {
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   Leva 2 «Confronto», 1d in territorio A — recupero-giardini, sezione 2.
+   Stessa impaginazione di .appro-compare; il campo chiaro e la discesa li
+   porta .appro-descend. Il capoverso a piena larghezza fra le colonne e la
+   fascia (.appro-compare__note) è stato eliminato il 05/09/2026 insieme al
+   suo link: le colonne chiudono direttamente sul margin della fascia.
+   -------------------------------------------------------------------------- */
+
+.appro-compare--paper h2 {
+  color: #153b2b;
+}
+
+.appro-compare--paper .appro-compare__head p,
+.appro-compare--paper .appro-compare__road p,
+.appro-compare--paper .appro-compare__band p {
+  color: #153b2b;
+}
+
+.appro-compare--paper .appro-compare__grid {
+  border-top-color: var(--ink);
+}
+
+.appro-compare--paper .appro-compare__road + .appro-compare__road {
+  border-left-color: rgba(21, 59, 43, 0.3);
+}
+
+.appro-compare--paper .appro-compare__outcomes li {
+  border-top-color: rgba(21, 59, 43, 0.3);
+}
+
+.appro-compare--paper .appro-compare__band {
+  border-top-color: var(--ink);
+  background: var(--white);
+}
+
+/* --------------------------------------------------------------------------
+   Leva 1 «Quando», impaginazione 1c — fasce a piena larghezza, sequenza
+   orizzontale. Territorio A. Processionaria, sezione 2, senza banda immagine
+   (PAGE-BRIEF: asset nessuno). Dal 03/09/2026 la testa è impilata a tutta
+   larghezza — occhiello, H2, capoverso — invece che su tre colonne
+   (DESIGN-BRIEF §12).
+   -------------------------------------------------------------------------- */
+
+.appro-seq {
+  --appro-gutter: clamp(20px, 5vw, 76px);
+}
+
+.appro-seq__head {
+  display: grid;
+  gap: 14px;
+  padding-bottom: clamp(28px, 3vw, 40px);
+  border-bottom: 1px solid var(--ink);
+}
+
+.appro-seq__head .section-kicker {
+  margin: 0;
+  color: var(--accent);
+}
+
+.appro-seq .appro-seq__head p:not(.section-kicker) {
+  margin: 0;
+  font-size: clamp(1rem, 1.2vw, 1.14rem);
+  line-height: 1.6;
+}
+
+.appro-seq__steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-bottom: 1px solid rgba(21, 59, 43, 0.3);
+}
+
+.appro-seq__step {
+  padding: clamp(28px, 3vw, 44px) clamp(18px, 2vw, 32px) clamp(32px, 3.4vw, 48px) 0;
+}
+
+.appro-seq__step + .appro-seq__step {
+  padding-left: clamp(18px, 2vw, 32px);
+  border-left: 1px solid rgba(21, 59, 43, 0.3);
+}
+
+.appro-seq__num {
+  display: block;
+  margin-bottom: 12px;
+  color: #153b2b;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+.appro-seq__step h3 {
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+}
+
+.appro-seq .appro-seq__step p {
+  margin: 10px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.appro-seq__note {
+  margin: clamp(28px, 3vw, 44px) calc(var(--appro-gutter) * -1) 0;
+  padding: clamp(20px, 2.4vw, 26px) var(--appro-gutter);
+  background: var(--white);
+}
+
+.appro-seq .appro-seq__note p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Leva 2 «Confronto», impaginazione 1e — griglia modulare, confronto per
+   righe. Territorio A. Rimozione-ceppaie e preparazione-terreno, sezione 2.
+   L'ordine del DOM è l'ordine di lettura della tabella; le aree di griglia
+   ricompongono le righe sul desktop e la colonna sola sotto i 920.
+   Testa a tutta larghezza e linee riviste il 03/09/2026: forte sopra i
+   titoli (continua fra i due, interrotta dopo la label) e in chiusura sotto
+   «Come si sceglie», deboli tutte le altre.
+   Il 05/09/2026 è caduta la fascia «In sintesi»: la griglia passa da quattro
+   righe a tre, le linee restano quelle sopra.
+   -------------------------------------------------------------------------- */
+
+.appro-rows .appro-rows__head p {
+  margin: 18px 0 0;
+  font-size: clamp(1rem, 1.2vw, 1.14rem);
+  line-height: 1.65;
+}
+
+.appro-rows__grid {
+  display: grid;
+  grid-template-areas:
+    "l1 ta tb"
+    "l2 wa wb"
+    "l4 cc cc";
+  --appro-rows-gap: clamp(24px, 3vw, 40px);
+
+  grid-template-columns: minmax(140px, 200px) minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: var(--appro-rows-gap);
+  margin-top: clamp(38px, 4vw, 56px);
+}
+
+.appro-rows__label--strade { grid-area: l1; }
+.appro-rows__title--a { grid-area: ta; }
+.appro-rows__title--b { grid-area: tb; }
+.appro-rows__label--lavoro { grid-area: l2; }
+.appro-rows__cell--wa { grid-area: wa; }
+.appro-rows__cell--wb { grid-area: wb; }
+.appro-rows__label--scelta { grid-area: l4; }
+.appro-rows__cell--choice { grid-area: cc; }
+
+.appro-rows__label {
+  margin: 0;
+  padding: 20px 0;
+  color: #153b2b;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.appro-rows__title {
+  padding: 18px 0;
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+}
+
+.appro-rows__cell {
+  padding: 20px 0 24px;
+}
+
+.appro-rows .appro-rows__cell p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.appro-rows .appro-rows__cell p + p {
+  margin-top: 14px;
+}
+
+.appro-rows__label--strade,
+.appro-rows__title {
+  border-top: 1px solid var(--ink);
+}
+
+.appro-rows__label--lavoro,
+.appro-rows__cell--wa,
+.appro-rows__cell--wb,
+.appro-rows__label--scelta,
+.appro-rows__cell--choice {
+  border-top: 1px solid rgba(21, 59, 43, 0.3);
+}
+
+.appro-rows__label--scelta,
+.appro-rows__cell--choice {
+  border-bottom: 1px solid var(--ink);
+}
+
+/* Il primo elemento della riga si allunga dentro il gap di griglia, così la
+   linea forte corre continua fino all'elemento accanto. Il bordo resta
+   interrotto dove nessuno si allunga: fra «Le due strade» e il primo titolo.
+   Selettore a due classi perché .service-section h3 azzera i margini. */
+.appro-rows .appro-rows__title--a,
+.appro-rows .appro-rows__label--scelta {
+  margin-right: calc(var(--appro-rows-gap) * -1);
+  padding-right: var(--appro-rows-gap);
+}
+
+/* --------------------------------------------------------------------------
+   Leva 2 «Confronto», impaginazione 1f — struttura sfalsata, seconda strada
+   in contrasto. Territorio A, blocco B in negativo var(--ink).
+   Realizzazione-prato, sezione 2. Dal 03/09/2026 la testa è centrata a tutta
+   larghezza, con un solo sottotitolo, e i blocchi non portano la lettera
+   (DESIGN-BRIEF §12).
+   Dal 05/09/2026 ogni scheda sta dentro una riga a due colonne, con la foto
+   nella colonna che prima restava vuota: 57/43 sulla prima riga e 43/57
+   sulla seconda, così lo sfalsamento resta quello di prima. Le schede non
+   cambiano: testo, forma e tipografia sono quelli. Sotto i 920 una colonna
+   sola, con la foto SOTTO la sua scheda in tutt'e due le righe.
+   -------------------------------------------------------------------------- */
+
+.appro-split__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 clamp(16px, 2.2vw, 32px);
+}
+
+.appro-split__head {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.appro-split .appro-split__head p {
+  margin: 18px 0 0;
+  font-size: clamp(1rem, 1.2vw, 1.14rem);
+  line-height: 1.65;
+}
+
+.appro-split__row {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 57fr) minmax(0, 43fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.appro-split__row--flip {
+  grid-template-columns: minmax(0, 43fr) minmax(0, 57fr);
+}
+
+.appro-split__head + .appro-split__row {
+  margin-top: clamp(40px, 5vw, 64px);
+}
+
+.appro-split__media {
+  position: relative;
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.appro-split__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.appro-split__box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: clamp(26px, 3vw, 36px) clamp(22px, 3vw, 40px);
+}
+
+.appro-split__box--a {
+  border: 1px solid rgba(21, 59, 43, 0.3);
+}
+
+.appro-split__box--b {
+  color: var(--white);
+  background: var(--ink);
+}
+
+.appro-split__box h3 {
+  font-size: clamp(1.3rem, 1.7vw, 1.5rem);
+}
+
+.appro-split__box--b h3 {
+  color: var(--white);
+}
+
+.appro-split .appro-split__box p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.appro-split__box--b p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.appro-split__outcomes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin: 0;
+  padding: 14px 0 0;
+  border-top: 1px solid rgba(21, 59, 43, 0.3);
+  list-style: none;
+  font-size: 0.92rem;
+}
+
+.appro-split__box--b .appro-split__outcomes {
+  border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   Leva 3 «Casi», impaginazione 1g — fasce sfalsate, immagine alternata.
+   Territorio A, griglia a tutto schermo fuori da .service-inner.
+   Manutenzione-impianti-irrigazione, sezione 2. Dal 03/09/2026 la testa è
+   il solo H2 centrato, senza capoverso a fianco, e le fasce non portano il
+   numero (DESIGN-BRIEF §12).
+   -------------------------------------------------------------------------- */
+
+/* Lo spazio fra l'ultima foto e la sezione scura che segue è dimezzato dal
+   05/09/2026: solo il padding-bottom. Il padding-top resta quello pieno di
+   .service-section, perché la fascia di discesa di .appro-descend è alta
+   esattamente quanto quel padding. */
+.appro-bands {
+  --appro-gutter: clamp(20px, 5vw, 76px);
+
+  padding-bottom: clamp(44px, 4.5vw, 74px);
+}
+
+.appro-bands__head {
+  text-align: center;
+}
+
+.appro-bands__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: clamp(38px, 4vw, 56px) calc(var(--appro-gutter) * -1) 0;
+  border-top: 1px solid var(--ink);
+}
+
+.appro-bands__grid > *:nth-child(n+3) {
+  border-top: 1px solid rgba(21, 59, 43, 0.3);
+}
+
+.appro-bands__media {
+  position: relative;
+  min-height: clamp(240px, 22vw, 300px);
+  margin: 0;
+}
+
+.appro-bands__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.appro-bands__media--flip {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.appro-bands__body--flip {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.appro-bands__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: clamp(32px, 4vw, 44px) clamp(24px, 5vw, 96px);
+}
+
+.appro-bands__body h3 {
+  color: var(--ink);
+  font-size: clamp(1.2rem, 1.5vw, 1.4rem);
+}
+
+.appro-bands .appro-bands__body p {
+  max-width: 52ch;
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+/* --------------------------------------------------------------------------
+   Leva 3 «Casi», impaginazione 1h — griglia modulare a tre, immagine in
+   testa. Territorio A. Potatura-siepi, sezione 2.
+   -------------------------------------------------------------------------- */
+
+.appro-trio__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
+}
+
+.appro-trio .appro-trio__head p {
+  max-width: 620px;
+  margin: 0;
+  font-size: clamp(1rem, 1.2vw, 1.14rem);
+  line-height: 1.65;
+}
+
+.appro-trio__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 40px);
+  margin-top: clamp(38px, 4vw, 56px);
+}
+
+.appro-trio__card figure {
+  margin: 0;
+}
+
+.appro-trio__card img {
+  display: block;
+  width: 100%;
+  height: clamp(200px, 17vw, 240px);
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.appro-trio__card h3 {
+  margin: 16px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--ink);
+  font-size: clamp(1.15rem, 1.4vw, 1.3rem);
+}
+
+.appro-trio .appro-trio__card p {
+  margin: 12px 0 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+/* --------------------------------------------------------------------------
+   Leva 3 «Casi», impaginazione 1i — colonna unica compatta, miniature a
+   destra. Territorio A. Riciclo-legna-urbana, sezione 2.
+   -------------------------------------------------------------------------- */
+
+.appro-list__wrap {
+  width: min(880px, 100%);
+  margin: 0 auto;
+}
+
+.appro-list__rows {
+  margin-top: clamp(28px, 3vw, 40px);
+}
+
+.appro-list__row {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 200px;
+  gap: clamp(18px, 2.5vw, 28px);
+  align-items: start;
+  padding: clamp(20px, 2.4vw, 26px) 0;
+  border-top: 1px solid rgba(21, 59, 43, 0.3);
+}
+
+.appro-list__row:first-child {
+  border-top-color: var(--ink);
+}
+
+.appro-list__row:last-child {
+  border-bottom: 1px solid rgba(21, 59, 43, 0.3);
+}
+
+.appro-list__num {
+  color: #153b2b;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+.appro-list__body h3 {
+  font-size: clamp(1.1rem, 1.35vw, 1.25rem);
+}
+
+.appro-list .appro-list__body p {
+  margin: 8px 0 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.appro-list__thumb {
+  margin: 0;
+}
+
+.appro-list__thumb img {
+  display: block;
+  width: 100%;
+  height: 120px;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   Leva 4 «Avvertenza», impaginazione 1j — fascia piena in negativo, divieti
+   in riga. Territorio B, campo var(--ink). Preparazione-terreno,
+   manutenzione-impianti-irrigazione e riciclo-legna-urbana, sezione 3.
+   Variante «foto a destra + righe Non in chiusura» — DESIGN-BRIEF §25
+   [03/09/2026]: H2, label e claim, poi il blocco di testo (760px, fermo a
+   sinistra) con la foto nello spazio che resta a destra, e la lista dei
+   divieti in fondo. Sotto i 920 la foto va sotto il testo, prima della lista.
+   Dal 05/09/2026 la banda scura sopra l'H2 e quella sotto le righe «Non»
+   sono dimezzate: il padding verticale non è più quello di .service-section
+   — clamp(88px, 9vw, 148px), 129,6px a 1440 — ma la sua metà. .service-section
+   non si tocca: serve tutte le altre sezioni del sito. Sotto i 640 la sezione
+   partiva da 82px e il pavimento della clamp è 44, quindi lì la riduzione è
+   del 46% e non del 50%: seguita la lettera dell'istruzione.
+   -------------------------------------------------------------------------- */
+
+.appro-veto {
+  padding-top: clamp(44px, 4.5vw, 74px);
+  padding-bottom: clamp(44px, 4.5vw, 74px);
+  color: var(--white);
+  background: var(--ink);
+}
+
+.appro-veto h2 {
+  color: var(--white);
+}
+
+.appro-veto__label {
+  margin: clamp(28px, 3vw, 40px) 0 0;
+  color: var(--accent);
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.appro-veto .appro-veto__claim {
+  max-width: 900px;
+  margin: 18px 0 0;
+  font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.appro-veto__body {
+  display: grid;
+  grid-template-columns: minmax(0, 760px) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 64px);
+  margin-top: clamp(28px, 3.4vw, 44px);
+}
+
+.appro-veto__media {
+  position: relative;
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.appro-veto__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.appro-veto__list {
+  display: flex;
+  margin: clamp(28px, 3.4vw, 44px) 0 0;
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.42);
+  list-style: none;
+}
+
+.appro-veto__list li {
+  flex: 1;
+  padding: 22px 24px 24px 0;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.appro-veto__list li + li {
+  padding-left: 24px;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.appro-veto__closing {
+  max-width: 760px;
+}
+
+.appro-veto .appro-veto__closing p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.appro-veto .appro-veto__closing p + p {
+  margin-top: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   Leva 4 «Avvertenza», impaginazione 1k — due colonne asimmetriche, blocco
+   nero a sinistra. Territorio B, blocco var(--ink) su campo var(--ink-soft).
+   Rimozione-ceppaie, piantumazione-alberi e processionaria-pino, sezione 3.
+   Dal 05/09/2026 su processionaria-pino e rimozione-ceppaie la colonna
+   sinistra è interamente una foto al posto del riquadro di testo: stessa
+   soluzione già approvata per 1l il 03/09 (.appro-frame__media). Le regole
+   del riquadro testuale — __panel, __kicker, __claim, __ban — restano: le
+   usa ancora piantumazione-alberi, che non si tocca.
+   -------------------------------------------------------------------------- */
+
+.appro-warn {
+  color: var(--white);
+  background: var(--ink-soft);
+}
+
+.appro-warn h2 {
+  color: var(--white);
+}
+
+.appro-warn__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+  margin-top: clamp(38px, 4vw, 56px);
+}
+
+.appro-warn__panel {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 2.6vw, 36px);
+  padding: clamp(30px, 3.5vw, 56px) clamp(24px, 3vw, 48px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--ink);
+}
+
+.appro-warn__media {
+  position: relative;
+  align-self: stretch;
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.appro-warn__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.appro-warn__kicker {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.appro-warn__claim {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+}
+
+.appro-warn__ban {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+}
+
+.appro-warn__list {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.42);
+  list-style: none;
+}
+
+.appro-warn__list li {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  line-height: 1.5;
+}
+
+.appro-warn__closing {
+  margin-top: clamp(24px, 3vw, 36px);
+}
+
+.appro-warn .appro-warn__closing p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.appro-warn .appro-warn__closing p + p {
+  margin-top: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   Leva 4 «Avvertenza», impaginazione 1l — blocco centrato riquadrato,
+   massima compressione. Territorio B. Il riquadro della tavola è 4px: qui
+   1px rgba(255,255,255,.42), perché §7 prescrive bordi sottili.
+   Potatura-siepi e recupero-giardini, sezione 3. Dal 03/09/2026 la colonna
+   destra del riquadro porta una foto al posto delle righe «Non»
+   (DESIGN-BRIEF §12).
+   -------------------------------------------------------------------------- */
+
+.appro-frame {
+  color: var(--white);
+  background: var(--ink-soft);
+}
+
+.appro-frame h2 {
+  color: var(--white);
+}
+
+.appro-frame__box {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+  margin-top: clamp(38px, 4vw, 56px);
+  padding: clamp(30px, 4vw, 52px) clamp(24px, 4vw, 64px);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+.appro-frame__kicker {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.appro-frame__claim {
+  margin: 20px 0 0;
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+}
+
+.appro-frame__closing {
+  margin-top: 20px;
+}
+
+.appro-frame .appro-frame__closing p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.appro-frame .appro-frame__closing p + p {
+  margin-top: 14px;
+}
+
+.appro-frame__media {
+  position: relative;
+  align-self: stretch;
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.appro-frame__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive delle impaginazioni nuove — breakpoint del sito (920 / 640).
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 920px) {
+  .appro-seq__steps {
+    grid-template-columns: 1fr;
+  }
+
+  .appro-seq__step {
+    padding: 20px 0 24px;
+  }
+
+  .appro-seq__step + .appro-seq__step {
+    padding-left: 0;
+    border-top: 1px solid rgba(21, 59, 43, 0.3);
+    border-left: 0;
+  }
+
+  .appro-rows__grid {
+    grid-template-areas:
+      "l1"
+      "ta"
+      "wa"
+      "tb"
+      "wb"
+      "l4"
+      "cc";
+    grid-template-columns: 1fr;
+  }
+
+  .appro-rows__label--lavoro {
+    display: none;
+  }
+
+  .appro-rows .appro-rows__title--a,
+  .appro-rows .appro-rows__label--scelta {
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+  .appro-rows__label--scelta {
+    border-bottom: 0;
+  }
+
+  .appro-split__row,
+  .appro-split__row--flip {
+    grid-template-columns: 1fr;
+  }
+
+  .appro-split__head + .appro-split__row {
+    margin-top: 32px;
+  }
+
+  .appro-split__row--flip .appro-split__media {
+    order: 2;
+  }
+
+  .appro-split__media {
+    height: clamp(200px, 17vw, 240px);
+  }
+
+  .appro-bands__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .appro-bands__media--flip,
+  .appro-bands__body--flip {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .appro-bands__media {
+    min-height: 240px;
+  }
+
+  .appro-trio__head {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .appro-trio__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .appro-veto__body {
+    grid-template-columns: 1fr;
+  }
+
+  .appro-veto__media {
+    height: clamp(200px, 17vw, 240px);
+  }
+
+  .appro-veto__list {
+    flex-direction: column;
+  }
+
+  .appro-veto__list li {
+    padding: 14px 0;
+  }
+
+  .appro-veto__list li + li {
+    padding-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 0;
+  }
+
+  .appro-warn__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .appro-warn__media {
+    height: clamp(200px, 17vw, 240px);
+  }
+
+  .appro-frame__box {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .appro-frame__media {
+    height: clamp(200px, 17vw, 240px);
+  }
+
+  .appro-compare--paper .appro-compare__road {
+    border-top-color: var(--ink);
+  }
+}
+
+@media (max-width: 640px) {
+  .appro-seq {
+    --appro-gutter: 18px;
+  }
+
+  .appro-bands {
+    --appro-gutter: 18px;
+  }
+
+  .appro-bands__media {
+    min-height: 200px;
+  }
+
+  .appro-bands__body {
+    padding: 26px 18px 32px;
+  }
+
+  .appro-list__row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .appro-list__thumb img {
+    height: 150px;
+  }
+
+  .appro-split__box {
+    padding: 24px 20px;
+  }
+
+  .appro-warn__panel {
+    padding: 28px 22px;
+  }
+
+  .appro-frame__box {
+    padding: 26px 20px;
+  }
+}

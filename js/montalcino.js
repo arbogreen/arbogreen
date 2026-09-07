@@ -7,5 +7,5 @@ window.arbogreenAreaPhotos = [
   { source: "../assets/photo-potatura-riciclo-legno-upscaled.jpg" },
   { source: "../assets/2026-03-29 (2).jpg" },
   { source: "../assets/qualification-tree-climbing.jpg" },
-  { source: "../assets/photo-abbattimento-terra-upscaled.jpg" },
+  { source: "../assets/equipment-chainsaw-log.jpg" },
 ];

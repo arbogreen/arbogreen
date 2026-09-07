@@ -7,5 +7,5 @@ window.arbogreenAreaPhotos = [
   { source: "../assets/2026-06-30.jpg" },
   { source: "../assets/service-tree-climbing-02-upscaled.jpg" },
   { source: "../assets/equipment-platform-upscaled.jpg" },
-  { source: "../assets/photo-abbattimento-riciclo-legna-upscaled.jpg" },
+  { source: "../assets/hero-tronchi-enhanced.jpg" },
 ];

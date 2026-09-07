@@ -266,11 +266,54 @@
   const photos = window.arbogreenAreaPhotos;
   if (!Array.isArray(photos) || slides.length !== photos.length) return;
 
+  // Larghezze disponibili in assets/ per ogni foto del carosello: le varianti -w<N> piu la nativa.
+  const AREA_PHOTO_WIDTHS = {
+    "2026-03-29 (1).jpg": [480, 960, 1440, 2532],
+    "2026-03-29 (2).jpg": [480, 960, 1440, 2532],
+    "2026-03-29 (3).jpg": [480, 509],
+    "2026-03-29 (4).jpg": [480, 960, 1440, 1972],
+    "2026-03-29.jpg": [480, 960, 1169],
+    "2026-06-30.jpg": [480, 658],
+    "equipment-chainsaw-log.jpg": [480, 960, 1440, 1536],
+    "equipment-crane-olive-upscaled.jpg": [480, 960, 1440, 2048],
+    "equipment-crane-pine-editorial-restored.jpg": [480, 960, 1440, 2400],
+    "equipment-platform-upscaled.jpg": [480, 960, 1440, 2024],
+    "hero-potatura-desktop.jpg": [480, 960, 1440, 2048],
+    "hero-potatura.jpg": [480, 960, 1395],
+    "hero-tronchi-enhanced.jpg": [480, 960, 1440, 2048],
+    "photo-abbattimento-quota-upscaled.jpg": [480, 960, 1440, 2048],
+    "photo-potatura-hero-upscaled.jpg": [480, 960, 1440, 2048],
+    "photo-potatura-qualifiche-upscaled.jpg": [480, 960, 1440, 2048],
+    "photo-potatura-riciclo-legno-upscaled.jpg": [480, 960, 1440, 2048],
+    "photo-potatura-siepi-upscaled.jpg": [480, 960, 1440, 2048],
+    "photo-tree-climbing-potature-upscaled.jpg": [480, 960, 1100],
+    "photo-tree-climbing-qualifiche-upscaled.jpg": [480, 960, 1440, 2048],
+    "provincia-perugia/contatti-perugia-02.jpeg": [480, 960, 1440, 1920],
+    "provincia-perugia/contatti-perugia-03.jpeg": [480, 960, 1440, 1920],
+    "provincia-perugia/contatti-perugia-04.jpeg": [480, 960, 1200],
+    "qualification-abbattimento.jpg": [480, 960, 1440, 2200],
+    "qualification-tree-climbing.jpg": [480, 960, 1440, 2200],
+    "service-gardens-02-upscaled.jpg": [480, 960, 1440, 2048],
+    "service-gardens-03-upscaled.jpg": [480, 960, 1440, 2048],
+    "service-pruning-03-upscaled.jpg": [480, 960, 1440, 2048],
+    "service-tree-climbing-02-upscaled.jpg": [480, 960, 1440, 2048],
+  };
+
   // Foto generiche del territorio: nessun nome di comune, alt identico per tutte.
   slides.forEach((slide, index) => {
     const photo = photos[index];
     const image = document.createElement("img");
     image.src = photo.source;
+    const widths = AREA_PHOTO_WIDTHS[photo.source.replace("../assets/", "")];
+    if (widths) {
+      const dot = photo.source.lastIndexOf(".");
+      const base = photo.source.slice(0, dot);
+      const ext = photo.source.slice(dot);
+      image.srcset = widths
+        .map((w, i) => `${encodeURI(i === widths.length - 1 ? photo.source : `${base}-w${w}${ext}`)} ${w}w`)
+        .join(", ");
+      image.sizes = "(max-width: 920px) 100vw, 400px";
+    }
     image.alt = "Intervento Arbogreen sul territorio";
     image.decoding = "async";
     slide.replaceChildren(image);

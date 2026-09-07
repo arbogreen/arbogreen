@@ -18,22 +18,95 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Arbogreen Service",
-        "url": "https://arbogreenservice.com/aree/trequanda.html",
-        "telephone": "+39 338 736 3594",
-        "email": "arbogreenservice@gmail.com",
-        "image": "https://arbogreenservice.com/assets/arbogreen-logo.png",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Città della Pieve",
-          "addressRegion": "PG",
-          "addressCountry": "IT"
-        },
-        "areaServed": {
-          "@type": "AdministrativeArea",
-          "name": "Comune di Trequanda"
-        }
+        "@graph": [
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://arbogreenservice.com/#business",
+            "name": "Arbogreen Service",
+            "url": "https://arbogreenservice.com/",
+            "telephone": "+39 338 736 3594",
+            "email": "arbogreenservice@gmail.com",
+            "logo": "https://arbogreenservice.com/assets/arbogreen-logo.png",
+            "image": [
+              "https://arbogreenservice.com/assets/hero-abbattimento-enhanced.jpg",
+              "https://arbogreenservice.com/assets/hero-potatura-desktop.jpg",
+              "https://arbogreenservice.com/assets/hero-tronchi-enhanced.jpg"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Città della Pieve",
+              "addressRegion": "PG",
+              "addressCountry": "IT"
+            }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://arbogreenservice.com/aree/trequanda.html#service",
+            "name": "Arboricoltura e cura del verde a Trequanda",
+            "description": "Potatura e abbattimento alberi, tree climbing, trattamenti fitosanitari, cura giardini e irrigazione a Trequanda. Richiedi un sopralluogo.",
+            "url": "https://arbogreenservice.com/aree/trequanda.html",
+            "image": "https://arbogreenservice.com/assets/service-tree-climbing-03.jpg",
+            "provider": {
+              "@id": "https://arbogreenservice.com/#business"
+            },
+            "areaServed": {
+              "@type": "AdministrativeArea",
+              "name": "Comune di Trequanda"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Arbogreen pota anche gli alberi da frutto a Trequanda?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sì. Nei giardini di questa zona ornamentali, frutti e olivi convivono spesso nello stesso spazio, e non si potano allo stesso modo. Quando ci scrivi, dicci anche cosa c’è: cambia il periodo, la tecnica e a volte anche l’ordine con cui si lavora."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Potare un albero da frutto è diverso da potare un ornamentale?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sì, perché l’obiettivo è diverso. Su un ornamentale si lavora su struttura, sicurezza e forma; su un frutto si lavora anche sulla produzione — far entrare luce e aria nella chioma, rinnovare il legno che porta i frutti, tenere l’altezza raggiungibile. Applicare la logica di uno all’altro dà piante brutte o improduttive, a seconda del verso in cui si sbaglia."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Un olivo lasciato andare per anni si recupera?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Nella maggior parte dei casi sì, ma non con una potatura sola. Un olivo abbandonato ha il centro chiuso, molto legno vecchio e polloni che rubano energia: se si rimette in forma tutto insieme, reagisce con una massa di ricacci che peggiora la situazione. Il recupero si fa per gradi, in più stagioni, togliendo ogni volta quanto la pianta può sopportare."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://arbogreenservice.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Provincia di Siena",
+                "item": "https://arbogreenservice.com/aree/provincia-siena.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Trequanda",
+                "item": "https://arbogreenservice.com/aree/trequanda.html"
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>
@@ -91,7 +164,7 @@
     </header>
 
     <main class="siena-main siena-main--h2-standard">
-      <section class="siena-territory siena-territory--photo" id="zone-servite" aria-labelledby="siena-title" data-territory-selector data-province="Siena" data-current="trequanda" style="--hero-photo: url('../assets/photo-fitosanitario-perche-arbogreen-upscaled.jpg');">
+      <section class="siena-territory siena-territory--photo" id="zone-servite" aria-labelledby="siena-title" data-territory-selector data-province="Siena" data-current="trequanda" style="--hero-photo: url('../assets/service-tree-climbing-03.jpg'); --hero-photo-mobile: url('../assets/service-tree-climbing-03-w960.jpg');">
         <div class="siena-section-inner">
           <header class="siena-territory__copy service-reveal">
             <p class="siena-territory__eyebrow">Agrotecnico certificato</p>
@@ -218,7 +291,7 @@
             <h2 id="services-title" class="service-reveal">Servizi <span class="hero__title-accent">Arbogreen</span> a Trequanda</h2>
             <div class="svc-trio service-reveal">
               <a class="svc-trio__card" href="../servizi/potatura-alberi.html">
-                <img class="svc-trio__photo" src="../assets/service-pruning-02-upscaled.jpg" alt="Intervento di potatura sulla chioma di un albero" loading="lazy" decoding="async">
+                <img class="svc-trio__photo" src="../assets/service-pruning-02-upscaled.jpg" alt="Intervento di potatura sulla chioma di un albero" width="2048" height="981" srcset="../assets/service-pruning-02-upscaled-w480.jpg 480w, ../assets/service-pruning-02-upscaled-w960.jpg 960w, ../assets/service-pruning-02-upscaled-w1440.jpg 1440w, ../assets/service-pruning-02-upscaled.jpg 2048w" sizes="(max-width: 720px) 100vw, 33vw" loading="lazy" decoding="async">
                 <span class="svc-trio__body">
                   <span class="svc-trio__head">
                     <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 7 10h3l-4 6h12l-4-6h3L12 3Z"/><path d="M12 16v5"/></svg></span>
@@ -228,7 +301,7 @@
                 </span>
               </a>
               <a class="svc-trio__card" href="../servizi/abbattimento-alberi.html">
-                <img class="svc-trio__photo" src="../assets/hero-abbattimento-enhanced.jpg" alt="Abbattimento controllato di un albero calato a sezioni" loading="lazy" decoding="async">
+                <img class="svc-trio__photo" src="../assets/hero-abbattimento-enhanced.jpg" alt="Abbattimento controllato di un albero calato a sezioni" width="2048" height="1152" srcset="../assets/hero-abbattimento-enhanced-w480.jpg 480w, ../assets/hero-abbattimento-enhanced-w960.jpg 960w, ../assets/hero-abbattimento-enhanced-w1440.jpg 1440w, ../assets/hero-abbattimento-enhanced.jpg 2048w" sizes="(max-width: 720px) 100vw, 33vw" loading="lazy" decoding="async">
                 <span class="svc-trio__body">
                   <span class="svc-trio__head">
                     <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 20h10M9 20v-4h6v4M8 16l1-5 3-7 3 7 1 5M6 11h12"/></svg></span>
@@ -238,7 +311,7 @@
                 </span>
               </a>
               <a class="svc-trio__card" href="../servizi/tree-climbing.html">
-                <img class="svc-trio__photo" src="../assets/service-tree-climbing-01-upscaled.jpg" alt="Operatori in quota durante un intervento di tree climbing" loading="lazy" decoding="async">
+                <img class="svc-trio__photo" src="../assets/service-tree-climbing-01-upscaled.jpg" alt="Operatori in quota durante un intervento di tree climbing" width="2048" height="1024" srcset="../assets/service-tree-climbing-01-upscaled-w480.jpg 480w, ../assets/service-tree-climbing-01-upscaled-w960.jpg 960w, ../assets/service-tree-climbing-01-upscaled-w1440.jpg 1440w, ../assets/service-tree-climbing-01-upscaled.jpg 2048w" sizes="(max-width: 720px) 100vw, 33vw" loading="lazy" decoding="async">
                 <span class="svc-trio__body">
                   <span class="svc-trio__head">
                     <span class="svc-icon" aria-hidden="true"><span class="service-tab__rope-knot"></span></span>
@@ -248,7 +321,7 @@
                 </span>
               </a>
               <a class="svc-trio__card" href="../servizi/trattamento-fitosanitario.html">
-                <img class="svc-trio__photo" src="../assets/service-fitosanitario-01-upscaled.jpg" alt="Operatore durante un trattamento fitosanitario nel verde" loading="lazy" decoding="async">
+                <img class="svc-trio__photo" src="../assets/service-fitosanitario-01-upscaled.jpg" alt="Operatore durante un trattamento fitosanitario nel verde" width="2048" height="915" srcset="../assets/service-fitosanitario-01-upscaled-w480.jpg 480w, ../assets/service-fitosanitario-01-upscaled-w960.jpg 960w, ../assets/service-fitosanitario-01-upscaled-w1440.jpg 1440w, ../assets/service-fitosanitario-01-upscaled.jpg 2048w" sizes="(max-width: 720px) 100vw, 33vw" loading="lazy" decoding="async">
                 <span class="svc-trio__body">
                   <span class="svc-trio__head">
                     <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.6 2.8 8 7 10 4.2-2 7-5.4 7-10V6l-7-3Z"/><path d="M9 14c3.5 0 5-2 6-5-3.5 0-5.5 1.7-6 5Zm0 0-1 2"/></svg></span>
@@ -258,7 +331,7 @@
                 </span>
               </a>
               <a class="svc-trio__card" href="../servizi/creazione-cura-giardini.html">
-                <img class="svc-trio__photo" src="../assets/service-gardens-01-upscaled.jpg" alt="Giardino curato con prato, alberi e arbusti" loading="lazy" decoding="async">
+                <img class="svc-trio__photo" src="../assets/service-gardens-01-upscaled.jpg" alt="Giardino curato con prato, alberi e arbusti" width="2048" height="1413" srcset="../assets/service-gardens-01-upscaled-w480.jpg 480w, ../assets/service-gardens-01-upscaled-w960.jpg 960w, ../assets/service-gardens-01-upscaled-w1440.jpg 1440w, ../assets/service-gardens-01-upscaled.jpg 2048w" sizes="(max-width: 720px) 100vw, 33vw" loading="lazy" decoding="async">
                 <span class="svc-trio__body">
                   <span class="svc-trio__head">
                     <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21v-9"/><path d="M12 15c-4 0-7-3-7-8 4 0 7 2 7 6m0-1c0-4 3-7 7-7 0 5-3 8-7 8"/></svg></span>
@@ -268,7 +341,7 @@
                 </span>
               </a>
               <a class="svc-trio__card" href="../servizi/impianti-irrigazione.html">
-                <img class="svc-trio__photo" src="../assets/service-irrigazione-installazione.jpg" alt="Installazione delle tubazioni di un impianto di irrigazione" loading="lazy" decoding="async">
+                <img class="svc-trio__photo" src="../assets/service-irrigazione-installazione.jpg" alt="Installazione delle tubazioni di un impianto di irrigazione" width="2048" height="803" srcset="../assets/service-irrigazione-installazione-w480.jpg 480w, ../assets/service-irrigazione-installazione-w960.jpg 960w, ../assets/service-irrigazione-installazione-w1440.jpg 1440w, ../assets/service-irrigazione-installazione.jpg 2048w" sizes="(max-width: 720px) 100vw, 33vw" loading="lazy" decoding="async">
                 <span class="svc-trio__body">
                   <span class="svc-trio__head">
                     <span class="svc-icon" aria-hidden="true"><span class="service-tab__irrigation-icon irrigation-icon-mask"></span></span>
@@ -290,16 +363,16 @@
               </div>
               <div class="service-faq__list service-reveal">
                 <details>
-                  <summary>Arbogreen opera nella provincia di Siena?</summary>
-                  <p>Sì. Nella provincia di Siena puoi richiedere ad Arbogreen interventi su alberi, giardini, salute delle piante e impianti di irrigazione. Ogni richiesta viene valutata in base alle condizioni e allo spazio disponibile.</p>
+                  <summary>Arbogreen pota anche gli alberi da frutto a Trequanda?</summary>
+                  <p>Sì. Nei giardini di questa zona ornamentali, frutti e olivi convivono spesso nello stesso spazio, e non si potano allo stesso modo. Quando ci scrivi, dicci anche cosa c’è: cambia il periodo, la tecnica e a volte anche l’ordine con cui si lavora.</p>
                 </details>
                 <details>
-                  <summary>Quando è necessario un sopralluogo?</summary>
-                  <p>Quando fotografie e informazioni iniziali non bastano, il sopralluogo permette di verificare alberi, accessi, area di lavoro e possibili criticità. Da qui si definisce il passaggio successivo in sicurezza.</p>
+                  <summary>Potare un albero da frutto è diverso da potare un ornamentale?</summary>
+                  <p>Sì, perché l’obiettivo è diverso. Su un ornamentale si lavora su struttura, sicurezza e forma; su un frutto si lavora anche sulla produzione — far entrare luce e aria nella chioma, rinnovare il legno che porta i frutti, tenere l’altezza raggiungibile. Applicare la logica di uno all’altro dà piante brutte o improduttive, a seconda del verso in cui si sbaglia.</p>
                 </details>
                 <details>
-                  <summary>Quali interventi puoi richiedere a Trequanda?</summary>
-                  <p>Puoi richiedere potatura alberi, abbattimento alberi, tree climbing, trattamento fitosanitario, creazione e cura giardini e impianti di irrigazione. La valutazione iniziale definisce l’intervento più adatto.</p>
+                  <summary>Un olivo lasciato andare per anni si recupera?</summary>
+                  <p>Nella maggior parte dei casi sì, ma non con una potatura sola. Un olivo abbandonato ha il centro chiuso, molto legno vecchio e polloni che rubano energia: se si rimette in forma tutto insieme, reagisce con una massa di ricacci che peggiora la situazione. Il recupero si fa per gradi, in più stagioni, togliendo ogni volta quanto la pianta può sopportare.</p>
                 </details>
               </div>
             </div>

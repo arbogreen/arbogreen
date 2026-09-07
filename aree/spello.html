@@ -18,22 +18,95 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Arbogreen Service",
-        "url": "https://arbogreenservice.com/aree/spello.html",
-        "telephone": "+39 338 736 3594",
-        "email": "arbogreenservice@gmail.com",
-        "image": "https://arbogreenservice.com/assets/arbogreen-logo.png",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Città della Pieve",
-          "addressRegion": "PG",
-          "addressCountry": "IT"
-        },
-        "areaServed": {
-          "@type": "AdministrativeArea",
-          "name": "Comune di Spello"
-        }
+        "@graph": [
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://arbogreenservice.com/#business",
+            "name": "Arbogreen Service",
+            "url": "https://arbogreenservice.com/",
+            "telephone": "+39 338 736 3594",
+            "email": "arbogreenservice@gmail.com",
+            "logo": "https://arbogreenservice.com/assets/arbogreen-logo.png",
+            "image": [
+              "https://arbogreenservice.com/assets/hero-abbattimento-enhanced.jpg",
+              "https://arbogreenservice.com/assets/hero-potatura-desktop.jpg",
+              "https://arbogreenservice.com/assets/hero-tronchi-enhanced.jpg"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Città della Pieve",
+              "addressRegion": "PG",
+              "addressCountry": "IT"
+            }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://arbogreenservice.com/aree/spello.html#service",
+            "name": "Arboricoltura e cura del verde a Spello",
+            "description": "Potatura e abbattimento alberi, tree climbing, trattamenti fitosanitari, cura giardini e irrigazione a Spello. Richiedi un sopralluogo.",
+            "url": "https://arbogreenservice.com/aree/spello.html",
+            "image": "https://arbogreenservice.com/assets/2026-03-29%20(4).jpg",
+            "provider": {
+              "@id": "https://arbogreenservice.com/#business"
+            },
+            "areaServed": {
+              "@type": "AdministrativeArea",
+              "name": "Comune di Spello"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Arbogreen lavora a Spello?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sì. Dalla sede di Città della Pieve raggiungiamo Spello senza difficoltà. La prima cosa che serve sapere non è quale intervento vuoi, ma dove si trova la pianta e come ci si arriva: da lì cambia tutto il resto, dal mezzo da usare al tempo necessario."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "E se al giardino non arriva nessun mezzo?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Si lavora lo stesso, in tree climbing. Quando vie strette, cancelli o dislivelli escludono gru e piattaforma, si sale in fune e si cala il materiale a pezzi controllati. È più lento di un intervento da terra, ma non chiede spazio di manovra e non costringe a passare sopra il resto del giardino."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quanto spazio serve intorno alla pianta?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Dipende da come si sale. Una piattaforma vuole un appoggio stabile e una via d’accesso larga; la gru ha bisogno di stabilizzatori e di spazio libero sopra. In fune basta molto meno, ma serve un’area a terra dove calare e raccogliere il materiale in sicurezza. Nel sopralluogo si misura proprio questo."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://arbogreenservice.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Provincia di Perugia",
+                "item": "https://arbogreenservice.com/aree/provincia-perugia.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Spello",
+                "item": "https://arbogreenservice.com/aree/spello.html"
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>
@@ -91,7 +164,7 @@
     </header>
 
     <main class="siena-main siena-main--h2-standard">
-      <section class="siena-territory siena-territory--photo siena-territory--photo-perugia" id="zone-servite" aria-labelledby="siena-title" data-territory-selector data-province="Perugia" data-current="spello" style="--hero-photo: url('../assets/photo-abbattimento-hero-upscaled.jpg');">
+      <section class="siena-territory siena-territory--photo siena-territory--photo-perugia" id="zone-servite" aria-labelledby="siena-title" data-territory-selector data-province="Perugia" data-current="spello" style="--hero-photo: url('../assets/2026-03-29 (4).jpg'); --hero-photo-mobile: url('../assets/2026-03-29 (4)-w960.jpg');">
         <div class="siena-section-inner">
           <header class="siena-territory__copy service-reveal">
             <p class="siena-territory__eyebrow">Agrotecnico certificato</p>
@@ -222,7 +295,7 @@
             <h2 id="services-title" class="service-reveal">Servizi <span class="hero__title-accent">Arbogreen</span> a Spello</h2>
             <div class="svc-bellows service-reveal" data-svc-bellows>
               <a class="svc-bellows__col is-open" href="../servizi/potatura-alberi.html">
-                <img class="svc-bellows__photo" src="../assets/service-pruning-02-upscaled.jpg" alt="Intervento di potatura sulla chioma di un albero" loading="lazy" decoding="async">
+                <img class="svc-bellows__photo" src="../assets/service-pruning-02-upscaled.jpg" alt="Intervento di potatura sulla chioma di un albero" width="2048" height="981" srcset="../assets/service-pruning-02-upscaled-w480.jpg 480w, ../assets/service-pruning-02-upscaled-w960.jpg 960w, ../assets/service-pruning-02-upscaled-w1440.jpg 1440w, ../assets/service-pruning-02-upscaled.jpg 2048w" sizes="(max-width: 860px) 100vw, 33vw" loading="lazy" decoding="async">
                 <span class="svc-bellows__scrim" aria-hidden="true"></span>
                 <span class="svc-bellows__vname" aria-hidden="true">Potatura alberi</span>
                 <span class="svc-bellows__panel">
@@ -235,7 +308,7 @@
                 </span>
               </a>
               <a class="svc-bellows__col" href="../servizi/abbattimento-alberi.html">
-                <img class="svc-bellows__photo" src="../assets/hero-abbattimento-enhanced.jpg" alt="Abbattimento controllato di un albero calato a sezioni" loading="lazy" decoding="async">
+                <img class="svc-bellows__photo" src="../assets/hero-abbattimento-enhanced.jpg" alt="Abbattimento controllato di un albero calato a sezioni" width="2048" height="1152" srcset="../assets/hero-abbattimento-enhanced-w480.jpg 480w, ../assets/hero-abbattimento-enhanced-w960.jpg 960w, ../assets/hero-abbattimento-enhanced-w1440.jpg 1440w, ../assets/hero-abbattimento-enhanced.jpg 2048w" sizes="(max-width: 860px) 100vw, 33vw" loading="lazy" decoding="async">
                 <span class="svc-bellows__scrim" aria-hidden="true"></span>
                 <span class="svc-bellows__vname" aria-hidden="true">Abbattimento alberi</span>
                 <span class="svc-bellows__panel">
@@ -248,7 +321,7 @@
                 </span>
               </a>
               <a class="svc-bellows__col" href="../servizi/tree-climbing.html">
-                <img class="svc-bellows__photo" src="../assets/service-tree-climbing-01-upscaled.jpg" alt="Operatori in quota durante un intervento di tree climbing" loading="lazy" decoding="async">
+                <img class="svc-bellows__photo" src="../assets/service-tree-climbing-01-upscaled.jpg" alt="Operatori in quota durante un intervento di tree climbing" width="2048" height="1024" srcset="../assets/service-tree-climbing-01-upscaled-w480.jpg 480w, ../assets/service-tree-climbing-01-upscaled-w960.jpg 960w, ../assets/service-tree-climbing-01-upscaled-w1440.jpg 1440w, ../assets/service-tree-climbing-01-upscaled.jpg 2048w" sizes="(max-width: 860px) 100vw, 33vw" loading="lazy" decoding="async">
                 <span class="svc-bellows__scrim" aria-hidden="true"></span>
                 <span class="svc-bellows__vname" aria-hidden="true">Tree climbing</span>
                 <span class="svc-bellows__panel">
@@ -261,7 +334,7 @@
                 </span>
               </a>
               <a class="svc-bellows__col" href="../servizi/trattamento-fitosanitario.html">
-                <img class="svc-bellows__photo" src="../assets/service-fitosanitario-01-upscaled.jpg" alt="Operatore durante un trattamento fitosanitario nel verde" loading="lazy" decoding="async">
+                <img class="svc-bellows__photo" src="../assets/service-fitosanitario-01-upscaled.jpg" alt="Operatore durante un trattamento fitosanitario nel verde" width="2048" height="915" srcset="../assets/service-fitosanitario-01-upscaled-w480.jpg 480w, ../assets/service-fitosanitario-01-upscaled-w960.jpg 960w, ../assets/service-fitosanitario-01-upscaled-w1440.jpg 1440w, ../assets/service-fitosanitario-01-upscaled.jpg 2048w" sizes="(max-width: 860px) 100vw, 33vw" loading="lazy" decoding="async">
                 <span class="svc-bellows__scrim" aria-hidden="true"></span>
                 <span class="svc-bellows__vname" aria-hidden="true">Trattamento fitosanitario</span>
                 <span class="svc-bellows__panel">
@@ -274,7 +347,7 @@
                 </span>
               </a>
               <a class="svc-bellows__col" href="../servizi/creazione-cura-giardini.html">
-                <img class="svc-bellows__photo" src="../assets/service-gardens-01-upscaled.jpg" alt="Giardino curato con prato, alberi e arbusti" loading="lazy" decoding="async">
+                <img class="svc-bellows__photo" src="../assets/service-gardens-01-upscaled.jpg" alt="Giardino curato con prato, alberi e arbusti" width="2048" height="1413" srcset="../assets/service-gardens-01-upscaled-w480.jpg 480w, ../assets/service-gardens-01-upscaled-w960.jpg 960w, ../assets/service-gardens-01-upscaled-w1440.jpg 1440w, ../assets/service-gardens-01-upscaled.jpg 2048w" sizes="(max-width: 860px) 100vw, 33vw" loading="lazy" decoding="async">
                 <span class="svc-bellows__scrim" aria-hidden="true"></span>
                 <span class="svc-bellows__vname" aria-hidden="true">Creazione e cura giardini</span>
                 <span class="svc-bellows__panel">
@@ -287,7 +360,7 @@
                 </span>
               </a>
               <a class="svc-bellows__col" href="../servizi/impianti-irrigazione.html">
-                <img class="svc-bellows__photo" src="../assets/service-irrigazione-installazione.jpg" alt="Installazione delle tubazioni di un impianto di irrigazione" loading="lazy" decoding="async">
+                <img class="svc-bellows__photo" src="../assets/service-irrigazione-installazione.jpg" alt="Installazione delle tubazioni di un impianto di irrigazione" width="2048" height="803" srcset="../assets/service-irrigazione-installazione-w480.jpg 480w, ../assets/service-irrigazione-installazione-w960.jpg 960w, ../assets/service-irrigazione-installazione-w1440.jpg 1440w, ../assets/service-irrigazione-installazione.jpg 2048w" sizes="(max-width: 860px) 100vw, 33vw" loading="lazy" decoding="async">
                 <span class="svc-bellows__scrim" aria-hidden="true"></span>
                 <span class="svc-bellows__vname" aria-hidden="true">Impianti di irrigazione</span>
                 <span class="svc-bellows__panel">
@@ -312,16 +385,16 @@
               </div>
               <div class="service-faq__list service-reveal">
                 <details>
-                  <summary>Arbogreen opera nella provincia di Perugia?</summary>
-                  <p>Sì. Nella provincia di Perugia puoi richiedere ad Arbogreen interventi su alberi, giardini, salute delle piante e impianti di irrigazione. Ogni richiesta viene valutata in base alle condizioni e allo spazio disponibile.</p>
+                  <summary>Arbogreen lavora a Spello?</summary>
+                  <p>Sì. Dalla sede di Città della Pieve raggiungiamo Spello senza difficoltà. La prima cosa che serve sapere non è quale intervento vuoi, ma dove si trova la pianta e come ci si arriva: da lì cambia tutto il resto, dal mezzo da usare al tempo necessario.</p>
                 </details>
                 <details>
-                  <summary>Quando è necessario un sopralluogo?</summary>
-                  <p>Quando fotografie e informazioni iniziali non bastano, il sopralluogo permette di verificare alberi, accessi, area di lavoro e possibili criticità. Da qui si definisce il passaggio successivo in sicurezza.</p>
+                  <summary>E se al giardino non arriva nessun mezzo?</summary>
+                  <p>Si lavora lo stesso, in tree climbing. Quando vie strette, cancelli o dislivelli escludono gru e piattaforma, si sale in fune e si cala il materiale a pezzi controllati. È più lento di un intervento da terra, ma non chiede spazio di manovra e non costringe a passare sopra il resto del giardino.</p>
                 </details>
                 <details>
-                  <summary>Quali interventi puoi richiedere a Spello?</summary>
-                  <p>Puoi richiedere potatura alberi, abbattimento alberi, tree climbing, trattamento fitosanitario, creazione e cura giardini e impianti di irrigazione. La valutazione iniziale definisce l’intervento più adatto.</p>
+                  <summary>Quanto spazio serve intorno alla pianta?</summary>
+                  <p>Dipende da come si sale. Una piattaforma vuole un appoggio stabile e una via d’accesso larga; la gru ha bisogno di stabilizzatori e di spazio libero sopra. In fune basta molto meno, ma serve un’area a terra dove calare e raccogliere il materiale in sicurezza. Nel sopralluogo si misura proprio questo.</p>
                 </details>
               </div>
             </div>
